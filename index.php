@@ -14,7 +14,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-	      <?php session_unset(); } ?>
+	      			<?php session_unset(); } ?>
 
 				<div class="card card-body">
 					<form action="guardardatos.php" method="POST">
