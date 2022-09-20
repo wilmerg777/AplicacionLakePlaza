@@ -7,9 +7,10 @@
 	<title>Registro de Contratos</title>
 	<link rel="stylesheet" href="">
 	<!-- BOOTSTRAP 4 -->
-	  <link rel="stylesheet" href="css/bootstrap.min_lake.css">
-  <!--  <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
-  FONT AWESOEM -->
+
+  <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+  <!--   <link rel="stylesheet" href="css/bootstrap.min_lake.css">
+  FONT AWESOME -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <!-- Icon page -->
 	<link rel="icon"  href="images/logo_lake.ico">

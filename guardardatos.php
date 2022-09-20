@@ -13,7 +13,7 @@
 		echo 'Datos insertados!';
 	}
 
-  $_SESSION['message'] = 'Task Saved Successfully';
+  $_SESSION['message'] = 'Registro guardado correctamente!';
   $_SESSION['message_type'] = 'success';
   header('Location: index.php');
  ?>

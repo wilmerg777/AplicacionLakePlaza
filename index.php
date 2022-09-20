@@ -8,13 +8,13 @@
 			<div class="col-md-4">
 				<!-- MESSAGES -->
 				<?php if (isset($_SESSION['message'])) { ?>
-				<div class="alert alert-success alert-dismissible fade show" role="alert">
-					<?php $_SESSION['message']?>
+				<div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">
+					<?= $_SESSION['message']?>
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-	      			<?php session_unset(); } ?>
+				<?php session_unset(); } ?>
 
 				<div class="card card-body">
 					<form action="guardardatos.php" method="POST">
@@ -45,7 +45,14 @@
 									<td> <?php echo $row['usuario'] ?></td>
 									<td> <?php echo $row['mapa'] ?></td>
 									<td> <?php echo $row['fch_registro'] ?></td>
-									<td> </td>
+									<td>
+										<a href="editar.php?id=<?php echo $row['id'] ?>" class="btn btn-secondary">
+											<i class="fas fa-marker"></i>
+										</a> 
+										<a href="eliminar.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">
+											<i class="fas fa-trash-alt"></i>
+										</a>
+									</td>
 								</tr>
 							<?php } ?>
 					</thead>
