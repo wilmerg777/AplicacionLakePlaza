@@ -10,26 +10,25 @@
 				<?php if (isset($_SESSION['message'])) { ?>
 				<div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">
 					<?= $_SESSION['message']?>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
 					</button>
 				</div>
 				<?php session_unset(); } ?>
 
 				<div class="card card-body">
 					<form action="guardardatos.php" method="POST">
-						<div class="form-group">
+						<div class="input-group mb-3">
 							<input type="text" name="titulo" class="form-control " placeholder="Título" autofocus>
 						</div>
-						<div class="form-group">
-							<textarea name="descripcion" rows="2" class="form-control" placeholder="Inserta Descripción"></textarea>
+						<div class="input-group mb-3">
+							<textarea name="descripcion" rows="2" class="form-control " placeholder="Inserta Descripción" ></textarea>
 						</div>
 						<input type="submit" class="btn btn-success " name="guardardatos" value="Guardar Datos">
 					</form>
 				</div>
 			</div>
 			<div class="col-md-8">
-				<table class="table table-bordered">
+				<table class="table table-bordered border-dark">
 					<thead>
 						<tr>
 							<th>Usuario</th>
@@ -57,6 +56,35 @@
 							<?php } ?>
 					</thead>
 				</table>
+ 				
+					<?php
+					$label = "Usuarios";
+					$name = "usuarios";
+					function genera_MenuSeleccion ($conn, $name, $label){
+						$query = "select * from usuarios";
+						$datos = mysqli_query($conn,$query);
+						$codigo = '<label>'.$label.'</label><br>';
+
+						$codigo= $codigo.'<select name="'.$name.'">.\n';
+
+						while ( $fila = mysqli_fetch_array($datos)){
+							$codigo = $codigo.'<option value= "'.$fila["id"].'">'.$fila["id"].'-'.utf8_encode($fila["usuario"]).'</option>'."/n";
+						}
+
+						$codigo = $codigo."</select>\n";
+
+						$q = mysqli_query($conn,'DESCRIBE afiliados_natu');
+						while($row = mysqli_fetch_array($q)) {
+    					echo "{$row['Field']} - {$row['Type']}<br>";
+    				}
+						return  $codigo;
+					}
+
+					echo genera_MenuSeleccion($conn, $name, $label);
+
+					?> 
+
+
 			</div>
 		</div>
 	</main>

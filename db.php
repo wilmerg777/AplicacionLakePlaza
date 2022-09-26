@@ -9,7 +9,7 @@
 		'lakeplaza'
 	);
 
-	//if (isset($conn)) {
-	//	echo "Coneccion exitosa!!!";
-	//}
+	if (!isset($conn)) {
+		echo "Coneccion exitosa!!!";
+	}
  ?>
