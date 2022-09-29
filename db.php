@@ -9,7 +9,13 @@
 		'lakeplaza'
 	);
 
-	if (!isset($conn)) {
-		echo "Coneccion exitosa!!!";
+
+
+	if ($conn) {
+		// echo "Coneccion exitosa";
+	}else {
+
+		header("Location: conect_err.php");
 	}
+
  ?>

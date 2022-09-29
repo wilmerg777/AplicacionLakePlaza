@@ -74,9 +74,11 @@
 						$codigo = $codigo."</select>\n";
 
 						$q = mysqli_query($conn,'DESCRIBE afiliados_natu');
+
 						while($row = mysqli_fetch_array($q)) {
-    					echo "{$row['Field']} - {$row['Type']}<br>";
+							echo "{$row['Field']} - {$row['Type']}<br>";
     				}
+    				//return print_r($row) ;
 						return  $codigo;
 					}
 

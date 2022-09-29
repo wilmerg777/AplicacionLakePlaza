@@ -8,7 +8,7 @@
 	$resultado = mysqli_query($conn,$query);
 
 	if (!$resultado) {
-		die("Accion fallida!");
+		die("Accion fallida guardando datos!");
 	}else{
 		echo 'Datos insertados!';
 	}
