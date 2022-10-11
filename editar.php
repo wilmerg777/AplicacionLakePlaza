@@ -1,13 +1,14 @@
 <?php
-
+	session_start();
 	include("db.php");
 
-	if (isset($_GET['id'])) {
-		$id = $_GET['id'];
-		$query = "Select * from usuarios where id = $id";
-		$resultado = mysqli_query($conn,$query);
-		if (mysqli_num_rows($resultado) == 1) {
-			$row = mysqli_fetch_array($resultado);
+	if (isset($_GET['id_user'])) {
+		$id = $_GET['id_user'];
+		$query = "Select * from usuarios where id_user = $id";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+		if ($cuantos == 1) {
+			$row = $resultado->fetch(PDO::FETCH_ASSOC);
 			$titulo = $row['usuario'];
 			$descripcion = $row['mapa'];
 
@@ -16,22 +17,22 @@
 
 	if (isset($_POST['update'])) {
 
-		$id = $_GET['id'];
+		$id = $_GET['id_user'];
 		$titulo = $_POST['titulo'];
 		$descripcion = $_POST['descripcion'];
 
-		$query = "Update usuarios set usuario='$titulo', mapa='$descripcion' where id='$id' ";
-		$resultado = mysqli_query($conn,$query);
+		$query = "Update usuarios set usuario='$titulo', mapa='$descripcion' where id_user='$id' ";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
 
-		if (!$resultado) {
-			die("Accion fallida!");
+		if (!$cuantos) {
+			die("Accion de editar fallida!");
 		}else{
 			echo 'Datos Actualizados!';
 		}
 		$_SESSION['message'] = "Registro actualizado correctamente.";
 		$_SESSION['message_type'] = 'success';
-		header("Location: index.php");
-
+		echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
 
 ?>
@@ -42,7 +43,7 @@
 	<div class="row">
 		<div class="col-md-4 mx-auto">
 			<div class="card card-body">
-				<form action="editar.php?id=<?php echo $_GET['id'];?>" method="POST">
+				<form action="editar.php?id_user=<?php echo $_GET['id_user'];?>" method="POST">
 					<div class="form-group">
 						<input type="text" name="titulo" value="<?php echo $titulo ;?>" class="form-control" placeholder="Actualiza usuario">
 					</div>

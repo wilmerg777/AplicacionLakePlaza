@@ -1,6 +1,16 @@
-<?php 
+<?php
+	include("includes/header.php");
 	include("db.php");
-	include("includes/header.php"); 
+
+	if (isset($_SESSION['id_user'])) {
+
+
+	}else{
+		echo "<script>alert('Sesion no inicida o vencida! 
+				window.location.replace('https://localhost/AplicacionLakePlaza/login.php')</script>";
+		//header("location:login.php");
+
+	}
 ?>
 
 	<main class="container p-4">
@@ -38,17 +48,18 @@
 						</tr>
 						<?php 	
 							$query = "select * from usuarios";
-							$usuarios = mysqli_query($conn,$query);
-							while( $row = mysqli_fetch_array($usuarios)) { ?>
+							$usuarios = $conn->prepare($query);
+							$usuarios->execute();
+							while( $row = $usuarios->fetch(PDO::FETCH_ASSOC)) { ?>
 								<tr>
 									<td> <?php echo $row['usuario'] ?></td>
 									<td> <?php echo $row['mapa'] ?></td>
 									<td> <?php echo $row['fch_registro'] ?></td>
 									<td>
-										<a href="editar.php?id=<?php echo $row['id'] ?>" class="btn btn-secondary">
+										<a href="editar.php?id_user=<?php echo $row['id_user'] ?>" class="btn btn-secondary">
 											<i class="fas fa-marker"></i>
 										</a> 
-										<a href="eliminar.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">
+										<a href="eliminar.php?id_user=<?php echo $row['id_user'] ?>" class="btn btn-danger">
 											<i class="fas fa-trash-alt"></i>
 										</a>
 									</td>
@@ -62,13 +73,14 @@
 					$name = "usuarios";
 					function genera_MenuSeleccion ($conn, $name, $label){
 						$query = "select * from usuarios";
-						$datos = mysqli_query($conn,$query);
+						$resultado = $conn->prepare($query);
+						$resultado->execute();
 						$codigo = '<label>'.$label.'</label><br>';
 
 						$codigo= $codigo.'<select name="'.$name.'">.\n';
 
-						while ( $fila = mysqli_fetch_array($datos)){
-							$codigo = $codigo.'<option value= "'.$fila["id"].'">'.$fila["id"].'-'.utf8_encode($fila["usuario"]).'</option>'."/n";
+						while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
+							$codigo = $codigo.'<option value= "'.$fila["id_user"].'">'.$fila["id_user"].'-'.utf8_encode($fila["usuario"]).'</option>'."/n";
 						}
 
 						$codigo = $codigo."</select>\n";

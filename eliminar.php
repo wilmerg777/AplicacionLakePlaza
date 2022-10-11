@@ -1,11 +1,13 @@
-<?php 
+<?php
+	session_start();
 	include("db.php");
 
-	if (isset($_GET['id'])) {
-		$id = $_GET['id'];
-		$query = "Delete from usuarios where id = $id";
-		$resultado = mysqli_query($conn,$query);
-		if (!$resultado) {
+	if (isset($_GET['id_user'])) {
+		$id = $_GET['id_user'];
+		$query = "Delete from usuarios where id_user = $id";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+		if (!$cuantos) {
 			die("No se ha borrado el registro!");
 		}
 
