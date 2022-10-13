@@ -15,10 +15,9 @@
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $usuario = test_input($_POST["usuario"]);
-      $email = test_input($_POST["email"]);
       $password = test_input($_POST["clave_usuario"]);
     }
-  	if (!$usuario && !$email && !$password) {
+  	if (!$usuario && !$password) {
   		die("Accion fallida en login!");
   	}else{
 
@@ -83,8 +82,8 @@
                   <div class="alert alert-success alert-dismissible fade show d-<?php echo $visible ?> "  role='alert'  >
                     Vuelva a intentarlo!
                   </div>
-                  <input type="text" id="usuario" name="usuario" class="form-control"  placeholder="Indique su usuario" required />
                   <label class="form-label" for="usuario">Usuario</label>
+                  <input type="text" id="usuario" name="usuario" class="form-control"  placeholder="Indique su usuario" required />
                 </div>
               </div>
             </div>
@@ -96,18 +95,18 @@
             -->
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
               <label class="form-label" for="clave_usuario">Password</label>
+              <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
             </div>
             <!-- 2 column grid layout for inline styling -->
             <div class="row mb-4">
+              <!-- Checkbox 
               <div class="col d-flex justify-content-center">
-                <!-- Checkbox 
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
                   <label class="form-check-label" for="form2Example31"> Remember me </label>
-                </div-->
-              </div>
+                </div
+              </div>-->
               <div class="col">
                 <!-- Simple link -->
                 <a href="#">Olvidó el password?</a>

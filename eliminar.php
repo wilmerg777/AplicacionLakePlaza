@@ -10,7 +10,7 @@
 		if (!$cuantos) {
 			die("No se ha borrado el registro!");
 		}
-
+		$_SESSION['id_user'] = $id;
 		$_SESSION['message'] = "Registro eliminado correctamente.";
 		$_SESSION['message_type'] = 'danger';
 		header("Location: index.php");

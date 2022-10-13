@@ -1,15 +1,10 @@
 <?php
+	session_start();
 	include("includes/header.php");
 	include("db.php");
-
-	if (isset($_SESSION['id_user'])) {
-
-
-	}else{
-		echo "<script>alert('Sesion no inicida o vencida! 
+	if (!isset($_SESSION['id_user'])) {
+		echo "<script>alert('Sesion no inicida o vencida!')
 				window.location.replace('http://localhost/AplicacionLakePlaza/login.php')</script>";
-		//header("location:login.php");
-
 	}
 ?>
 
@@ -27,12 +22,28 @@
 
 				<div class="card card-body">
 					<form action="guardardatos.php" method="POST">
-						<div class="input-group mb-3">
-							<input type="text" name="titulo" class="form-control " placeholder="Título" autofocus>
+            <div class="form-outline mb-4">
+							<label class="form-label" for="codUser">Código del usuario:</label>
+							<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" autofocus>
 						</div>
-						<div class="input-group mb-3">
-							<textarea name="descripcion" rows="2" class="form-control " placeholder="Inserta Descripción" ></textarea>
+            <div class="form-outline mb-4">
+							<label class="form-label" for="usuario">Usuario</label>
+							<input type="text" name="usuario" class="form-control " placeholder="Nick de usuario" autofocus>
 						</div>
+            <div class="form-outline mb-4">
+            	<label class="form-label" for="email_user">Correo Electrónico</label>
+							<input type="email" name="email_user" class="form-control"  placeholder="Escriba su correo electrónico" >
+						</div>
+						<div class="form-outline mb-4">
+              <label class="form-label" for="clave_usuario">Password</label>
+              <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
+            </div>
+            <!-- Confirnar password
+            <div class="form-outline mb-4">
+              <label class="form-label" for="clave_usuario_conf">Confirme Password</label>
+              <input type="password" id="clave_usuario_conf" name="clave_usuario_conf" placeholder="Debe tener max. 10 caracteres." class="form-control" />
+            </div>
+          -->
 						<input type="submit" class="btn btn-success " name="guardardatos" value="Guardar Datos">
 					</form>
 				</div>
@@ -41,8 +52,9 @@
 				<table class="table table-bordered border-dark">
 					<thead>
 						<tr>
+							<th>Código</th>
 							<th>Usuario</th>
-							<th>Mapa</th>
+							<th>CorreoE</th>
 							<th>Fecha de Registro</th>
 							<th>Acciones</th>
 						</tr>
@@ -52,8 +64,9 @@
 							$usuarios->execute();
 							while( $row = $usuarios->fetch(PDO::FETCH_ASSOC)) { ?>
 								<tr>
+									<td> <?php echo $row['cod_user'] ?></td>
 									<td> <?php echo $row['usuario'] ?></td>
-									<td> <?php echo $row['mapa'] ?></td>
+									<td> <?php echo $row['email_user'] ?></td>
 									<td> <?php echo $row['fch_registro'] ?></td>
 									<td>
 										<a href="editar.php?id_user=<?php echo $row['id_user'] ?>" class="btn btn-secondary">
@@ -85,9 +98,9 @@
 
 						$codigo = $codigo."</select>\n";
 
-						$q = mysqli_query($conn,'DESCRIBE afiliados_natu');
-
-						while($row = mysqli_fetch_array($q)) {
+						$q = $conn->prepare('DESCRIBE afiliados_natu');
+						$q->execute();
+						while($row = $q->fetch(PDO::FETCH_ASSOC)) {
 							echo "{$row['Field']} - {$row['Type']}<br>";
     				}
     				//return print_r($row) ;
