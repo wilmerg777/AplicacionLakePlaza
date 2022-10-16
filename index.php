@@ -1,11 +1,7 @@
 <?php
-	session_start();
+	include("sesion.php");
 	include("includes/header.php");
 	include("db.php");
-	if (!isset($_SESSION['id_user'])) {
-		echo "<script>alert('Sesion no inicida o vencida!')
-				window.location.replace('http://localhost/AplicacionLakePlaza/login.php')</script>";
-	}
 ?>
 
 	<main class="container p-4">
@@ -18,7 +14,9 @@
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
 					</button>
 				</div>
-				<?php session_unset(); } ?>
+				<?php unset($_SESSION['message']);
+				 } 
+				?>
 
 				<div class="card card-body">
 					<form action="guardardatos.php" method="POST">

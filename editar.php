@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	include("sesion.php");
 	include("db.php");
 
 	if (isset($_GET['id_user'])) {
