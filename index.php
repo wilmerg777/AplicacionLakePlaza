@@ -20,6 +20,7 @@
 
 				<div class="card card-body">
 					<form action="guardardatos.php" method="POST">
+						<input type="text" name="guardar_form" value="1" hidden>
             <div class="form-outline mb-4">
 							<label class="form-label" for="codUser">Código del usuario:</label>
 							<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" autofocus>
