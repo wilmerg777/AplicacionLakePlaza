@@ -57,7 +57,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
               $cerrar_sesion = "disabled";
             }
            ?>
-          <a class="nav-link <?php echo $cerrar_sesion ; ?>" href="cerrar_sesion.php">Cerrar sesion.</a>
+          <a class="nav-link <?php echo $cerrar_sesion ; ?>" href="cerrar_sesion.php">Cerrar sesion" <?php echo $_SESSION['usuario']; ?>"</a>
         </li>
       </ul>
       <form class="d-flex" role="search">

@@ -51,7 +51,7 @@
 
 	  $_SESSION['message'] = $mensaje;
 	  $_SESSION['message_type'] = $tipo_mensaje;
-	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=producto ')</script>";
 
 	}
 
