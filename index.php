@@ -1,24 +1,10 @@
 <?php
-<<<<<<< HEAD
 	include("includes/header.php");
 	include("db.php");
 
 	if (isset($_SESSION['id_user'])) {
-
-
-	}else{
 		echo "<script>alert('Sesion no inicida o vencida! 
 				window.location.replace('https://localhost/AplicacionLakePlaza/login.php')</script>";
-		//header("location:login.php");
-
-=======
-	session_start();
-	include("includes/header.php");
-	include("db.php");
-	if (!isset($_SESSION['id_user'])) {
-		echo "<script>alert('Sesion no inicida o vencida!')
-				window.location.replace('http://localhost/AplicacionLakePlaza/login.php')</script>";
->>>>>>> bd85ebd052148a0fa04ee28f2e5bc51740ecbf0f
 	}
 ?>
 
@@ -120,12 +106,8 @@
     				//return print_r($row) ;
 						return  $codigo;
 					}
-
 					echo genera_MenuSeleccion($conn, $name, $label);
-
-					?> 
-
-
+					?>
 			</div>
 		</div>
 	</main>

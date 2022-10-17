@@ -48,7 +48,9 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link <?php if(isset($_SESSION['id_user'])) { echo "disabled" ;
+
+                              } ?>" href="<?php session_unset(); ?>" >Cerrar Sesion</a>
         </li>
       </ul>
       <form class="d-flex" role="search">

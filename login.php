@@ -15,16 +15,13 @@
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $usuario = test_input($_POST["usuario"]);
-<<<<<<< HEAD
       $email = test_input($_POST["email"]);
       $password = test_input($_POST["clave_usuario"]);
     }
   	if (!$usuario && !$email && !$password) {
-=======
       $password = test_input($_POST["clave_usuario"]);
     }
   	if (!$usuario && !$password) {
->>>>>>> bd85ebd052148a0fa04ee28f2e5bc51740ecbf0f
   		die("Accion fallida en login!");
   	}else{
 
@@ -38,17 +35,15 @@
       $numero_registros=$resultado->rowCount();
       if ($numero_registros!=0) {
         session_start();
+        ob_start();
         $registro=$resultado->fetch(PDO::FETCH_ASSOC);
         $id_user=$registro['id_user'];
     		$_SESSION['message'] = "Sesion iniciada, Bienvenido/a ".strtoupper($usuario)."(".$id_user.")!";
     		$_SESSION['message_type'] = 'success';
         $_SESSION['id_user'] = $id_user;
         $_SESSION['usuario'] = $usuario;
-<<<<<<< HEAD
         echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/index.php')</script>";
-=======
-        echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
->>>>>>> bd85ebd052148a0fa04ee28f2e5bc51740ecbf0f
+
       } else {
         $visible = "block";
 
@@ -90,16 +85,10 @@
             <div class="row">
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
-                  <div class="alert alert-success alert-dismissible fade show d-<?php echo $visible ?> "  role='alert'  >
-                    Vuelva a intentarlo!
-                  </div>
-<<<<<<< HEAD
-                  <input type="text" id="usuario" name="usuario" class="form-control"  placeholder="Indique su usuario" required />
-                  <label class="form-label" for="usuario">Usuario</label>
-=======
+                  <p class="bg-danger d-<?php echo $visible ?> " align="center" ><b>Vuelva a intentarlo!</b></p>
                   <label class="form-label" for="usuario">Usuario</label>
                   <input type="text" id="usuario" name="usuario" class="form-control"  placeholder="Indique su usuario" required />
->>>>>>> bd85ebd052148a0fa04ee28f2e5bc51740ecbf0f
+
                 </div>
               </div>
             </div>
@@ -111,20 +100,7 @@
             -->
             <!-- Password input -->
             <div class="form-outline mb-4">
-<<<<<<< HEAD
-              <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
-              <label class="form-label" for="clave_usuario">Password</label>
-            </div>
-            <!-- 2 column grid layout for inline styling -->
-            <div class="row mb-4">
-              <div class="col d-flex justify-content-center">
-                <!-- Checkbox 
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                  <label class="form-check-label" for="form2Example31"> Remember me </label>
-                </div-->
-              </div>
-=======
+
               <label class="form-label" for="clave_usuario">Password</label>
               <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
             </div>
@@ -137,7 +113,6 @@
                   <label class="form-check-label" for="form2Example31"> Remember me </label>
                 </div
               </div>-->
->>>>>>> bd85ebd052148a0fa04ee28f2e5bc51740ecbf0f
               <div class="col">
                 <!-- Simple link -->
                 <a href="#">Olvidó el password?</a>
