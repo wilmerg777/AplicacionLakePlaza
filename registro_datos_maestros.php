@@ -1,5 +1,8 @@
 <?php
+	include('sesion.php');
 	include('includes/header.php');
+	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
 
 	if (isset($_GET['maestro'])) {
 
@@ -8,35 +11,34 @@
 		function mostrar_maestro($Tip_form_maestro){
 			switch ($Tip_form_maestro) {
 		    case "contrato":
-		        return $form_contrato ;
+		        $campos = array('cod_contr','fch_emision','fch_carga','sucursal') ;
+		        registro_contrato($_SESSION['id_user']);
 		        break;
 		    case "afilnat":
-		        echo "i es igual a 1";
+		        $campos = "" ;
+		        registro_afilnat($_SESSION['id_user']);
 		        break;
 		    case "afiljur":
-		        echo "i es igual a 1";
+		        $campos = "" ;
+		        registro_afiljur($_SESSION['id_user']);
 		        break;
 		    case "producto":
-		        echo "i es igual a 1";
+		    		$tabla = 'productos';
+		        $campos = array('id_prod','cod_prod','nombre','fch_registro','estatus','usuario') ;
+		        registro_producto($tabla,$campos);
 		        break;
 		    case "cond_ventas":
-		        echo "i es igual a 2";
+		        $campos = "" ;
+		        registro_cond_ventas($_SESSION['id_user']);
 		        break;
 				}
 		}		
+
 	}
-?>
-<?php
-	mostrar_maestro('contrato');
-	$form_contrato='
-		<div class="container">
-			<form action="guardar_maestro.php" method="POST">
-				<div class="col-md-6 mb-4">
-					<div class="form-outline">
-						<label class="form-label" for="cod_prod">Código del Producto:</label>
-						<input type="text" name="cod_prod" class="form-control">
-					</div>
-				</div>	
-			</form>
-		</div>';
+
+	function registro_producto($tabla,$campos){
+
+		include('ventanas_html.php');
+	}
+
 ?>

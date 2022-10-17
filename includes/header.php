@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start(); 
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,9 +49,15 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php if(isset($_SESSION['id_user'])) { echo "disabled" ;
+          <?php 
 
-                              } ?>" href="<?php session_unset(); ?>" >Cerrar Sesion</a>
+            if (isset($_SESSION['id_user'])) {
+              $cerrar_sesion = "";
+            }else{
+              $cerrar_sesion = "disabled";
+            }
+           ?>
+          <a class="nav-link <?php echo $cerrar_sesion ; ?>" href="cerrar_sesion.php">Cerrar sesion" <?php echo $_SESSION['usuario']; ?>"</a>
         </li>
       </ul>
       <form class="d-flex" role="search">

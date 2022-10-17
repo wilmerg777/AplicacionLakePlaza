@@ -1,11 +1,8 @@
 <?php
+
+	include("sesion.php");
 	include("includes/header.php");
 	include("db.php");
-
-	if (isset($_SESSION['id_user'])) {
-		echo "<script>alert('Sesion no inicida o vencida! 
-				window.location.replace('https://localhost/AplicacionLakePlaza/login.php')</script>";
-	}
 ?>
 
 	<main class="container p-4">
@@ -18,24 +15,26 @@
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
 					</button>
 				</div>
-				<?php session_unset(); } ?>
+				<?php unset($_SESSION['message']); } ?>
 
 				<div class="card card-body">
-					<form action="guardardatos.php" method="POST">
+					<form action="guardardatos.php" method="POST" >
+						<h3>Registro de usuarios</h3>
+						<input type="text" name="guardar_form" value="1" hidden>
             <div class="form-outline mb-4">
 							<label class="form-label" for="codUser">Código del usuario:</label>
 							<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" autofocus>
 						</div>
             <div class="form-outline mb-4">
-							<label class="form-label" for="usuario">Usuario</label>
+							<label class="form-label" for="usuario">Usuario:</label>
 							<input type="text" name="usuario" class="form-control " placeholder="Nick de usuario" autofocus>
 						</div>
             <div class="form-outline mb-4">
-            	<label class="form-label" for="email_user">Correo Electrónico</label>
+            	<label class="form-label" for="email_user">Correo Electrónico:</label>
 							<input type="email" name="email_user" class="form-control"  placeholder="Escriba su correo electrónico" >
 						</div>
 						<div class="form-outline mb-4">
-              <label class="form-label" for="clave_usuario">Password</label>
+              <label class="form-label" for="clave_usuario">Password:</label>
               <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
             </div>
             <!-- Confirnar password
@@ -109,6 +108,9 @@
 					echo genera_MenuSeleccion($conn, $name, $label);
 					?>
 			</div>
+		</div>
+		<div class="row">
+
 		</div>
 	</main>
 

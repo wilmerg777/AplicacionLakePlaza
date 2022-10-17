@@ -22,7 +22,7 @@
       $password = test_input($_POST["clave_usuario"]);
     }
   	if (!$usuario && !$password) {
-  		die("Accion fallida en login!");
+  		die("Faltan datos para el login!");
   	}else{
 
       $sql = "select * from usuarios where usuario= :login and password= :password";
@@ -37,16 +37,15 @@
         session_start();
         ob_start();
         $registro=$resultado->fetch(PDO::FETCH_ASSOC);
-        $id_user=$registro['id_user'];
+        $_SESSION['id_user'] = $id_user = $registro['id_user'];
     		$_SESSION['message'] = "Sesion iniciada, Bienvenido/a ".strtoupper($usuario)."(".$id_user.")!";
     		$_SESSION['message_type'] = 'success';
-        $_SESSION['id_user'] = $id_user;
+        // $_SESSION['id_user'] = $id_user;
         $_SESSION['usuario'] = $usuario;
         echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/index.php')</script>";
 
       } else {
         $visible = "block";
-
       }
     }
   }else{
@@ -85,7 +84,9 @@
             <div class="row">
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
-                  <p class="bg-danger d-<?php echo $visible ?> " align="center" ><b>Vuelva a intentarlo!</b></p>
+                  <div class="alert alert-success alert-dismissible fade show d-<?php echo $visible ?> "  role='alert'  >
+                    Datos incorrectos, vuelva a intentarlo!
+                  </div>
                   <label class="form-label" for="usuario">Usuario</label>
                   <input type="text" id="usuario" name="usuario" class="form-control"  placeholder="Indique su usuario" required />
 
