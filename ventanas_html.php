@@ -19,7 +19,7 @@
 					<h3>Registro de Productos</h3><br>
 					<input type="text" name="guardar_form" value="4" hidden>
 					<label class="form-label " for="cod_prod">Código del producto:</label>
-					<div class="form-outline mb-4 col-md-2">
+					<div class="form-outline mb-4 col-md-3">
 						<input type="text" name="cod_prod" class="form-control " placeholder="Ejm: TP001" autofocus>
 					</div>
 					<div class="form-outline mb-4 col-md-6 ">
@@ -51,7 +51,7 @@
 								<th>Acciones</th>
 							</tr>
 							<?php 	
-								$query = "select * from productos";
+								$query = "select * from productos order by 2";
 								$productos = $conn->prepare($query);
 								$productos->execute();
 								while( $row = $productos->fetch(PDO::FETCH_ASSOC)) { ?>
