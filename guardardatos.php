@@ -10,7 +10,7 @@
 		$emailUser = $_POST['email_user'];
 		$password = $_POST['clave_usuario'];
 
-	 	$query = "insert into usuarios(cod_user,usuario,email_user,password) values ('$codUser','$usuario','$emailUser',$password)";
+	 	$query = "insert into usuarios(cod_user,usuario,email_user,password) values ('$codUser','$usuario','$emailUser','$password')";
 		$resultado = $conn->prepare($query);
 
 		try {
@@ -25,7 +25,7 @@
 
 	  $_SESSION['message'] = $mensaje;
 	  $_SESSION['message_type'] = $tipo_mensaje;
-	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=usuarios ')</script>";
 
 	}
 

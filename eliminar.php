@@ -18,7 +18,7 @@
 
 		$_SESSION['message'] = $mensaje;
     $_SESSION['message_type'] = $tipo_mensaje;
-		header("Location: index.php");
+		header("Location: registro_datos_maestros.php?maestro=usuarios");
 
 	}elseif (isset($_GET['id_prod'])) {
 		$id = $_GET['id_prod'];

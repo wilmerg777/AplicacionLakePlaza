@@ -31,7 +31,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="http:\\www.lakeplaza.com" target="_blanck">Sitio WEB</a>
@@ -41,18 +41,17 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
             Registro
           </a>
           <ul class="dropdown-menu">
-          	<li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=<?php echo 'contrato' ?>">Contratos</a></li>
-            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=<?php echo 'afilnat' ?>">Afiliado Natural</a></li>
-            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=<?php echo 'afiljur' ?>">Afiliado Juridico</a></li>
-            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=<?php echo 'producto' ?>">Productos</a></li>
-            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=<?php echo 'cond_ventas' ?>">Condiciones de Ventas</a></li>
+          	<li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=contrato">Contratos</a></li>
+            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=afilnat">Afiliado Natural</a></li>
+            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=afiljur">Afiliado Juridico</a></li>
+            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=producto">Productos</a></li>
+            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=cond_ventas">Condiciones de Ventas</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="login.php">Usuarios</a></li>
+            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=usuarios " >Usuarios</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <?php 
-
+          <?php
             if (isset($_SESSION['id_user'])) {
               $cerrar_sesion = "";
             }else{

@@ -3,8 +3,9 @@
 	include("db.php");
 	$ocultar = 'hidden';
 
+	// Geters para recuperar datos a actualizar
+
 	if (isset($_GET['id_user'])) {
-		$ocultar = "";
 		$id = $_GET['id_user'];
 		$query = "Select * from usuarios where id_user = $id";
 		$resultado = $conn->prepare($query);
@@ -18,7 +19,6 @@
 	}
 		
 	if (isset($_GET['id_prod'])) {
-		$ocultar = "";
 		$id = $_GET['id_prod'];
 		$query = "Select * from productos where id_prod = $id";
 		$resultado = $conn->prepare($query);
@@ -44,14 +44,15 @@
 		}
 		$_SESSION['message'] = "Registro actualizado correctamente.";
 		$_SESSION['message_type'] = 'success';
-		echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+		header('location:registro_datos_maestros.php?maestro=producto');
+		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
 
 ?>
 
 <?php include("includes/header.php") ?>
 
-<div class="container p-4 usuario" <?php echo $ocultar ; ?> >
+<div class="container p-4 usuario" <?php 	if (!isset($_GET['id_user'])) { echo $ocultar ; } ?> >
 	<div class="row">
 		<div class="col-md-4 mx-auto">
 			<div class="card card-body">
@@ -72,7 +73,7 @@
 	</div>
 </div>
 
-<div class="container p-4 producto" <?php echo $ocultar ; ?> >
+<div class="container p-4 producto" <?php if (!isset($_GET['id_prod'])) { echo $ocultar ; } ?>  >
 	<div class="row">
 		<div class="col-md-4 mx-auto">
 			<div class="card card-body">
