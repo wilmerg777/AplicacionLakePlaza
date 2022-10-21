@@ -27,7 +27,7 @@
 						<label class="form-label " for="nom_prod">Nomdre del producto:</label>
 						<input type="text" name="nom_prod" class="form-control " >
 					</div>
-					<div class="form-outline mb-4 col-md-3 ">
+					<div class="form-outline mb-4 col-md-4 ">
 				    <label for="estado_producto" class="form-label">Estado</label>
 				    <select class="form-select" id="estado_producto" name="estado_producto" >
 				      <option selected value="1">Activo</option>
