@@ -3,6 +3,14 @@
 	include('db.php');
 	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 	$ocultar = 'd-none';
+	if (isset($_SESSION['autoridad'])) { 
+		$nivel_autoridad = $_SESSION['autoridad'];
+		if ($nivel_autoridad <>1) {
+			$desactivar="disabled";
+		} else {
+			$desactivar="";
+		}
+	}
 ?>
   <!-- Maestro Productos -->
 <div class="main container p-4  <?php 	if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; }; ?>">
@@ -62,10 +70,10 @@
 										<td> <?php echo $row['fch_registro'] ?></td>
 										<td> <?php echo $row['estado'] ?></td>
 										<td>
-											<a href="editar.php?id_prod=<?php echo $row['id_prod'] ?>" class="btn btn-secondary">
+											<a href="editar.php?id_prod=<?php echo $row['id_prod'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
 												<i class="fas fa-marker"></i>
 											</a> 
-											<a href="eliminar.php?id_prod=<?php echo $row['id_prod'] ?>" class="btn btn-danger">
+											<a href="eliminar.php?id_prod=<?php echo $row['id_prod'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" >
 												<i class="fas fa-trash"></i>
 											</a>
 										</td>

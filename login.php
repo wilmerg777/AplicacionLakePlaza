@@ -33,9 +33,9 @@
         session_start();
         $registro=$resultado->fetch(PDO::FETCH_ASSOC);
         $_SESSION['id_user'] = $id_user = $registro['id_user'];
+        $_SESSION['autoridad'] = $registro['autoridad'];
     		$_SESSION['message'] = "Sesion iniciada, Bienvenido/a ".strtoupper($usuario)."(".$id_user.")!";
     		$_SESSION['message_type'] = 'success';
-        // $_SESSION['id_user'] = $id_user;
         $_SESSION['usuario'] = $usuario;
         echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
       } else {
