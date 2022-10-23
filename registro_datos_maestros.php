@@ -15,7 +15,7 @@
 		        registro_maestro($tabla="", $campos="", $Tip_form_maestro);
 		        break;
 		    case "afilnat":
-		        $campos = "" ;
+		        $campos = array('cod_afil_natu','nombre_afil_natu','apellido_afil_natu','fch_nac','sexo','pais_orig','direccion_afil_natu','cod_ciudad','telefonos','email_afil_natu') ;
 		        registro_maestro($tabla="", $campos="", $Tip_form_maestro);
 		        break;
 		    case "afiljur":

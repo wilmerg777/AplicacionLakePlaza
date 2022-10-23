@@ -5,6 +5,8 @@
 
 	// Geters para recuperar datos a actualizar
 
+	// Usuarios
+
 	if (isset($_GET['id_user'])) {
 		$id = $_GET['id_user'];
 		$query = "Select * from usuarios where id_user = $id";
@@ -38,6 +40,7 @@
 
 	}
 		
+	// Productos
 	if (isset($_GET['id_prod'])) {
 		$id = $_GET['id_prod'];
 		$query = "Select * from productos where id_prod = $id";
@@ -68,6 +71,124 @@
 		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
 
+	// Afiliados Naturales
+	if (isset($_GET['id_afil_natu'])) {
+		$id = $_GET['id_afil_natu'];
+		$query = "Select * from afiliados_natu where id_afil_natu = $id";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+		if ($cuantos == 1) {
+			$row = $resultado->fetch(PDO::FETCH_ASSOC);
+			$cod_afil_natu = $row['cod_afil_natu'];
+			$nom_afil_natu = $row['nombre_afil_natu'];
+			$ape_afil_natu = $row['apellido_afil_natu'];
+			$fch_nac = $row['fch_nac'];
+			$sexo_afil_natu = $row['sexo'];
+			$pais_orig_afil_natu = $row['pais_orig'];
+			$direccion_afil_natu = $row['direccion_afil_natu'];
+			$cod_ciudad = $row['cod_ciudad'];
+			$telefonos = $row['telefonos'];
+			$email_afil_natu = $row['email_afil_natu'];
+			$user_reg = $row['cod_user'];
+		}
+	}
+
+	if (isset($_POST['update_afilnatu'])) {
+		print_r($_POST);
+		$id = $_GET['id_afil_natu'];
+			$cod_afil_natu = $_POST['cod_afil_natu'];
+			$nombre_afil_natu = $_POST['nombre_afil_natu'];
+			$apellido_afil_natu = $_POST['apellido_afil_natu'];
+			$fch_nac = $_POST['fch_nac'];
+			$sexo = $_POST['sexo'];
+			$pais_orig = $_POST['pais_orig_afil_natu'];
+			$direccion_afil_natu = $_POST['direccion_afil_natu'];
+			$cod_ciudad = $_POST['cod_ciudad'];
+			$telefonos = $_POST['telefonos'];
+			$email_afil_natu = $_POST['email_afil_natu'];
+
+		$query = "Update afiliados_natu set cod_afil_natu='$cod_afil_natu', 
+		nombre_afil_natu='$nombre_afil_natu',
+		apellido_afil_natu='$apellido_afil_natu',
+		fch_nac = '$fch_nac',
+		sexo = '$sexo',
+		pais_orig = '$pais_orig' ,
+		direccion_afil_natu = '$direccion_afil_natu',
+		cod_ciudad ='$cod_ciudad' ,
+		telefonos = '$telefonos',
+		email_afil_natu = '$email_afil_natu'
+		where id_afil_natu='$id' ";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+
+		if ($cuantos<1) {
+			die("Accion de editar fallida! ".$cuantos);
+		}
+		$_SESSION['message'] = "Registro actualizado correctamente.";
+		$_SESSION['message_type'] = 'success';
+		header('location:registro_datos_maestros.php?maestro=afilnat');
+		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+	}
+
+	// Afiliados Juridicos
+	if (isset($_GET['id_afil_jur'])) {
+		$id = $_GET['id_afil_jur'];
+		$query = "Select * from afiliados_jurid where id_afil_jur = $id";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+		if ($cuantos == 1) {
+			$row = $resultado->fetch(PDO::FETCH_ASSOC);
+			$cod_afil_jur = $row['cod_afil_jur'];
+			$nombre_afil_jur = $row['nombre_afil_jur'];
+			$fch_registro = $row['fch_registro'] ;
+			$registro = $row['registro'];
+			$tomo_reg = $row['tomo_reg'];
+			$direccion_afil_jur = $row['direccion_afil_jur'];
+			$telefono_afil_jur = $row['telefono_afil_jur'];
+			$email_afil_jur = $row['email_afil_jur'];
+			$nombre_rep_afil_jur = $row['nombre_rep_afil_jur'];
+			$cedula_rep_afil_jur = $row['cedula_rep_afil_jur'];
+		}
+	}
+
+	if (isset($_POST['update_afiljurid'])) {
+		print_r($_POST);
+		$id = $_GET['id_afil_jur'];
+			$cod_afil_jur = $_POST['cod_afil_jur'];
+			$nombre_afil_jur = $_POST['nombre_afil_jur'];
+			$fch_registro = $_POST['fch_registro'] ;
+			$registro = $_POST['registro'];
+			$tomo_reg = $_POST['tomo_reg'];
+			$direccion_afil_jur = $_POST['direccion_afil_jur'];
+			$telefono_afil_jur = $_POST['telefono_afil_jur'];
+			$email_afil_jur = $_POST['email_afil_jur'];
+			$nombre_rep_afil_jur = $_POST['nombre_rep_afil_jur'];
+			$cedula_rep_afil_jur = $_POST['cedula_rep_afil_jur'];
+
+		$query = "Update afiliados_jurid set 
+			cod_afil_jur = '$cod_afil_jur',
+			nombre_afil_jur = '$nombre_afil_jur',
+			fch_registro = '$fch_registro',
+			registro = '$registro',
+			tomo_reg = '$tomo_reg',
+			direccion_afil_jur = '$direccion_afil_jur',
+			telefono_afil_jur = '$telefono_afil_jur',
+			email_afil_jur = '$email_afil_jur',
+			nombre_rep_afil_jur = '$nombre_rep_afil_jur',
+			cedula_rep_afil_jur = '$cedula_rep_afil_jur'
+		where id_afil_jur='$id' ";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+
+		if ($cuantos<1) {
+			die("Accion de editar fallida! ".$cuantos);
+		}
+		$_SESSION['message'] = "Registro actualizado correctamente.";
+		$_SESSION['message_type'] = 'success';
+		header('location:registro_datos_maestros.php?maestro=afiljur');
+		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+	}
+
 ?>
 
 <?php include("includes/header.php") ?>
@@ -77,7 +198,9 @@
 		<div class="col-6 mx-auto justify-content-center ">
 
 			<div class="card border-success " >
+
 				<!-- Form Edit usuarios -->
+
 				<div <?php 	if (!isset($_GET['id_user'])) { echo $ocultar ; } ?> >
 					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR USUARIO
 					</div>
@@ -96,12 +219,14 @@
 								<input type="password" name="clave_usuario" value="<?php echo $password ;?>" class="form-control" placeholder="Nueva clave" >
 							</div>
 							<div class="card-footer bg-transparent border-success text-center">
-								<button type="submit" class="btn btn-success" name="update_user">Actualizar</button>
+								<button type="submit" class="btn btn-success" name="update_user"><i class="fa-solid fa-save"></i> Actualizar</button>
 				  		</div>
 						</form>
 					</div>
 				</div>
+
 				<!-- Form Edit producto -->
+
 				<div <?php if (!isset($_GET['id_prod'])) { echo $ocultar ; } ?> >
 					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR PRODUCTO</div>
 			  	<div class="card-body text-success">
@@ -123,11 +248,68 @@
 						    </select>
 							</div>							
 				  		<div class="card-footer bg-transparent border-success text-center">
-								<button type="submit" class="btn btn-success" name="update_prod">Actualizar</button>
+								<button type="submit" class="btn btn-success" name="update_prod"><i class="fa-solid fa-save"></i> Actualizar</button>
 				  		</div>
 		  			</form>
 		  		</div>
-				</div>
+				</div> <!--Fin form Edit producto -->
+
+				<!-- Form Edit afiliados naturales -->
+
+				<div <?php if (!isset($_GET['id_afil_natu'])) { echo $ocultar ; } ?> >
+					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR DATOS DEL AFILIADO</div>
+			  	<div class="card-body text-success">
+						<form action="editar.php?id_afil_natu=<?php echo $_GET['id_afil_natu'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="cod_afil_natu" class="form-label">Código:</label>
+								<input type="text" name="cod_afil_natu" value="<?php echo $cod_afil_natu ;?>" class="form-control" placeholder="código o cédula" autofocus>
+							</div>
+
+							<div class="form-outline mb-3 col-10">
+								<label for="nom_afil_natu" class="form-label">Nombre:</label>
+								<input type="text" name="nombre_afil_natu" value="<?php echo $nom_afil_natu ;?>" class="form-control" >
+							</div>
+
+							<div class="form-outline mb-3 col-10">
+								<label for="ape_afil_natu" class="form-label">Apellido:</label>
+								<input type="text" name="apellido_afil_natu" value="<?php echo $ape_afil_natu ;?>" class="form-control" >
+							</div>
+
+							<div class="form-outline mb-3 col-10">
+								<label for="fch_nac" class="form-label">Fecha de Nacimiento:</label>
+								<input type="date" name="fch_nac" value="<?php echo $fch_nac ;?>" class="form-control" >
+							</div>
+
+							<div class="form-outline mb-3 col-10">
+								<label for="pais_orig_afil_natu" class="form-label">Pais de origen:</label>
+								<input type="text" name="pais_orig_afil_natu" value="<?php echo $pais_orig_afil_natu ;?>" class="form-control" >
+							</div>
+
+							<div class="form-outline mb-3 col-10">
+								<label for="direccion_afil_natu" class="form-label">Dirección de Habitación:</label>
+								<input type="text" name="direccion_afil_natu" value="<?php echo $direccion_afil_natu ;?>" class="form-control"  >
+							</div>
+
+							<div class="form-outline mb-3 col-10">
+								<label for="cod_ciudad" class="form-label">Ciudad:</label>
+								<input type="text" name="cod_ciudad" value="<?php echo $cod_ciudad ;?>" class="form-control"  >
+							</div>
+
+							<div class="form-outline mb-3 col-10">
+								<label for="telefonos" class="form-label">Telefono:</label>
+								<input type="text" name="telefonos" value="<?php echo $telefonos ;?>" class="form-control"  >
+							</div>
+
+							<div class="form-outline mb-3 col-md-5 ">
+						    <label for="email_afil_natu" class="form-label">Email:</label>
+								<input type="text" name="email_afil_natu" value="<?php echo $email_afil_natu ;?>" class="form-control" placeholder="email@tudominio.com" >
+							</div>							
+				  		<div class="card-footer bg-transparent border-success text-center">
+								<button type="submit" class="btn btn-success" name="update_afilnatu"><i class="fa-solid fa-save"></i> Actualizar</button>
+				  		</div>
+		  			</form>
+		  		</div>
+				</div> <!--Fin form Edit producto -->
 			</div>
 		</div>
 	</div>
