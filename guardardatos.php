@@ -18,8 +18,9 @@
 			$mensaje='Registro guardado correctamente!';
 			$tipo_mensaje="success";
 			} catch (Exception $e) {
-			die("Error: " . $e->getMessage() );
-			$mensaje='Problemas al guardar :<br>'.$e;
+			//die("Errorx: " . $e->getMessage() );
+			$error = "Error: " . $e->getMessage() ;
+			$mensaje='Problemas al guardar :<br>'.$error;
 			$tipo_mensaje="danger";
 		}
 
@@ -30,7 +31,6 @@
 	}
 
 	if ($_POST['guardar_form']==4) { // Producto
-		print_r($_POST);
 		$codProd = $_POST['cod_prod'];
 		$nomProd = $_POST['nom_prod'];
 		$estProd = $_POST['estado_producto'];
@@ -44,8 +44,9 @@
 			$mensaje='Producto guardado correctamente!';
 			$tipo_mensaje="success";
 			} catch (Exception $e) {
-			die("Error: " . $e->getMessage() );
-			$mensaje='Problemas al guardar :<br>'.$e;
+			//die("Errorx: " . $e->getMessage() );
+			$error = "Error: " . $e->getMessage() ;
+			$mensaje='Problemas al guardar :<br>'.$error;
 			$tipo_mensaje="danger";
 		}
 

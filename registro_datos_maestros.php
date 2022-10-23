@@ -34,7 +34,12 @@
 		    case "usuarios":
 		    		$tabla = 'usuarios';
 		        $campos = array('cod_user','usuario','email_user','password','fch_registro') ;
-		        registro_maestro($tabla,$campos="", $Tip_form_maestro);
+		        registro_maestro($tabla="",$campos="", $Tip_form_maestro);
+		        break;
+		    case "error":
+		    		$tabla = 'errores';
+		        $campos = array('cod_err','error','email_reporte','fch_err') ;
+		        registro_maestro($tabla="",$campos="", $Tip_form_maestro);
 		        break;
 				}
 		}		

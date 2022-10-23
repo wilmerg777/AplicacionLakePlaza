@@ -12,17 +12,22 @@
 		}
 	}
 ?>
-  <!-- Maestro Productos -->
-<div class="main container p-4  <?php 	if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; }; ?>">
+<div class="main container p-4  <?php if ($Tip_form_maestro<>'error' ) { echo $ocultar ; } ?>">
+</div>
+<!-- MESSAGES -->
+<?php if (isset($_SESSION['message'])) { ?>
+	<div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">
+		<?= $_SESSION['message']?>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+		</button>
+	</div>
+<?php unset($_SESSION['message']); 	 } ?>
+ <!-- Maestro Productos -->
+<div class="main container p-4  <?php if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; } ?>">
 	<div class="row">
 		<div class="col-md-4">
-			<?php if (isset($_SESSION['message'])) { ?>
-				<div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">
-					<?= $_SESSION['message']?>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-					</button>
-				</div>
-				<?php unset($_SESSION['message']); } ?>
+
+
 			<div class="card card-body">
 				<form action="guardardatos.php" method="post">
 					<h3>Registro de Productos</h3><br>
@@ -87,112 +92,100 @@
 
   <!-- Maestro Usuarios -->
 
-<div class="container p-4 <?php 	if ($Tip_form_maestro<>'usuarios' ) { echo $ocultar ; }; ?>">
+<div class="main container p-4 <?php if ($Tip_form_maestro<>'usuarios' ) { echo $ocultar ; } ?>">
 	<div class="row">
-			<div class="col-md-4">
-				<!-- MESSAGES -->
-				<?php if (isset($_SESSION['message'])) { ?>
-				<div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">
-					<?= $_SESSION['message']?>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-					</button>
-				</div>
-				<?php unset($_SESSION['message']); } ?>
-
-				<div class="card card-body">
-					<form action="guardardatos.php" method="POST" >
-						<h3>Registro de Usuarios</h3>
-						<input type="text" name="guardar_form" value="1" hidden>
-            <div class="form-outline mb-4">
-							<label class="form-label" for="codUser">Código del usuario:</label>
-							<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" autofocus>
-						</div>
-            <div class="form-outline mb-4">
-							<label class="form-label" for="usuario">Usuario:</label>
-							<input type="text" name="usuario" class="form-control " placeholder="Nick de usuario" autofocus>
-						</div>
-            <div class="form-outline mb-4">
-            	<label class="form-label" for="email_user">Correo Electrónico:</label>
-							<input type="email" name="email_user" class="form-control"  placeholder="Escriba su correo electrónico" >
-						</div>
-						<div class="form-outline mb-4">
-              <label class="form-label" for="clave_usuario">Password:</label>
-              <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
-            </div>
-						<button type="submit" class="btn btn-primary btn-lg " name="guardardatos" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
-					</form>
-				</div>
+		<div class="col-md-4">
+			<div class="card card-body">
+				<form action="guardardatos.php" method="POST" >
+					<h3>Registro de Usuarios</h3><br>
+					<input type="text" name="guardar_form" value="1" hidden>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="codUser">Código del usuario:</label>
+						<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" autofocus>
+					</div>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="usuario">Usuario:</label>
+						<input type="text" name="usuario" class="form-control " placeholder="Nick de usuario" >
+					</div>
+          <div class="form-outline mb-4">
+          	<label class="form-label" for="email_user">Correo Electrónico:</label>
+						<input type="email" name="email_user" class="form-control"  placeholder="Escriba su correo electrónico" >
+					</div>
+					<div class="form-outline mb-4">
+            <label class="form-label" for="clave_usuario">Password:</label>
+            <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
+          </div>
+					<button type="submit" class="btn btn-primary btn-lg " name="guardardatos" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
+				</form>
 			</div>
-			<div class="col-md-8">
-				<table class="table table-bordered border-dark">
-					<thead>
-						<tr>
-							<th>Código</th>
-							<th>Usuario</th>
-							<th>CorreoE</th>
-							<th>Fecha de Registro</th>
-							<th>Acciones</th>
-						</tr>
-						<?php 	
-							$query = "select * from usuarios";
-							$usuarios = $conn->prepare($query);
-							$usuarios->execute();
-							while( $row = $usuarios->fetch(PDO::FETCH_ASSOC)) { ?>
-								<tr>
-									<td> <?php echo $row['cod_user'] ?></td>
-									<td> <?php echo $row['usuario'] ?></td>
-									<td> <?php echo $row['email_user'] ?></td>
-									<td> <?php echo $row['fch_registro'] ?></td>
-									<td>
-										<a href="editar.php?id_user=<?php echo $row['id_user'] ?>" class="btn btn-secondary">
-											<i class="fas fa-marker"></i>
-										</a> 
-										<a href="eliminar.php?id_user=<?php echo $row['id_user'] ?>" class="btn btn-danger">
-											<i class="fas fa-trash-alt"></i>
-										</a>
-									</td>
-								</tr>
-							<?php } ?>
-					</thead>
-				</table>
- 				
-					<?php
-					$label = "Usuarios";
-					$name = "usuarios";
-					function genera_MenuSeleccion ($conn, $name, $label){
+		</div>
+		<div class="col-md-8">
+			<table class="table table-bordered border-dark">
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Usuario</th>
+						<th>CorreoE</th>
+						<th>Fecha de Registro</th>
+						<th>Acciones</th>
+					</tr>
+					<?php 	
 						$query = "select * from usuarios";
-						$resultado = $conn->prepare($query);
-						$resultado->execute();
-						$codigo = '<label>'.$label.'</label><br>';
+						$usuarios = $conn->prepare($query);
+						$usuarios->execute();
+						while( $row = $usuarios->fetch(PDO::FETCH_ASSOC)) { ?>
+							<tr>
+								<td> <?php echo $row['cod_user'] ?></td>
+								<td> <?php echo $row['usuario'] ?></td>
+								<td> <?php echo $row['email_user'] ?></td>
+								<td> <?php echo $row['fch_registro'] ?></td>
+								<td>
+									<a href="editar.php?id_user=<?php echo $row['id_user'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
+										<i class="fas fa-marker"></i>
+									</a> 
+									<a href="eliminar.php?id_user=<?php echo $row['id_user'] ?>" class="btn btn-danger <?php echo $desactivar  ?>">
+										<i class="fas fa-trash-alt"></i>
+									</a>
+								</td>
+							</tr>
+						<?php } ?>
+				</thead>
+			</table>
+ 				
+			<?php
+				$label = "Usuarios";
+				$name = "usuarios";
+				function genera_MenuSeleccion ($conn, $name, $label){
+					$query = "select * from usuarios";
+					$resultado = $conn->prepare($query);
+					$resultado->execute();
+					$codigo = '<label>'.$label.'</label><br>';
 
-						$codigo= $codigo.'<select name="'.$name.'">.\n';
+					$codigo= $codigo.'<select name="'.$name.'">.\n';
 
-						while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
-							$codigo = $codigo.'<option value= "'.$fila["id_user"].'">'.$fila["id_user"].'-'.utf8_encode($fila["usuario"]).'</option>'."/n";
-						}
-
-						$codigo = $codigo."</select>\n";
-
-						$q = $conn->prepare('DESCRIBE afiliados_natu');
-						$q->execute();
-						while($row = $q->fetch(PDO::FETCH_ASSOC)) {
-							echo "{$row['Field']} - {$row['Type']}<br>";
-    				}
-						return  $codigo;
+					while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
+						$codigo = $codigo.'<option value= "'.$fila["id_user"].'">'.$fila["id_user"].'-'.utf8_encode($fila["usuario"]).'</option>'."/n";
 					}
 
-					echo genera_MenuSeleccion($conn, $name, $label);
+					$codigo = $codigo."</select>\n";
 
-					?> 
+					$q = $conn->prepare('DESCRIBE afiliados_natu');
+					$q->execute();
+					while($row = $q->fetch(PDO::FETCH_ASSOC)) {
+						echo "{$row['Field']} - {$row['Type']}<br>";
+  				}
+					return  $codigo;
+				}
 
-
-			</div>
+				echo genera_MenuSeleccion($conn, $name, $label);
+			?>
 		</div>
-		<div class="row">
-
-		</div>
-	
+	</div>	
 </div>  <!-- cierra div Usuarios -->
+
+<div class="row">
+
+</div>
 
 
 <?php  include("includes/footer.php"); ?>
