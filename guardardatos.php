@@ -91,18 +91,19 @@
 	}
 
 		if ($_POST['guardar_form']==3) { // afiliado juridico.
-			$cod_afil_jur = $_POST['cod_afil_jur'];
-			$nombre_afil_jur = $_POST['nombre_afil_jur'];
-			$fch_registro = $_POST['fch_registro'] ;
-			$registro = $_POST['registro'];
+			$cod_afil_jur = $_POST['cod_afil_jurid'];
+			$nombre_afil_jur = $_POST['nom_afil_jurid'];
+			$fch_registro = $_POST['fch_reg'] ;
+			$registro = $_POST['registro_jurid'];
 			$tomo_reg = $_POST['tomo_reg'];
-			$direccion_afil_jur = $_POST['direccion_afil_jur'];
-			$telefono_afil_jur = $_POST['telefono_afil_jur'];
-			$email_afil_jur = $_POST['email_afil_jur'];
-			$nombre_rep_afil_jur = $_POST['nombre_rep_afil_jur'];
-			$cedula_rep_afil_jur = $_POST['cedula_rep_afil_jur'];
+			$direccion_afil_jur = $_POST['direccion_afil_jurid'];
+			$telefono_afil_jur = $_POST['telefonos'];
+			$email_afil_jur = $_POST['email_afil_jurid'];
+			$nombre_rep_afil_jur = $_POST['nom_representante'];
+			$cedula_rep_afil_jur = $_POST['ced_representante'];
 
-	 	$query = "insert into afiliados_jurid(cod_afil_jur,nombre_afil_jur,fch_registro,registro,tomo_reg,direccion_afil_jur,telefono_afil_jur,email_afil_jur,nombre_rep_afil_jur,cedula_rep_afil_jur) values ('$cod_afil_jur',
+	 	$query = "insert into afiliados_jurid(cod_afil_jur,nombre_afil_jur,fch_registro,registro,tomo_reg,direccion_afil_jur,telefono_afil_jur,email_afil_jur,nombre_rep_afil_jur,cedula_rep_afil_jur) values (
+	 		'$cod_afil_jur',
 			'$nombre_afil_jur',
 			'$fch_registro',
 			'$registro',

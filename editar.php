@@ -151,7 +151,7 @@
 		}
 	}
 
-	if (isset($_POST['update_afiljurid'])) {
+	if (isset($_POST['update_afiljuri'])) {
 		print_r($_POST);
 		$id = $_GET['id_afil_jur'];
 			$cod_afil_jur = $_POST['cod_afil_jur'];
@@ -309,7 +309,62 @@
 				  		</div>
 		  			</form>
 		  		</div>
-				</div> <!--Fin form Edit producto -->
+				</div> <!--Fin form Edit afiliados naturales -->
+
+				<!-- Form Edit afiliados juridicos -->
+
+				<div <?php if (!isset($_GET['id_afil_jur'])) { echo $ocultar ; } ?> >
+					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR DATOS DEL JURÍDICO</div>
+			  	<div class="card-body text-success">
+						<form action="editar.php?id_afil_jur=<?php echo $_GET['id_afil_jur'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="cod_afil_jur" class="form-label">Código:</label>
+								<input type="text" name="cod_afil_jur" value="<?php echo $cod_afil_jur ;?>" class="form-control" placeholder="código o RIF" autofocus>
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="nombre_afil_jur" class="form-label">Nombre:</label>
+								<input type="text" name="nombre_afil_jur" value="<?php echo $nombre_afil_jur ;?>" class="form-control" >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="fch_registro" class="form-label">Fecha de Registro:</label>
+								<input type="date" name="fch_registro" value="<?php echo $fch_registro ;?>" class="form-control" >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="registro" class="form-label">Registro:</label>
+								<input type="text" name="registro" value="<?php echo $registro ;?>" class="form-control" >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="tomo_reg" class="form-label">Tomo Registro:</label>
+								<input type="text" name="tomo_reg" value="<?php echo $tomo_reg ;?>" class="form-control" >
+							</div>
+
+							<div class="form-outline mb-3 col-10">
+								<label for="direccion_afil_jur" class="form-label">Dirección Jurídica:</label>
+								<input type="text" name="direccion_afil_jur" value="<?php echo $direccion_afil_jur ;?>" class="form-control"  >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="telefono_afil_jur" class="form-label">Telefono:</label>
+								<input type="text" name="telefono_afil_jur" value="<?php echo $telefono_afil_jur ;?>" class="form-control"  >
+							</div>
+
+							<div class="form-outline mb-3 col-md-5 ">
+						    <label for="email_afil_jur" class="form-label">Email:</label>
+								<input type="text" name="email_afil_jur" value="<?php echo $email_afil_jur ;?>" class="form-control" placeholder="email@tudominio.com" >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="nombre_rep_afil_jur" class="form-label">Nombre Representante:</label>
+								<input type="text" name="nombre_rep_afil_jur" value="<?php echo $nombre_rep_afil_jur ;?>" class="form-control" >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="cedula_rep_afil_jur" class="form-label">Cédula Representante:</label>
+								<input type="text" name="cedula_rep_afil_jur" value="<?php echo $cedula_rep_afil_jur ;?>" class="form-control" >
+							</div>	
+							<div class="card-footer bg-transparent border-success text-center">
+								<button type="submit" class="btn btn-success" name="update_afiljuri"><i class="fa-solid fa-save"></i> Actualizar</button>
+				  		</div>
+		  			</form>
+		  		</div>
+				</div> <!--Fin form Edit afiliado juridico -->
 			</div>
 		</div>
 	</div>
