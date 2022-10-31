@@ -1,4 +1,11 @@
-<?php session_start(); 
+<?php 
+if (!isset($_SESSION)) {
+  session_start();
+}
+$usuario = "";
+if (isset($_SESSION['usuario'])) {
+  $usuario = $_SESSION['usuario'];
+}
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
 <!DOCTYPE html>
 <html>
@@ -59,7 +66,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
               $cerrar_sesion = "disabled";
             }
            ?>
-          <a class="nav-link <?php echo $cerrar_sesion ; ?>" href="cerrar_sesion.php">Cerrar sesion" <?php echo $_SESSION['usuario']; ?>"</a>
+          <a class="nav-link <?php echo $cerrar_sesion ; ?>" href="cerrar_sesion.php">Cerrar sesion" <?php echo $usuario; ?>"</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
