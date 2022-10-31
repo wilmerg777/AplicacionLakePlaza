@@ -1,6 +1,7 @@
 <?php 
 	include('sesion.php');
 	include('db.php');
+	include('Scripts/consultas_varias.php');
 	error_reporting(E_ERROR | E_WARNING | E_PARSE );
 	$ocultar = 'd-none';
 	if (isset($_SESSION['autoridad'])) { 
@@ -11,7 +12,6 @@
 			$desactivar="";
 		}
 	}
-	echo "string";
 ?>
 
 <!-- MESSAGES -->
@@ -463,16 +463,25 @@
 </div> <!-- cierra div Afiliados Juridicos -->
 
  <!-- Maestro Condiciones de ventas -->
-<div class="main container p-4  <?php if ($Tip_form_maestro<>'condiciones_ventas' ) { echo $ocultar ; } ?>">
+<div class="main container-fluid p-4  <?php if ($Tip_form_maestro<>'condiciones_ventas' ) { echo $ocultar ; } ?>">
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card card-body">
-				<form action="guardardatos.php" method="post">
+				<form action="guardardatos.php" method="post" >
 					<h3>Registro de Condiciones de ventas</h3><br>
 					<input type="text" name="guardar_form" value="4" hidden>
-					<label class="form-label " for="cod_prod_vta">Código del producto:</label>
-					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_prod_vta" class="form-control " placeholder="Ejm: TP001" autofocus>
+					<label class="form-label " for="cod_cond_vta">Identificador de la condición:</label>
+					<div class="form-outline mb-4 col-md-4 ">
+						<input type="text" name="cod_cond_vta" class="form-control " placeholder="Ejm: TP001" autofocus >
+					</div>
+					<div class="form-outline mb-4 col-md-5">
+						<?php 
+							$label = '<label class="form-label " for="cod_prod_vta">Producto:</label>';
+							$name = 'cod_prod_vta';
+							echo cargar_inputs($Tip_form_maestro, 'cod_prod' , $label, $name , $conn); 
+						?>
+						
+						<input type="text" name="cod_prod_vta" class="form-control " >
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="cod_oper_vta">Operativo:</label>
@@ -522,7 +531,7 @@
 			</div>
 		</div>
 		<div class="col-md-6">
-					<table class="table table-bordered border-dark">
+					<table class="table table-sm table-bordered border-dark">
 						<thead>
 							<tr>
 								<th>Código</th>

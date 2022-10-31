@@ -3,12 +3,19 @@
 	include('includes/header.php');
 	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
-
 	if (isset($_GET['maestro'])) {
+
+		function registro_maestro($tabla,$campos,$Tip_form_maestro){
+			include("ventanas_html.php" );
+		}
+
 
 		$Tip_form_maestro=$_GET['maestro'];
 
+
 		function mostrar_maestro($Tip_form_maestro){
+
+
 			switch ($Tip_form_maestro) {
 		    case "contrato":
 		    		$tabla = 'contratos';
@@ -58,13 +65,7 @@
 		}		
 
 	}
-
-	function registro_maestro($tabla,$campos,$Tip_form_maestro){
-
-		include("ventanas_html.php" );
-	}
-
-
-		//include('includes/footer.php');
+	
+	mostrar_maestro($Tip_form_maestro);
 
 ?>

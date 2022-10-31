@@ -8,7 +8,6 @@
 <div class="container p-4 ">
 		<div class="d-flex justify-content-center bg-primary  ">
 			<h2 >Contratos pendientes por procesar en el sistema STIL</h2>
-
 		</div>
 		<hr>
 
