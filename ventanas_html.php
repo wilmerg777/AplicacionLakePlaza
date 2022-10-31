@@ -1,7 +1,7 @@
 <?php 
 	include('sesion.php');
 	include('db.php');
-	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+	error_reporting(E_ERROR | E_WARNING | E_PARSE );
 	$ocultar = 'd-none';
 	if (isset($_SESSION['autoridad'])) { 
 		$nivel_autoridad = $_SESSION['autoridad'];
@@ -11,7 +11,9 @@
 			$desactivar="";
 		}
 	}
+	echo "string";
 ?>
+
 <!-- MESSAGES -->
 <?php if (isset($_SESSION['message'])) { ?>
 	<div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">

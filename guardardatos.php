@@ -26,7 +26,7 @@
 
 	  $_SESSION['message'] = $mensaje;
 	  $_SESSION['message_type'] = $tipo_mensaje;
-	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=usuarios ')</script>";
+	  echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=usuarios ')</script>";
 
 	}
 
@@ -52,7 +52,7 @@
 
 	  $_SESSION['message'] = $mensaje;
 	  $_SESSION['message_type'] = $tipo_mensaje;
-	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=producto ')</script>";
+	  echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=producto ')</script>";
 
 	}
 
@@ -86,7 +86,7 @@
 
 	  $_SESSION['message'] = $mensaje;
 	  $_SESSION['message_type'] = $tipo_mensaje;
-	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=afilnat ')</script>";
+	  echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=afilnat ')</script>";
 
 	}
 
@@ -128,7 +128,7 @@
 
 	  $_SESSION['message'] = $mensaje;
 	  $_SESSION['message_type'] = $tipo_mensaje;
-	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=afiljur ')</script>";
+	  echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=afiljur ')</script>";
 
 	}
 
