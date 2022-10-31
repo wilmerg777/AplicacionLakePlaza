@@ -86,8 +86,71 @@
 	</div>
 </div> <!-- cierra div productos -->
 
-  <!-- Maestro Usuarios -->
+ <!-- Maestro programas ventas -->
+<div class="main container p-4  <?php if ($Tip_form_maestro<>'prog_vtas' ) { echo $ocultar ; } ?>">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card card-body">
+				<form action="guardardatos.php" method="post">
+					<h3>Registro de Programas de Ventas</h3><br>
+					<input type="text" name="guardar_form" value="5" hidden>
+					<label class="form-label " for="cod_prog_vta">Código del Programa:</label>
+					<div class="form-outline mb-4 col-md-4">
+						<input type="text" name="cod_prog_vta" class="form-control " placeholder="Ejm: IH001" autofocus>
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="nom_prog_vta">Nomdre del programa:</label>
+						<input type="text" name="nom_prog_vta" class="form-control" placeholder="Ejm: IN HOUSE">
+					</div>
+					<div class="form-outline mb-4 col-md-4 ">
+				    <label for="estado_programa" class="form-label">Estado</label>
+				    <select class="form-select" id="estado_programa" name="estado_programa" >
+				      <option selected value="1">Activo</option>
+				      <option value="0">Inactivo</option>
+				    </select>
+					</div>
+					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
+					<div class="form-outline mb-4">
+						<button type="submit" class="btn btn-primary btn-lg" name="guardar" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
+					</div>				
+				</form>
+			</div>
+		</div>
+		<div class="col-md-6">
+					<table class="table table-bordered border-dark">
+						<thead>
+							<tr>
+								<th>Código</th>
+								<th>Programa</th>
+								<th>Estado</th>
+								<th>Acciones</th>
+							</tr>
+							<?php 	
+								$query = "select * from prog_ventas order by 2";
+								$programas = $conn->prepare($query);
+								$programas->execute();
+								while( $row = $programas->fetch(PDO::FETCH_ASSOC)) { ?>
+									<tr>
+										<td> <?php echo $row['cod_prog'] ?></td>
+										<td> <?php echo $row['nombre_prog'] ?></td>
+										<td> <?php echo $row['estatus'] ?></td>
+										<td>
+											<a href="editar.php?id_prog=<?php echo $row['id_prog'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
+												<i class="fas fa-marker"></i>
+											</a> 
+											<a href="eliminar.php?id_prog=<?php echo $row['id_prog'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" >
+												<i class="fas fa-trash"></i>
+											</a>
+										</td>
+									</tr>
+								<?php } ?>
+						</thead>
+					</table>
+			</div>
+	</div>
+</div> <!-- cierra div programas ventas -->
 
+  <!-- Maestro Usuarios -->
 <div class="main container p-4 <?php if ($Tip_form_maestro<>'usuarios' ) { echo $ocultar ; } ?>">
 	<div class="row">
 		<div class="col-md-4">
@@ -165,7 +228,7 @@
 
 					$codigo = $codigo."</select>\n";
 
-					$q = $conn->prepare('DESCRIBE afiliados_jurid');
+					$q = $conn->prepare('DESCRIBE operativos');
 					$q->execute();
 					while($row = $q->fetch(PDO::FETCH_ASSOC)) {
 						echo "{$row['Field']} - {$row['Type']}<br>";
@@ -183,8 +246,6 @@
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'afilnat' ) { echo $ocultar ; } ?>">
 	<div class="row">
 		<div class="col-md-4">
-
-
 			<div class="card card-body">
 				<form action="guardardatos.php" method="post">
 					<h3>Registro de Afiliado Natural</h3><br>
@@ -398,6 +459,119 @@
 			</div>
 	</div>
 </div> <!-- cierra div Afiliados Juridicos -->
+
+ <!-- Maestro Condiciones de ventas -->
+<div class="main container p-4  <?php if ($Tip_form_maestro<>'condiciones_ventas' ) { echo $ocultar ; } ?>">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card card-body">
+				<form action="guardardatos.php" method="post">
+					<h3>Registro de Condiciones de ventas</h3><br>
+					<input type="text" name="guardar_form" value="4" hidden>
+					<label class="form-label " for="cod_prod_vta">Código del producto:</label>
+					<div class="form-outline mb-4 col-md-4">
+						<input type="text" name="cod_prod_vta" class="form-control " placeholder="Ejm: TP001" autofocus>
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="cod_oper_vta">Operativo:</label>
+						<input type="text" name="cod_oper_vta" class="form-control " >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="ptos_des_vta">Puntos desde:</label>
+						<input type="text" name="ptos_ini_vta" class="form-control " >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="ptos_has_vta">Puntos hasta:</label>
+						<input type="text" name="ptos_fin_vta" class="form-control " >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="precio_pto_vta">Precio Punto:</label>
+						<input type="text" name="precio_pto_vta" class="form-control " >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="precio_pto_com">Precio Punto Comisión:</label>
+						<input type="text" name="precio_pto_com" class="form-control " >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="moneda_condic">Moneda:</label>
+						<input type="text" name="moneda_condic" class="form-control " >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="cuot_max_vta">Maximo de Cuotas:</label>
+						<input type="text" name="cuot_max_vta" class="form-control " >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="gast_doc_vta">Gastos Doc:</label>
+						<input type="text" name="gast_doc_vta" class="form-control " placeholder="Monto gastos administrativos" >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="tip_inter_vta">Tipo Interes:</label>
+						<input type="text" name="tip_inter_vta" class="form-control " placeholder="Tipo de interes a aplicar (valor)" >
+					</div>
+					<div class="form-outline mb-4 col-md-10 ">
+						<label class="form-label " for="%_desc_vta">% Descuento:</label>
+						<input type="text" name="%_desc_vta" class="form-control " placeholder="%" >
+					</div>
+					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
+					<div class="form-outline mb-4">
+						<button type="submit" class="btn btn-primary btn-lg" name="guardar" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
+					</div>				
+				</form>
+			</div>
+		</div>
+		<div class="col-md-6">
+					<table class="table table-bordered border-dark">
+						<thead>
+							<tr>
+								<th>Código</th>
+								<th>Código Prod.</th>								
+								<th>Operativo</th>
+								<th>Puntos desde:</th>
+								<th>Puntos hasta:</th>
+								<th>Precio Pto.</th>
+								<th>Prec. Pto. Com.</th>
+								<th>Moneda</th>
+								<th>Cuotas</th>
+								<th>Tip de interes</th>
+								<th>% Desc.</th>
+								<th>Gastos Admin.</th>
+								<th>Usuario</th>
+								<th>Acciones</th>
+							</tr>
+							<?php 	
+								$query = "select * from condiciones_ventas order by 2";
+								$codic_ventas = $conn->prepare($query);
+								$codic_ventas->execute();
+								while( $row = $codic_ventas->fetch(PDO::FETCH_ASSOC)) { ?>
+									<tr>
+									  <td> <?php echo $row['cod_cond'] ?></td>
+									  <td> <?php echo $row['producto'] ?></td>
+									  <td> <?php echo $row['operativo'] ?></td>
+									  <td> <?php echo $row['puntos_ini'] ?></td>
+									  <td> <?php echo $row['puntos_fin'] ?></td>
+									  <td> <?php echo $row['monto_pto'] ?></td>
+									  <td> <?php echo $row['mto_pto_comici'] ?></td>
+									  <td> <?php echo $row['moneda'] ?></td>
+									  <td> <?php echo $row['cuotas'] ?></td>
+									  <td> <?php echo $row['tasa'] ?></td>
+									  <td> <?php echo $row['descto_maximo'] ?></td>
+									  <td> <?php echo $row['monto_gasto_admin'] ?></td>
+									  <td> <?php echo $row['usuario'] ?></td>
+										<td>
+											<a href="editar.php?id_cond=<?php echo $row['id_cond'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
+												<i class="fas fa-marker"></i>
+											</a> 
+											<a href="eliminar.php?id_cond=<?php echo $row['id_cond'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" >
+												<i class="fas fa-trash"></i>
+											</a>
+										</td>
+									</tr>
+								<?php } ?>
+						</thead>
+					</table>
+			</div>
+	</div>
+</div> <!-- cierra div productos -->
 
 <div class="row">
 

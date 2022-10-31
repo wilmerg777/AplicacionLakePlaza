@@ -2,7 +2,7 @@
 	include("sesion.php");
 	include("db.php");
 
-	// (guardar: usuario = 1 ; afilnat = 2 ; afiljur = 3 ; Producto = 4 ; precios = 5 ;)
+	// (guardar: usuario = 1 ; afilnat = 2 ; afiljur = 3 ; Producto = 4 ; prog_vtas = 5 ;condicion_ventas = 6 ;)
 
 	if ($_POST['guardar_form']==1) { // usuario
 		$codUser = $_POST['codUser'];
@@ -53,6 +53,31 @@
 	  $_SESSION['message'] = $mensaje;
 	  $_SESSION['message_type'] = $tipo_mensaje;
 	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=producto ')</script>";
+
+	}
+
+	if ($_POST['guardar_form']==5) { // Programas ventas
+		$codProg = $_POST['cod_prog_vta'];
+		$nombreProg = $_POST['nom_prog_vta'];
+		$estProg = $_POST['estado_programa'];
+
+	 	$query = "insert into prog_ventas(cod_prog,nombre_prog,estatus) values ('$codProg','$nombreProg','$estProg')";
+		$resultado = $conn->prepare($query);
+
+		try {
+			$resultado->execute();
+			$mensaje='Programa guardado correctamente!';
+			$tipo_mensaje="success";
+			} catch (Exception $e) {
+			//die("Errorx: " . $e->getMessage() );
+			$error = "Error: " . $e->getMessage() ;
+			$mensaje='Problemas al guardar :<br>'.$error;
+			$tipo_mensaje="danger";
+		}
+
+	  $_SESSION['message'] = $mensaje;
+	  $_SESSION['message_type'] = $tipo_mensaje;
+	  echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=prog_vtas')</script>";
 
 	}
 

@@ -45,7 +45,8 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
             <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=afilnat">Afiliado Natural</a></li>
             <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=afiljur">Afiliado Juridico</a></li>
             <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=producto">Productos</a></li>
-            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=cond_ventas">Condiciones de Ventas</a></li>
+            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=prog_vtas">Programa Ventas</a></li>
+            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=condiciones_ventas">Condiciones de Ventas</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=usuarios " >Usuarios</a></li>
           </ul>
