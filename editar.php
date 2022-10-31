@@ -74,6 +74,37 @@
 		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
 
+	// Programas
+	if (isset($_GET['id_prog'])) {
+		$id = $_GET['id_prog'];
+		$query = "Select * from prog_ventas where id_prog = $id";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+		if ($cuantos == 1) {
+			$row = $resultado->fetch(PDO::FETCH_ASSOC);
+			$codProg = $row['cod_prog'];
+			$nombre_prog = $row['nombre_prog'];
+			$estatus = $row['estatus'];
+		}
+	}
+
+	if (isset($_POST['update_prog'])) {
+		$id = $_GET['id_prog'];
+		$nombre_prog = $_POST['nom_prog_vta'];
+		$estatus = $_POST['estado_programa'];
+		$query = "Update prog_ventas set nombre_prog='$nombre_prog', estatus='$estatus' where id_prog='$id' ";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+
+		if ($cuantos<1) {
+			die("Accion de editar fallida! ".$cuantos);
+		}
+		$_SESSION['message'] = "Registro actualizado correctamente.";
+		$_SESSION['message_type'] = 'success';
+		header('location:registro_datos_maestros.php?maestro=prog_vtas');
+		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+	}
+
 	// Afiliados Naturales
 	if (isset($_GET['id_afil_natu'])) {
 		$id = $_GET['id_afil_natu'];
@@ -195,15 +226,13 @@
 ?>
 
 <?php include("includes/header.php") ?>
-
 <div class="container p-4 ">
 	<div class="row">
 		<div class="col-6 mx-auto justify-content-center ">
-
 			<div class="card border-success " >
 
 				<!-- Form Edit usuarios -->
-
+				
 				<div <?php 	if (!isset($_GET['id_user'])) { echo $ocultar ; } ?> >
 					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR USUARIO
 					</div>
@@ -252,6 +281,35 @@
 							</div>							
 				  		<div class="card-footer bg-transparent border-success text-center">
 								<button type="submit" class="btn btn-success" name="update_prod"><i class="fa-solid fa-save"></i> Actualizar</button>
+				  		</div>
+		  			</form>
+		  		</div>
+				</div> <!--Fin form Edit producto -->
+
+				<!-- Form Edit programas ventas -->
+
+				<div <?php if (!isset($_GET['id_prog'])) { echo $ocultar ; } ?> >
+					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR PROGRAMA</div>
+			  	<div class="card-body text-success">
+						<form action="editar.php?id_prog=<?php echo $_GET['id_prog'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="nom_prog_vta" class="form-label">Nombre del Programa:</label>
+								<input type="text" name="nom_prog_vta" value="<?php echo $nombre_prog ;?>" class="form-control" placeholder="Actualiza programa" autofocus>
+							</div>
+							<div class="form-outline mb-3 col-md-5 ">
+						    <label for="estado_programa" class="form-label">Estatus</label>
+						    <select class="form-select" id="estado_programa" name="estado_programa" >
+						    	<?php if ($estatus == 1) { ?>
+											<option selected value="1">Activo</option>
+											<option value="0">Inactivo</option>
+							    <?php }else{ ?>
+											<option  value="1">Activo</option>
+											<option selected value="0">Inactivo</option>					    	
+									<?php } ?>
+						    </select>
+							</div>							
+				  		<div class="card-footer bg-transparent border-success text-center">
+								<button type="submit" class="btn btn-success" name="update_prog"><i class="fa-solid fa-save"></i> Actualizar</button>
 				  		</div>
 		  			</form>
 		  		</div>
