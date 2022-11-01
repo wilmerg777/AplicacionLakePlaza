@@ -50,6 +50,16 @@
 	<div class="d-flex justify-content-center">
 		<p><img src="images/Bcv.png" width="200" height="200" alt="Tasa BCV"></p>
 	</div>
+	<div class="input-group md-3">
+  <label class="input-group-text" for="inputGroupSelect01">Opciones...</label>
+  <select class="form-select" id="inputGroupSelect01">
+    <option selected>Elija una...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
 </main>
 
 <?php  include("includes/footer.php"); ?>

@@ -478,19 +478,29 @@
 						<?php 
 							$label = '<label class="form-label " for="cod_prod_vta">Producto:</label>';
 							$name = 'cod_prod_vta';
-							echo cargar_inputs($Tip_form_maestro, 'cod_prod' , $label, $name , $conn); 
+							$campos=array('cod_prod','nombre');
+							echo cargar_inputs('productos', $campos, $label, $name , $conn); 
 						?>
-						
-						<input type="text" name="cod_prod_vta" class="form-control " >
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="cod_oper_vta">Operativo:</label>
-						<input type="text" name="cod_oper_vta" class="form-control " >
+						<?php 
+							$label = '<label class="form-label " for="cod_oper_vta">Operativo:</label>';
+							$name = 'cod_oper_vta';
+							$campos=array('cod_oper','nombre_oper');
+							echo cargar_inputs('operativos', $campos, $label, $name , $conn); 
+						?>
 					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="ptos_des_vta">Puntos desde:</label>
+					<label class="form-label " for="ptos_des_vta">Puntos desde:</label>
+					<div class="form-outline mb-4 col-md-2 ">
 						<input type="text" name="ptos_ini_vta" class="form-control " >
 					</div>
+
+					<div class="input-group mb-sm-3">
+					  <span class="input-group-text">Ptos.</span>
+					  <!-- <span class="input-group-text">000</span> -->
+					  <input type="text" class="form-control" placeholder="000" aria-label="Dollar amount (with dot and two decimal places)">
+					</div>
+
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="ptos_has_vta">Puntos hasta:</label>
 						<input type="text" name="ptos_fin_vta" class="form-control " >
@@ -505,15 +515,25 @@
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="moneda_condic">Moneda:</label>
-						<input type="text" name="moneda_condic" class="form-control " >
+						<select name="moneda_condic" id="moneda_condic">
+							<option value="US$" selected>US$</option>
+							<option value="BS.">Bs.</option>
+						</select>
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="cuot_max_vta">Maximo de Cuotas:</label>
 						<input type="text" name="cuot_max_vta" class="form-control " >
 					</div>
+					<!--
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="gast_doc_vta">Gastos Doc:</label>
 						<input type="text" name="gast_doc_vta" class="form-control " placeholder="Monto gastos administrativos" >
+					</div>
+					-->
+					<div class="input-group mb-sm-3">
+					  <span class="input-group-text">Gastos Adm.</span>
+					  <span class="input-group-text">US$</span>
+					  <input type="text" class="form-control" placeholder="00.00" aria-label="Dollar amount (with dot and two decimal places)">
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="tip_inter_vta">Tipo Interes:</label>
