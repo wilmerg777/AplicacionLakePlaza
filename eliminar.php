@@ -56,6 +56,24 @@
     $_SESSION['message_type'] = $tipo_mensaje;
 		header("Location: registro_datos_maestros.php?maestro=prog_vtas");
 
+	}elseif (isset($_GET['id_cond'])) {
+		$id = $_GET['id_cond'];
+		$query = "Delete from condiciones_ventas where id_cond = $id";
+		$resultado = $conn->prepare($query);
+
+		try {
+			$cuantos=$resultado->execute();
+			$mensaje='Registro eliminado correctamente!';
+			$tipo_mensaje="success";		
+		} catch (Exception $e) {
+			$mensaje='Problemas al Eliminar :<br>'.$e;
+			$tipo_mensaje="danger";
+		}
+
+		$_SESSION['message'] = $mensaje;
+    $_SESSION['message_type'] = $tipo_mensaje;
+		header("Location: registro_datos_maestros.php?maestro=condiciones_ventas");
+
 	}elseif (isset($_GET['id_afil_natu'])) {
 		$id = $_GET['id_afil_natu'];
 		$query = "Delete from afiliados_natu where id_afil_natu = $id";
