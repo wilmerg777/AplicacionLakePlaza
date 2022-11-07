@@ -69,7 +69,9 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
            ?>
           <a class="nav-link <?php echo $cerrar_sesion ; ?>" href="cerrar_sesion.php">Cerrar sesion" <?php echo $usuario; ?>"</a>
         </li>
+        <label class>Fecha: <?php echo date('Y-m-d') ;?></label>
       </ul>
+
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Escriba lo que está buscando" aria-label="Search">
         <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-search"></i></button>
@@ -77,3 +79,4 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
     </div>
   </div>
 	</nav>
+  <div class="bg-primary " align="center">Fecha: <?php echo date('d - m - Y') ;?></div>
