@@ -270,8 +270,6 @@
 		}
 		$_SESSION['message'] = "Registro actualizado correctamente.";
 		$_SESSION['message_type'] = 'success';
-
-
 		header('location:registro_datos_maestros.php?maestro=condiciones_ventas');
 		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
@@ -485,10 +483,10 @@
 				<div <?php if (!isset($_GET['id_cond'])) { echo $ocultar ; } ?> >
 					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR CONDICION DE VENTA</div>
 			  	<div class="card-body text-success">
-						<form action="editar.php?id_prog=<?php echo $_GET['id_cond'];?>" method="POST">
+						<form action="editar.php?id_cond=<?php echo $_GET['id_cond'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
-								<label class="form-label " for="cod_cond">Código Condic:</label>
-								<input type="text" name="cod_cond" class="form-control " value="<?php echo $cod_cond ; ?>">							
+								<label class="form-label " for="cod_cond_vta">Código Condic:</label>
+								<input type="text" name="cod_cond_vta" class="form-control " value="<?php echo $cod_cond ; ?>">							
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<?php 
@@ -498,64 +496,56 @@
 									echo cargar_inputs_update('productos', $campos, $label, $name , $conn); 
 								?>							
 							</div>
-						<!--
-
-
-$_POST['ptos_ini_vta']; 
-$_POST['ptos_fin_vta']; 
-$_POST['precio_pto_vta']; 
-$_POST['precio_pto_com']; 
-$_POST['moneda_condic']; 
-$_POST['cuot_max_vta']; 
-$_POST['gastos_admin']; 
-$_POST['tip_inter_vta']; 
-$_POST['%_desc_vta'];
-
-$producto = $row['producto'];
-$operativo = $row['operativo'];
-
-$puntos_ini = $row['puntos_ini'];
-$puntos_fin = $row['puntos_fin'];
-$monto_pto = $row['monto_pto'];
-$mto_pto_comici = $row['mto_pto_comici'];
-$moneda = $row['moneda'];
-$cuotas = $row['cuotas'];
-$tasa = $row['tasa'];
-$descto_maximo = $row['descto_maximo'];
-$monto_gasto_admin = $row['monto_gasto_admin'];
-$usuario = $row['usuario'];
-						-->					
-						<div class="form-outline mb-3 col-10">
-							<?php 
-								$label = '<label class="form-label " for="cod_oper_vta">Operativo:</label>';
-								$name = 'cod_oper_vta';
-								$campos=array('cod_oper','nombre_oper');
-								$camp_cond="cod_oper";
-								echo cargar_inputs_update('operativos', $campos, $label, $name , $conn); 
-							?>							
-						</div>
-						<div class="input-group  col-md-3 mb-sm-3 ">
-						  <span class="input-group-text">Ptos. Desde:</span>
-						  <input name="ptos_ini_vta" type="text" class="form-control" value="<?php echo $puntos_ini; ?>" >
-						</div>
-						<div class="input-group  col-md-3 mb-sm-3 ">
-						  <span class="input-group-text">Ptos. Hasta:</span>
-						  <input name="ptos_fin_vta" type="text" class="form-control" value="<?php echo $puntos_fin; ?>" >
-						</div>
-							<div class="form-outline mb-3 col-md-5 ">
-						    <label for="estado_programa" class="form-label">Estatus</label>
-						    <select class="form-select" id="estado_programa" name="estado_programa" >
-						    	<?php if ($estatus == 1) { ?>
-											<option selected value="1">Activo</option>
-											<option value="0">Inactivo</option>
-							    <?php }else{ ?>
-											<option  value="1">Activo</option>
-											<option selected value="0">Inactivo</option>					    	
-									<?php } ?>
-						    </select>
-							</div>							
+							<div class="form-outline mb-3 col-10">
+								<?php 
+									$label = '<label class="form-label " for="cod_oper_vta">Operativo:</label>';
+									$name = 'cod_oper_vta';
+									$campos=array('cod_oper','nombre_oper');
+									$camp_cond="cod_oper";
+									echo cargar_inputs_update('operativos', $campos, $label, $name , $conn); 
+								?>							
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+							  <span class="input-group-text">Ptos. Desde:</span>
+							  <input name="ptos_ini_vta" type="text" class="form-control" value="<?php echo $puntos_ini; ?>" >
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+							  <span class="input-group-text">Ptos. Hasta:</span>
+							  <input name="ptos_fin_vta" type="text" class="form-control" value="<?php echo $puntos_fin; ?>" >
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+							  <span class="input-group-text">Precio Pto:</span>
+							  <input name="precio_pto_vta" type="text" class="form-control" value="<?php echo $monto_pto; ?>" >
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+							  <span class="input-group-text">Precio Pto. Comic.:</span>
+							  <input name="precio_pto_com" type="text" class="form-control" value="<?php echo $mto_pto_comici; ?>" >
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+								<span class="form-label " >Moneda :</span>
+								<select name="moneda_condic" id="moneda_condic">
+									<option value="US$" selected>US$</option>
+									<option value="BS.">Bs.</option>
+								</select>
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+							  <span class="input-group-text">Max. Cuotas:</span>
+							  <input name="cuot_max_vta" type="text" class="form-control" value="<?php echo $cuotas; ?>" >
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+							  <span class="input-group-text">Monto Gastos Admin.:</span>
+							  <input name="gastos_admin" type="text" class="form-control" value="<?php echo $monto_gasto_admin; ?>" >
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+							  <span class="input-group-text">Tipo de Interes:</span>
+							  <input name="tip_inter_vta" type="text" class="form-control" value="<?php echo $tasa; ?>" >
+							</div>
+							<div class="input-group  col-md-3 mb-sm-3 ">
+							  <span class="input-group-text">Desc. Máximo:</span>
+							  <input name="%_desc_vta" type="text" class="form-control" value="<?php echo $descto_maximo; ?>" >
+							</div>
 				  		<div class="card-footer bg-transparent border-success text-center">
-								<button type="submit" class="btn btn-success" name="update_prog"><i class="fa-solid fa-save"></i> Actualizar</button>
+								<button type="submit" class="btn btn-success" name="update_condic"><i class="fa-solid fa-save"></i> Actualizar</button>
 				  		</div>
 		  			</form>
 		  		</div>
