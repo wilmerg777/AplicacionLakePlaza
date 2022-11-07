@@ -81,6 +81,42 @@
 
 	}
 
+		if ($_POST['guardar_form']==6) { // Condiciones de Ventas
+			$cod_cond = $_POST['cod_cond_vta'];
+			$producto = $_POST['cod_prod_vta'];
+			$operativo = $_POST['cod_oper_vta'];
+			$puntos_ini = $_POST['ptos_ini_vta'];
+			$puntos_fin = $_POST['ptos_fin_vta'];
+			$monto_pto = $_POST['precio_pto_vta'];
+			$mto_pto_comici = $_POST['precio_pto_com'];
+			$moneda = $_POST['moneda_condic'];
+			$cuotas = $_POST['cuot_max_vta'];
+			$tasa = $_POST['tip_inter_vta'];
+			$descto_maximo = $_POST['%_desc_vta'];
+			$monto_gasto_admin = $_POST['gastos_admin'];
+			$usuario = $_POST['cod_user'];
+
+	 	$query = "insert into condiciones_ventas(cod_cond,producto,operativo,puntos_ini,puntos_fin,monto_pto,mto_pto_comici,moneda,cuotas,tasa,descto_maximo,monto_gasto_admin,usuario) 
+	 		values ('$cod_cond','$producto','$operativo','$puntos_ini','$puntos_fin','$monto_pto','$mto_pto_comici','$moneda','$cuotas','$tasa','$descto_maximo','$monto_gasto_admin','$usuario')";
+		$resultado = $conn->prepare($query);
+
+		try {
+			$resultado->execute();
+			$mensaje='Condicion de ventas guardada correctamente!';
+			$tipo_mensaje="success";
+			} catch (Exception $e) {
+			//die("Errorx: " . $e->getMessage() );
+			$error = "Error: " . $e->getMessage() ;
+			$mensaje='Problemas al guardar :<br>'.$error;
+			$tipo_mensaje="danger";
+		}
+
+	  $_SESSION['message'] = $mensaje;
+	  $_SESSION['message_type'] = $tipo_mensaje;
+	  echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=condiciones_ventas ')</script>";
+
+	}
+
 	if ($_POST['guardar_form']==2) { // afiliado natural.
 		$cod_afil_natu = $_POST['cod_afil_natu'];
 		$nom_afil_natu = $_POST['nom_afil_natu'];

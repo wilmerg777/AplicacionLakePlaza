@@ -212,34 +212,6 @@
 						<?php } ?>
 				</thead>
 			</table>
- 				
-			<?php
-				$label = "Usuarios";
-				$name = "usuarios";
-				function genera_MenuSeleccion ($conn, $name, $label){
-					$query = "select * from usuarios";
-					$resultado = $conn->prepare($query);
-					$resultado->execute();
-					$codigo = '<label>'.$label.'</label><br>';
-
-					$codigo= $codigo.'<select name="'.$name.'">.\n';
-
-					while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
-						$codigo = $codigo.'<option value= "'.$fila["id_user"].'">'.$fila["id_user"].'-'.utf8_encode($fila["usuario"]).'</option>'."/n";
-					}
-
-					$codigo = $codigo."</select>\n";
-
-					$q = $conn->prepare('DESCRIBE operativos');
-					$q->execute();
-					while($row = $q->fetch(PDO::FETCH_ASSOC)) {
-						echo "{$row['Field']} - {$row['Type']}<br>";
-  				}
-					return  $codigo;
-				}
-
-				echo genera_MenuSeleccion($conn, $name, $label);
-			?>
 		</div>
 	</div>	
 </div>  <!-- cierra div Usuarios -->
@@ -469,7 +441,7 @@
 			<div class="card card-body">
 				<form action="guardardatos.php" method="post" >
 					<h3>Registro de Condiciones de ventas</h3><br>
-					<input type="text" name="guardar_form" value="4" hidden>
+					<input type="text" name="guardar_form" value="6" hidden>
 					<label class="form-label " for="cod_cond_vta">Identificador de la condición:</label>
 					<div class="form-outline mb-4 col-md-4 ">
 						<input type="text" name="cod_cond_vta" class="form-control " placeholder="Ejm: TP001" autofocus >
@@ -490,57 +462,45 @@
 							echo cargar_inputs('operativos', $campos, $label, $name , $conn); 
 						?>
 					</div>
-					<label class="form-label " for="ptos_des_vta">Puntos desde:</label>
-					<div class="form-outline mb-4 col-md-2 ">
-						<input type="text" name="ptos_ini_vta" class="form-control " >
+					<div class="input-group  col-md-3 mb-sm-3 ">
+					  <span class="input-group-text">Ptos. Desde</span>
+					  <input name="ptos_ini_vta" type="text" class="form-control" placeholder="000" >
 					</div>
 
-					<div class="input-group mb-sm-3">
-					  <span class="input-group-text">Ptos.</span>
-					  <!-- <span class="input-group-text">000</span> -->
-					  <input type="text" class="form-control" placeholder="000" aria-label="Dollar amount (with dot and two decimal places)">
+					<div class="input-group  col-md-3 mb-sm-3 ">
+						<span class="input-group-text">Ptos. hasta:</span>
+						<input type="text" name="ptos_fin_vta" class="form-control " placeholder="000">
 					</div>
-
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="ptos_has_vta">Puntos hasta:</label>
-						<input type="text" name="ptos_fin_vta" class="form-control " >
+					<div class="input-group  col-md-3 mb-sm-3 ">
+						<span class="input-group-text">Precio Pto.</span>
+						<input type="text" name="precio_pto_vta" class="form-control" >
 					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="precio_pto_vta">Precio Punto:</label>
-						<input type="text" name="precio_pto_vta" class="form-control " >
+					<div class="input-group  col-md-3 mb-sm-3 ">
+						<span class="input-group-text">Precio Pto. Comisión:</span>
+						<input type="money" name="precio_pto_com" class="form-control " >
 					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="precio_pto_com">Precio Punto Comisión:</label>
-						<input type="text" name="precio_pto_com" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
+					<div class="form-outline mb-3 col-md-10 ">
 						<label class="form-label " for="moneda_condic">Moneda:</label>
 						<select name="moneda_condic" id="moneda_condic">
 							<option value="US$" selected>US$</option>
 							<option value="BS.">Bs.</option>
 						</select>
 					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="cuot_max_vta">Maximo de Cuotas:</label>
+					<div class="input-group  col-md-3 mb-sm-3 ">
+						<span class="input-group-text">Maximo de Cuotas:</span>
 						<input type="text" name="cuot_max_vta" class="form-control " >
 					</div>
-					<!--
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="gast_doc_vta">Gastos Doc:</label>
-						<input type="text" name="gast_doc_vta" class="form-control " placeholder="Monto gastos administrativos" >
-					</div>
-					-->
 					<div class="input-group mb-sm-3">
 					  <span class="input-group-text">Gastos Adm.</span>
 					  <span class="input-group-text">US$</span>
-					  <input type="text" class="form-control" placeholder="00.00" aria-label="Dollar amount (with dot and two decimal places)">
+					  <input type="text" class="form-control" name="gastos_admin" placeholder="00.00" aria-label="Dollar amount (with dot and two decimal places)">
 					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="tip_inter_vta">Tipo Interes:</label>
+					<div class="input-group mb-sm-3">
+					  <span class="input-group-text">Tipo Interes:</span>
 						<input type="text" name="tip_inter_vta" class="form-control " placeholder="Tipo de interes a aplicar (valor)" >
 					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="%_desc_vta">% Descuento:</label>
+					<div class="input-group mb-sm-3">
+					  <span class="input-group-text">Descuento:</span>
 						<input type="text" name="%_desc_vta" class="form-control " placeholder="%" >
 					</div>
 					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
@@ -604,8 +564,34 @@
 	</div>
 </div> <!-- cierra div productos -->
 
-<div class="row">
+<div class="container">
+			<?php
+				$label = "Usuarios";
+				$name = "usuarios";
+				function genera_MenuSeleccion ($conn, $name, $label){
+					$query = "select * from condiciones_ventas";
+					$resultado = $conn->prepare($query);
+					$resultado->execute();
+					$codigo = '<label>'.$label.'</label><br>';
 
+					$codigo= $codigo.'<select name="'.$name.'">.\n';
+
+					while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
+						$codigo = $codigo.'<option value= "'.$fila["id_user"].'">'.$fila["id_user"].'-'.utf8_encode($fila["usuario"]).'</option>'."/n";
+					}
+
+					$codigo = $codigo."</select>\n";
+
+					$q = $conn->prepare('DESCRIBE condiciones_ventas');
+					$q->execute();
+					while($row = $q->fetch(PDO::FETCH_ASSOC)) {
+						echo "{$row['Field']} - {$row['Type']}<br>";
+  				}
+					return  $codigo;
+				}
+
+				echo genera_MenuSeleccion($conn, $name, $label);
+			?>
 </div>
 
 
