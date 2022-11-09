@@ -91,7 +91,7 @@
 			$mto_pto_comici = $_POST['precio_pto_com'];
 			$moneda = $_POST['moneda_condic'];
 			$cuotas = $_POST['cuot_max_vta'];
-			$tasa = $_POST['tip_inter_vta'];
+			$tasa = $_POST['tip_interes'];
 			$descto_maximo = $_POST['%_desc_vta'];
 			$monto_gasto_admin = $_POST['gastos_admin'];
 			$usuario = $_POST['cod_user'];
