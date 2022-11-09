@@ -446,38 +446,46 @@
 					<div class="form-outline mb-4 col-md-4 ">
 						<input type="text" name="cod_cond_vta" class="form-control " placeholder="Ejm: TP001" autofocus >
 					</div>
-					<div class="form-outline mb-4 col-md-5">
+					<div class="input-group  col-md-3 mb-sm-3">
 						<?php 
-							$label = '<label class="form-label " for="cod_prod_vta">Producto:</label>';
+							$label = '<span class="input-group-text" >Producto:</span>';
 							$name = 'cod_prod_vta';
 							$campos=array('cod_prod','nombre');
 							echo cargar_inputs('productos', $campos, $label, $name , $conn); 
 						?>
 					</div>
-					<div class="form-outline mb-4 col-md-10 ">
+					<div class="input-group  col-md-3 mb-3 ">
 						<?php 
-							$label = '<label class="form-label " for="cod_oper_vta">Operativo:</label>';
+							$label = '<span class="input-group-text" >Operativo:</span>';
 							$name = 'cod_oper_vta';
 							$campos=array('cod_oper','nombre_oper');
 							echo cargar_inputs('operativos', $campos, $label, $name , $conn); 
 						?>
 					</div>
-					<div class="input-group  col-md-3 mb-sm-3 ">
+					<div class="input-group  col-md-3 mb-3 ">
 					  <span class="input-group-text">Ptos. Desde</span>
-					  <input name="ptos_ini_vta" type="text" class="form-control" placeholder="000" >
+					  <div class="form-outline  col-md-4 ">
+						  <input name="ptos_ini_vta" type="text" class="form-control " placeholder="000" >
+						</div>
 					</div>
 
 					<div class="input-group  col-md-3 mb-sm-3 ">
 						<span class="input-group-text">Ptos. hasta:</span>
-						<input type="text" name="ptos_fin_vta" class="form-control " placeholder="000">
+						<div class="form-outline  col-md-4 ">
+							<input type="text" name="ptos_fin_vta" class="form-control " placeholder="000">
+						</div>
 					</div>
 					<div class="input-group  col-md-3 mb-sm-3 ">
 						<span class="input-group-text">Precio Pto.</span>
-						<input type="text" name="precio_pto_vta" class="form-control" >
+						<div class="form-outline  col-md-4 ">
+							<input type="text" name="precio_pto_vta" class="form-control" placeholder="0,00" >
+						</div>
 					</div>
 					<div class="input-group  col-md-3 mb-sm-3 ">
 						<span class="input-group-text">Precio Pto. Comisión:</span>
-						<input type="money" name="precio_pto_com" class="form-control " >
+						<div class="form-outline  col-md-4 ">
+							<input type="money" name="precio_pto_com" class="form-control " >
+						</div>
 					</div>
 					<div class="form-outline mb-3 col-md-10 ">
 						<label class="form-label " for="moneda_condic">Moneda:</label>
@@ -488,20 +496,28 @@
 					</div>
 					<div class="input-group  col-md-3 mb-sm-3 ">
 						<span class="input-group-text">Maximo de Cuotas:</span>
-						<input type="text" name="cuot_max_vta" class="form-control " >
+						<div class="form-outline  col-md-4 ">
+							<input type="text" name="cuot_max_vta" class="form-control " >
+						</div>
 					</div>
 					<div class="input-group mb-sm-3">
 					  <span class="input-group-text">Gastos Adm.</span>
 					  <span class="input-group-text">US$</span>
-					  <input type="text" class="form-control" name="gastos_admin" placeholder="00.00" aria-label="Dollar amount (with dot and two decimal places)">
+						<div class="form-outline  col-md-4 ">
+							<input type="text" class="form-control" name="gastos_admin" placeholder="0.00" >
+						</div>					  
 					</div>
 					<div class="input-group mb-sm-3">
 					  <span class="input-group-text">Tipo Interes:</span>
-						<input type="text" name="tip_inter_vta" class="form-control " placeholder="Tipo de interes a aplicar (valor)" >
+					  <div class="form-outline  col-md-4 ">
+							<input type="text" name="tip_interes" class="form-control " >
+						</div>
 					</div>
 					<div class="input-group mb-sm-3">
 					  <span class="input-group-text">Descuento:</span>
-						<input type="text" name="%_desc_vta" class="form-control " placeholder="%" >
+					  <div class="form-outline  col-md-4 ">
+							<input type="text" name="%_desc_vta" class="form-control " placeholder="%" >
+						</div>
 					</div>
 					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
 					<div class="form-outline mb-4">
@@ -564,34 +580,39 @@
 	</div>
 </div> <!-- cierra div productos -->
 
-<div class="container">
-			<?php
-				$label = "Usuarios";
-				$name = "usuarios";
-				function genera_MenuSeleccion ($conn, $name, $label){
-					$query = "select * from condiciones_ventas";
-					$resultado = $conn->prepare($query);
-					$resultado->execute();
-					$codigo = '<label>'.$label.'</label><br>';
+<div class="container" name="form_contrato">
+	<div class="row " style="background:lightblue; ";>
+		<h2 class="titulo_ventana text-center">Titulo Ventana</h2>
+	</div>
+	<div class="row">
+		<?php
+			$label = "Usuarios";
+			$name = "usuarios";
+			function genera_MenuSeleccion ($conn, $name, $label){
+				$query = "select * from contrato";
+				$resultado = $conn->prepare($query);
+				$resultado->execute();
+				$codigo = '<label>'.$label.'</label><br>';
 
-					$codigo= $codigo.'<select name="'.$name.'">.\n';
+				$codigo= $codigo.'<select name="'.$name.'">.\n';
 
-					while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
-						$codigo = $codigo.'<option value= "'.$fila["id_user"].'">'.$fila["id_user"].'-'.utf8_encode($fila["usuario"]).'</option>'."/n";
-					}
-
-					$codigo = $codigo."</select>\n";
-
-					$q = $conn->prepare('DESCRIBE condiciones_ventas');
-					$q->execute();
-					while($row = $q->fetch(PDO::FETCH_ASSOC)) {
-						echo "{$row['Field']} - {$row['Type']}<br>";
-  				}
-					return  $codigo;
+				while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
+					$codigo = $codigo.'<option value= "'.$fila["cod_cond"].'">'.$fila["cod_cond"].'-'.$fila["puntos_ini"].'</option>'."/n";
 				}
 
-				echo genera_MenuSeleccion($conn, $name, $label);
-			?>
+				$codigo = $codigo."</select>\n";
+
+				$q = $conn->prepare('DESCRIBE condiciones_ventas');
+				$q->execute();
+				while($row = $q->fetch(PDO::FETCH_ASSOC)) {
+					echo "{$row['Field']} - {$row['Type']}<br>";
+				}
+				return  $codigo;
+			}
+
+			echo genera_MenuSeleccion($conn, $name, $label);
+		?>
+	</div>
 </div>
 
 
