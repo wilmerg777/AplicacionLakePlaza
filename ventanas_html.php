@@ -98,11 +98,11 @@
 					<input type="text" name="guardar_form" value="5" hidden>
 					<label class="form-label " for="cod_prog_vta">Código del Programa:</label>
 					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_prog_vta" class="form-control " placeholder="Ejm: IH001" autofocus>
+						<input type="text" name="cod_prog_vta" id="cod_prog_vta" class="form-control " placeholder="Ejm: IH001" autofocus>
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="nom_prog_vta">Nomdre del programa:</label>
-						<input type="text" name="nom_prog_vta" class="form-control" placeholder="Ejm: IN HOUSE">
+						<input type="text" name="nom_prog_vta" id="nom_prog_vta" class="form-control" placeholder="Ejm: IN HOUSE">
 					</div>
 					<div class="form-outline mb-4 col-md-4 ">
 				    <label for="estado_programa" class="form-label">Estado</label>
@@ -621,29 +621,58 @@
 			</div>
 		</div>
 		<hr>
-		<div class="row">
-
+		<div class="row"> 
+			<div class="col 	p-2 " >
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Producto:</label>
+					<input type="text" class="form-control" name="producto">
+				</div>			
+			</div>
+			<div class="col p-2" >
+				<div class="col-9">
+				<div class="input-group ">
+					<label class="input-group-text " for="programa">Programa:</label>
+					<input type="date" class="form-control" name="programa">
+				</div>
+				</div>		
+			</div>
+			<div class="col p-2" >
+				<div class="input-group ">
+					<span class="input-group-text ">Sucursal:</span>
+					<select name="sucursal" id="sucursal">
+						<option value="merida" selected>Mérida</option>
+						<option value="margarita" >Margarita</option>
+					</select>
+				</div>			
+			</div>
+			<div class="col p-2" >
+				<div class="input-group ">
+					<span class="input-group-text ">Operativo:</span>
+					<input type="text" class="form-control" name="operativo">
+				</div>			
+			</div>
 		</div>
 		<hr>
-		<div class="input-group ">
-			<span class="input-group-text">Tipo Interes:</span>
-			<div class="form-outline  col-md-1 ">
-				<input type="text" name="tip_interes" class="form-control " >
+		<div class="row"> 
+			<div class="col 	p-2 " >
+				<div class="input-group  ">
+					<label class="input-group-text " for="ced_titular1">Titular 1:</label>
+					<div class="col-2">
+						<input type="text" class="form-control" name="ced_titular1">
+					</div>
+					<input type="text" class="form-control" name="ced_titular1">
+				</div>
+			</div>
+			<div class="col 	p-2 " >
+				<div class="input-group  ">
+					<label class="input-group-text " for="ced_titular2">Titular 2:</label>
+					<div class="col-2">
+						<input type="text" class="form-control" name="ced_titular2">
+					</div>
+					<input type="text" class="form-control" name="titular2">
+				</div>			
 			</div>
 		</div>
-			<span class="">Fecha Venta:</span>
-			<div class="">
-				<input type="date" name="fecha_vta"  >
-			</div>
-		<div class="col-md-3" style="background:lightblue;">
-			<label>Moneda::</label>
-			<input type="text">
-		</div>
-		<div class="col-md-3" style="background:lightblue;">
-			<label>Tasa:</label>
-			<input type="text">
-		</div>
-
 	</form>
 
 	<div class="row text-center">
