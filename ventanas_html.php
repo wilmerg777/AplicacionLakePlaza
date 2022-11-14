@@ -580,16 +580,106 @@
 	</div>
 </div> <!-- cierra div productos -->
 
-<div class="container" name="form_contrato">
-	<div class="row " style="background:lightblue; ";>
-		<h2 class="titulo_ventana text-center">Titulo Ventana</h2>
+<div class="container bg-primary " name="form_contrato">
+	<div class="row align-content-center mt-1 rounded">
+		<div class="">
+			<h2 class="text-center">Registro de Contrato</h2>
+			<hr>
+		</div>
+	</div>	
+	<form action="guardardatos.php " method="post" class="row" >
+		<input type="text" name="guardar_form" value="7" hidden>
+		<div class="row">
+			<div class="col 	p-2 " >
+				<div class="input-group  ">
+					<label class="input-group-text ">Contrato:</label>
+					<input type="text" class="form-control" name="contrato">
+				</div>			
+			</div>
+			<div class="col p-2" >
+				<div class="col-9">
+				<div class="input-group ">
+					<label class="input-group-text ">Emision:</label>
+					<input type="date" class="form-control" name="fch_venta">
+				</div>
+				</div>		
+			</div>
+			<div class="col p-2" >
+				<div class="input-group ">
+					<span class="input-group-text ">Moneda:</span>
+					<select name="moneda_condic" id="moneda_condic">
+						<option value="US$" selected>US$</option>
+						<option value="BS." disabled>Bs.</option>
+					</select>
+				</div>			
+			</div>
+			<div class="col p-2" >
+				<div class="input-group ">
+					<span class="input-group-text ">tasa:</span>
+					<input type="text" class="form-control" name="tasa">
+				</div>			
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+
+		</div>
+		<hr>
+		<div class="input-group ">
+			<span class="input-group-text">Tipo Interes:</span>
+			<div class="form-outline  col-md-1 ">
+				<input type="text" name="tip_interes" class="form-control " >
+			</div>
+		</div>
+			<span class="">Fecha Venta:</span>
+			<div class="">
+				<input type="date" name="fecha_vta"  >
+			</div>
+		<div class="col-md-3" style="background:lightblue;">
+			<label>Moneda::</label>
+			<input type="text">
+		</div>
+		<div class="col-md-3" style="background:lightblue;">
+			<label>Tasa:</label>
+			<input type="text">
+		</div>
+
+	</form>
+
+	<div class="row text-center">
+		<div class="col-md-1" style="background:lightblue;">uno</div>
+		<div class="col-md-1" style="background:lightcoral;">dos</div>
+		<div class="col-md-1" style="background:lightgray;">tres</div>
+		<div class="col-md-1" style="background:lightpink;">cuatro</div>
+		<div class="col-md-1" style="background:lightgray;">cinco</div>
+		<div class="col-md-1" style="background:lightcoral;">seis</div>
+		<div class="col-md-1" style="background:lightgray;">siete</div>
+		<div class="col-md-1" style="background:lightcoral;">ocho</div>
+		<div class="col-md-1" style="background:lightgray;">nueve</div>
+		<div class="col-md-1" style="background:lightcoral;">diez</div>
+		<div class="col-md-1" style="background:lightgray;">once</div>
+		<div class="col-md-1" style="background:lightcoral;">doce</div>
 	</div>
+	<div class="row text-center">
+		<div class="col-md-2" style="background:blue; color: white;"><span>uno y dos</span></div>
+		<div class="col-md-1" style="background:lightgray;">tres</div>
+		<div class="col-md-1" style="background:lightpink;">cuatro</div>
+		<div class="col-md-1" style="background:lightgray;">cinco</div>
+		<div class="col-md-1" style="background:lightcoral;">seis</div>
+		<div class="col-md-1" style="background:lightgray;">siete</div>
+		<div class="col-md-1" style="background:lightcoral;">ocho</div>
+		<div class="col-md-1" style="background:lightgray;">nueve</div>
+		<div class="col-md-1" style="background:lightcoral;">diez</div>
+		<div class="col-md-1" style="background:lightgray;">once</div>
+		<div class="col-md-1" style="background:lightcoral;">doce</div>
+	</div>
+
 	<div class="row">
 		<?php
 			$label = "Usuarios";
 			$name = "usuarios";
 			function genera_MenuSeleccion ($conn, $name, $label){
-				$query = "select * from contrato";
+				$query = "select * from usuarios";
 				$resultado = $conn->prepare($query);
 				$resultado->execute();
 				$codigo = '<label>'.$label.'</label><br>';
@@ -597,7 +687,7 @@
 				$codigo= $codigo.'<select name="'.$name.'">.\n';
 
 				while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
-					$codigo = $codigo.'<option value= "'.$fila["cod_cond"].'">'.$fila["cod_cond"].'-'.$fila["puntos_ini"].'</option>'."/n";
+					$codigo = $codigo.'<option value= "'.$fila["cod_user"].'">'.$fila["cod_user"].'-'.$fila["usuario"].'</option>'."/n";
 				}
 
 				$codigo = $codigo."</select>\n";
@@ -614,6 +704,5 @@
 		?>
 	</div>
 </div>
-
 
 <?php  include("includes/footer.php"); ?>

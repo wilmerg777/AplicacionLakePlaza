@@ -88,7 +88,7 @@
                     Datos incorrectos, vuelva a intentarlo!
                   </div>
                   <label class="form-label" for="usuario">Usuario</label>
-                  <input type="text" id="usuario" name="usuario" class="form-control"  placeholder="Indique su usuario" required />
+                  <input autofocus type="text" id="usuario" name="usuario" class="form-control"  placeholder="Indique su usuario" required />
 
                 </div>
               </div>
