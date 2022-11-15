@@ -689,7 +689,7 @@
 		<div class="row">
 			<div class="col p-2">				<div class="input-group  ">
 					<label for="producto" class="input-group-text " >Total Puntos:</label>
-					<input type="number" class="form-control" name="tot_puntos">
+					<input type="number" class="form-control" name="tot_puntos" min="1" max="1800" placeholder="1">
 				</div>
 			</div>
 			<div class="col p-2">
