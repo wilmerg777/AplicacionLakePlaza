@@ -587,7 +587,7 @@
 		</div>
 		<div class="col-1 mt-2">
 			<button type="button" class="btn btn-success position-relative">
-  			Alerts <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-warning p-2"><span class="visually-hidden">unread messages</span></span>
+  			Alerts <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-warning p-2"><span class="visually-hidden">Avisos pendientes</span></span>
 			</button>
 
 		</div>
@@ -598,7 +598,7 @@
 		<div class="row">
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
-					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i> Contrato:</label>
+					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i>  Contrato:</label>
 					<input type="text" class="form-control text-uppercase fs-6" name="contrato" id="contrato">
 				</div>			
 			</div>
@@ -638,7 +638,7 @@
 				<div class="col-9">
 				<div class="input-group ">
 					<label class="input-group-text " for="programa">Programa:</label>
-					<input type="date" class="form-control" name="programa">
+					<input type="text" class="form-control" name="programa">
 				</div>
 				</div>		
 			</div>
