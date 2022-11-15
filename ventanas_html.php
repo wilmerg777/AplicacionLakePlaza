@@ -580,26 +580,32 @@
 	</div>
 </div> <!-- cierra div productos -->
 
-<div class="container bg-primary " name="form_contrato">
+<div class="container bg-primary rounded" name="form_contrato">
 	<div class="row align-content-center mt-1 rounded">
-		<div class="">
+		<div class="col-11">
 			<h2 class="text-center">Registro de Contrato</h2>
-			<hr>
 		</div>
+		<div class="col-1 mt-2">
+			<button type="button" class="btn btn-success position-relative">
+  			Alerts <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-warning p-2"><span class="visually-hidden">unread messages</span></span>
+			</button>
+
+		</div>
+	<hr size=8>
 	</div>	
 	<form action="guardardatos.php " method="post" class="row" >
 		<input type="text" name="guardar_form" value="7" hidden>
 		<div class="row">
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
-					<label class="input-group-text ">Contrato:</label>
-					<input type="text" class="form-control" name="contrato">
+					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i> Contrato:</label>
+					<input type="text" class="form-control text-uppercase fs-6" name="contrato" id="contrato">
 				</div>			
 			</div>
 			<div class="col p-2" >
 				<div class="col-9">
 				<div class="input-group ">
-					<label class="input-group-text ">Emision:</label>
+					<label class="input-group-text "><i class="fas fa-calendar-check"></i> Emisión:</label>
 					<input type="date" class="form-control" name="fch_venta">
 				</div>
 				</div>		
@@ -607,7 +613,7 @@
 			<div class="col p-2" >
 				<div class="input-group ">
 					<span class="input-group-text ">Moneda:</span>
-					<select name="moneda_condic" id="moneda_condic">
+					<select name="moneda_condic" id="moneda_condic" disabled>
 						<option value="US$" selected>US$</option>
 						<option value="BS." disabled>Bs.</option>
 					</select>
@@ -620,7 +626,7 @@
 				</div>			
 			</div>
 		</div>
-		<hr>
+		<hr >
 		<div class="row"> 
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
@@ -652,86 +658,174 @@
 				</div>			
 			</div>
 		</div>
-		<hr>
+		<hr >
+		<div class="form-row  bg-info text-center"><h6 class="m-0">T i t u l a r e s</h6>
+		</div>
 		<div class="row"> 
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
 					<label class="input-group-text " for="ced_titular1">Titular 1:</label>
 					<div class="col-2">
-						<input type="text" class="form-control" name="ced_titular1">
+						<input type="text" class="form-control" name="ced_titular1" placeholder="Cedula">
 					</div>
-					<input type="text" class="form-control" name="ced_titular1">
+					<input type="text" class="form-control" name="nom_titular1" placeholder="Nombre">
+					<input type="text" class="form-control" name="ape_titular1" placeholder="Apellido">
 				</div>
 			</div>
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
 					<label class="input-group-text " for="ced_titular2">Titular 2:</label>
 					<div class="col-2">
-						<input type="text" class="form-control" name="ced_titular2">
+						<input type="text" class="form-control" name="ced_titular2" placeholder="Cedula">
 					</div>
-					<input type="text" class="form-control" name="titular2">
+					<input type="text" class="form-control" name="nom_titular2" placeholder="Nombre">
+					<input type="text" class="form-control" name="nom_titular2" placeholder="Apellido">
 				</div>			
 			</div>
 		</div>
+		<hr>
+		<div class="form-row  bg-info text-center "><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
+		</div>
+		<div class="row">
+			<div class="col p-2">				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Total Puntos:</label>
+					<input type="number" class="form-control" name="tot_puntos">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Valor Pto:</label>
+					<input type="text" class="form-control" name="val_pto">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Pto. Comisc:</label>
+					<input type="text" class="form-control" name="pto_comici">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >% Descuento:</label>
+					<input type="number" class="form-control" name="descuento_%">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Monto Desc:</label>
+					<input type="number" class="form-control" name="monto_desc">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col p-2">				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Valor Contrato:</label>
+					<input type="text" class="form-control" name="val_contrato">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Mtto 1er Año:</label>
+					<input type="text" class="form-control" name="mtto_anio1">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Gast. Admin:</label>
+					<input type="text" class="form-control" name="pto_comici">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Miscelaneos:</label>
+					<input type="text" class="form-control" name="miscelaneos">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="producto" class="input-group-text " >Valor Total:</label>
+					<input type="text" class="form-control" name="val_total">
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="form-row  bg-info text-center "><h6 class="m-0">Distribución de Financiamiento de los Puntos Adquiridos</h6>
+		</div>
+		<div class="row">
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="ini_mesa" class="input-group-text " >Inicial en Mesa:</label>
+					<input type="text" class="form-control" name="ini_mesa">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="ini_diferida" class="input-group-text " >Inicial Diferida:</label>
+					<input type="text" class="form-control" name="ini_diferida">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="cap_especial" class="input-group-text " >Cap. Especial:</label>
+					<input type="text" class="form-control" name="cap_especial">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="cap_normal" class="input-group-text " >Cap. Normal:</label>
+					<input type="text" class="form-control" name="cap_normal">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="val_contrato" class="input-group-text " >Valor Contrato:</label>
+					<input type="text" class="form-control" name="val_contrato">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="ini_mesa_%" class="input-group-text " >%</label>
+					<input type="text" class="form-control" name="ini_mesa_%">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="ini_diferida_%" class="input-group-text " >%:</label>
+					<input type="text" class="form-control" name="ini_diferida_%">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="cap_especial_%" class="input-group-text " >%</label>
+					<input type="text" class="form-control" name="cap_especial_%">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="cap_normal_%" class="input-group-text " >%</label>
+					<input type="text" class="form-control" name="cap_normal_%">
+				</div>
+			</div>
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="val_contrato_%" class="input-group-text " >%</label>
+					<input type="text" class="form-control" name="val_contrato_%">
+				</div>
+			</div>
+		<div class="row">
+			<div class="col p-2">
+				<div class="input-group  ">
+					<label for="observaciones" class="input-group-text " >Observaciones:</label>
+					<textarea class="form-control" name="observaciones"></textarea>  
+				</div>
+			</div>
+		</div>
+		<div class="row ">
+			<div class="col p-2 text-center">
+				<button type="submit" class="btn btn-secondary btn-lg" name="guardar" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
 	</form>
-
-	<div class="row text-center">
-		<div class="col-md-1" style="background:lightblue;">uno</div>
-		<div class="col-md-1" style="background:lightcoral;">dos</div>
-		<div class="col-md-1" style="background:lightgray;">tres</div>
-		<div class="col-md-1" style="background:lightpink;">cuatro</div>
-		<div class="col-md-1" style="background:lightgray;">cinco</div>
-		<div class="col-md-1" style="background:lightcoral;">seis</div>
-		<div class="col-md-1" style="background:lightgray;">siete</div>
-		<div class="col-md-1" style="background:lightcoral;">ocho</div>
-		<div class="col-md-1" style="background:lightgray;">nueve</div>
-		<div class="col-md-1" style="background:lightcoral;">diez</div>
-		<div class="col-md-1" style="background:lightgray;">once</div>
-		<div class="col-md-1" style="background:lightcoral;">doce</div>
-	</div>
-	<div class="row text-center">
-		<div class="col-md-2" style="background:blue; color: white;"><span>uno y dos</span></div>
-		<div class="col-md-1" style="background:lightgray;">tres</div>
-		<div class="col-md-1" style="background:lightpink;">cuatro</div>
-		<div class="col-md-1" style="background:lightgray;">cinco</div>
-		<div class="col-md-1" style="background:lightcoral;">seis</div>
-		<div class="col-md-1" style="background:lightgray;">siete</div>
-		<div class="col-md-1" style="background:lightcoral;">ocho</div>
-		<div class="col-md-1" style="background:lightgray;">nueve</div>
-		<div class="col-md-1" style="background:lightcoral;">diez</div>
-		<div class="col-md-1" style="background:lightgray;">once</div>
-		<div class="col-md-1" style="background:lightcoral;">doce</div>
-	</div>
-
-	<div class="row">
-		<?php
-			$label = "Usuarios";
-			$name = "usuarios";
-			function genera_MenuSeleccion ($conn, $name, $label){
-				$query = "select * from usuarios";
-				$resultado = $conn->prepare($query);
-				$resultado->execute();
-				$codigo = '<label>'.$label.'</label><br>';
-
-				$codigo= $codigo.'<select name="'.$name.'">.\n';
-
-				while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){
-					$codigo = $codigo.'<option value= "'.$fila["cod_user"].'">'.$fila["cod_user"].'-'.$fila["usuario"].'</option>'."/n";
-				}
-
-				$codigo = $codigo."</select>\n";
-
-				$q = $conn->prepare('DESCRIBE condiciones_ventas');
-				$q->execute();
-				while($row = $q->fetch(PDO::FETCH_ASSOC)) {
-					echo "{$row['Field']} - {$row['Type']}<br>";
-				}
-				return  $codigo;
-			}
-
-			echo genera_MenuSeleccion($conn, $name, $label);
-		?>
-	</div>
 </div>
 
 <?php  include("includes/footer.php"); ?>
