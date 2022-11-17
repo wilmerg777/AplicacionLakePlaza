@@ -193,4 +193,81 @@
 
 	}
 
+		if ($_POST['guardar_form']==7) { // contratos
+			$contrato = $_POST['contrato'];
+			$fch_venta = $_POST['fch_venta'];
+			$moneda_condic = $_POST['moneda_condic']; 
+			$tasa = $_POST['tasa'];
+			$cod_prod_vta = $_POST['cod_prod_vta'];
+			$cod_oper_vta = $_POST['cod_oper_vta'];
+			$sucursal = $_POST['sucursal'];
+			$cod_prog_vta = $_POST['cod_prog_vta'];
+			$ced_titular1 = $_POST['ced_titular1']; 
+			$ced_titular2 = $_POST['ced_titular2'];
+			$tot_puntos = $_POST['tot_puntos'];
+			$val_pto = $_POST['val_pto'];
+			$pto_comici = $_POST['pto_comici'];
+			$descuento = $_POST['descuento_%'];
+			$monto_desc = $_POST['monto_desc'];
+			$val_contrato = $_POST['val_contrato'];
+			$mtto_anio1 = $_POST['mtto_anio1'];
+			$gastos_admin = $_POST['gastos_admin'];
+			$miscelaneos = $_POST['miscelaneos'];
+			$val_total = $_POST['val_total'];
+			$ini_mesa = $_POST['ini_mesa'];
+			$ini_diferida = $_POST['ini_diferida'];
+			$cap_especial = $_POST['cap_especial'];
+			$cap_normal = $_POST['cap_normal'];
+			$val_contrato = $_POST['val_contrato'];
+			$observaciones = $_POST['observaciones'];
+
+	 		$query = "insert into contratos(contrato,emision,moneda,tasa,cod_prod_cont,cod_prog_cont,cod_oper_cont,doc_suc_cont,titular1,titular2,
+				tot_ptos_cont,val_pto_cont,val_pto_comis_cont,porcent_desc_cont,monto_desc_cont,valor_contrato,mtto_anio1,
+				gast_adm_cont,miscelaneos_cont,valot_total_cont,inicial_mesa,inicial_diferida,Capital_espec,
+				capital_normal,valor_contrato_dist,observaciones) values (
+				'$contrato',
+				'$fch_venta',
+				'$moneda_condic',
+				$tasa,
+				'$cod_prod_vta',
+				'$cod_prog_vta',
+				'$cod_oper_vta',			
+				'$sucursal',
+				'$ced_titular1',
+				'$ced_titular2',
+				$tot_puntos,
+				$val_pto,
+				$pto_comici,
+				$descuento,
+				$monto_desc,
+				$val_contrato,
+				$mtto_anio1,
+				$gastos_admin,
+				$miscelaneos,
+				$val_total,
+				$ini_mesa,
+				$ini_diferida,
+				$cap_especial,
+				$cap_normal,				
+				$val_contrato,
+				'$observaciones')";
+		$resultado = $conn->prepare($query);
+
+		try {
+			$resultado->execute();
+			$mensaje='Registro guardado correctamente!';
+			$tipo_mensaje="success";
+			} catch (Exception $e) {
+			//die("Errorx: " . $e->getMessage() );
+			$error = "Error: " . $e->getMessage() ;
+			$mensaje='Problemas al guardar :<br>'.$error;
+			$tipo_mensaje="danger";
+		}
+
+	  $_SESSION['message'] = $mensaje;
+	  $_SESSION['message_type'] = $tipo_mensaje;
+	  echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/index.php ')</script>";
+
+	}
+
  ?>

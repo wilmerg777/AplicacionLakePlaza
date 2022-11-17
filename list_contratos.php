@@ -6,7 +6,7 @@
 		<hr>
 		<div class="row justify-content-end mx-0">
 			<div class="col-auto justify-content-end">
-				<a href="#" class="btn btn-dark mb-2"><i class="fa-solid fa-circle-plus"></i> Nuevo Contrato</a>
+				<a href="registro_datos_maestros.php?maestro=contrato" class="btn btn-dark mb-2"><i class="fa-solid fa-circle-plus"></i> Nuevo Contrato</a>
 			</div>
 		</div>
 		<table class="table table-sm table-striped table-hover">

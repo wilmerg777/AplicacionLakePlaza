@@ -573,7 +573,8 @@
 	</div>
 </div> <!-- cierra div productos -->
 
-<div class="container bg-primary rounded" name="form_contrato">
+<!-- Div contratos -->
+<div class="container bg-primary rounded <?php if ($Tip_form_maestro<>'contrato' ) { echo $ocultar ; } ?>" name="form_contrato">
 	<div class="row align-content-center mt-1 rounded">
 		<div class="col-11">
 			<h2 class="text-center">Registro de Contrato</h2>
@@ -623,16 +624,24 @@
 		<div class="row"> 
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Producto:</label>
-					<input type="text" class="form-control" name="producto">
+					<?php 
+						$label = '<span class="input-group-text" >Producto:</span>';
+						$name = 'cod_prod_vta';
+						$campos=array('cod_prod','nombre');
+						echo cargar_inputs('productos', $campos, $label, $name , $conn);
+					?>
 				</div>			
 			</div>
 			<div class="col p-2" >
 				<div class="col-9">
-				<div class="input-group ">
-					<label class="input-group-text " for="programa">Programa:</label>
-					<input type="text" class="form-control" name="programa">
-				</div>
+					<div class="input-group ">
+						<?php 
+							$label = '<span class="input-group-text" >Operativo:</span>';
+							$name = 'cod_oper_vta';
+							$campos=array('cod_oper','nombre_oper');
+							echo cargar_inputs('operativos', $campos, $label, $name , $conn); 
+						?>
+					</div>
 				</div>		
 			</div>
 			<div class="col p-2" >
@@ -646,8 +655,12 @@
 			</div>
 			<div class="col p-2" >
 				<div class="input-group ">
-					<span class="input-group-text ">Operativo:</span>
-					<input type="text" class="form-control" name="operativo">
+						<?php 
+							$label = '<span class="input-group-text" >Programa:</span>';
+							$name = 'cod_prog_vta';
+							$campos=array('cod_prog','nombre_prog');
+							echo cargar_inputs('prog_ventas', $campos, $label, $name , $conn); 
+						?>
 				</div>			
 			</div>
 		</div>
@@ -672,7 +685,7 @@
 						<input type="text" class="form-control" name="ced_titular2" placeholder="Cedula">
 					</div>
 					<input type="text" class="form-control" name="nom_titular2" placeholder="Nombre">
-					<input type="text" class="form-control" name="nom_titular2" placeholder="Apellido">
+					<input type="text" class="form-control" name="ape_titular2" placeholder="Apellido">
 				</div>			
 			</div>
 		</div>
@@ -681,62 +694,62 @@
 		</div>
 		<div class="row">
 			<div class="col p-2">				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Total Puntos:</label>
+					<label for="tot_puntos" class="input-group-text " >Total Puntos:</label>
 					<input type="number" class="form-control" name="tot_puntos" min="1" max="1800" placeholder="1">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Valor Pto:</label>
+					<label for="val_pto" class="input-group-text " >Valor Pto:</label>
 					<input type="text" class="form-control" name="val_pto">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Pto. Comisc:</label>
+					<label for="pto_comici" class="input-group-text " >Pto. Comisc:</label>
 					<input type="text" class="form-control" name="pto_comici">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >% Descuento:</label>
+					<label for="descuento_%" class="input-group-text " >% Descuento:</label>
 					<input type="number" class="form-control" name="descuento_%">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Monto Desc:</label>
+					<label for="monto_desc" class="input-group-text " >Monto Desc:</label>
 					<input type="number" class="form-control" name="monto_desc">
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col p-2">				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Valor Contrato:</label>
+					<label for="val_contrato" class="input-group-text " >Valor Contrato:</label>
 					<input type="text" class="form-control" name="val_contrato">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Mtto 1er Año:</label>
+					<label for="mtto_anio1" class="input-group-text " >Mtto 1er Año:</label>
 					<input type="text" class="form-control" name="mtto_anio1">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Gast. Admin:</label>
-					<input type="text" class="form-control" name="pto_comici">
+					<label for="gastos_admin" class="input-group-text " >Gast. Admin:</label>
+					<input type="text" class="form-control" name="gastos_admin">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Miscelaneos:</label>
+					<label for="miscelaneos" class="input-group-text " >Miscelaneos:</label>
 					<input type="text" class="form-control" name="miscelaneos">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="producto" class="input-group-text " >Valor Total:</label>
+					<label for="val_total" class="input-group-text " >Valor Total:</label>
 					<input type="text" class="form-control" name="val_total">
 				</div>
 			</div>
