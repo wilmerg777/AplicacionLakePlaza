@@ -648,8 +648,8 @@
 				<div class="input-group ">
 					<span class="input-group-text ">Sucursal:</span>
 					<select name="sucursal" id="sucursal">
-						<option value="merida" selected>Mérida</option>
-						<option value="margarita" >Margarita</option>
+						<option value="00001" selected>Mérida</option>
+						<option value="00002" >Margarita</option>
 					</select>
 				</div>			
 			</div>

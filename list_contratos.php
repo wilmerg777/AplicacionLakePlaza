@@ -1,6 +1,21 @@
+<?php 
+		include('db.php');
+		include('Scripts/consultas_varias.php');
+ ?>
+
+<?php
+	$codigo = "";
+	$sql="select contrato,emision,s.nombre_suc as sucursal,tot_ptos_cont,val_pto_cont,estatus,observaciones from contratos c
+	inner join sucursales s on s.cod_suc=c.doc_suc_cont";
+
+	$resultado = $conn->prepare($sql);
+	$resultado->execute();
+
+ ?>
+
 <div class="container py-3" name="lista_contratos" id="lista_contratos">
 	<div class="row">
-		<div class="d-flex justify-content-center bg-primary  ">
+		<div class="d-flex justify-content-center bg-primary text-white ">
 			<h2 >Contratos pendientes por procesar en el sistema STIL</h2>
 		</div>
 		<hr>
@@ -12,17 +27,34 @@
 		<table class="table table-sm table-striped table-hover">
 			<thead class="table-dark">
 				<tr>
-					<th class="table-head">Contrato</th>
-					<th class="table-head">Emisión</th>
-					<th class="table-head">Sucursal</th>
-					<th class="table-head">Estatus</th>
-					<th class="table-head">Acción</th>
+					<th >Contrato</th>
+					<th >Emisión</th>
+					<th >Sucursal</th>
+					<th >Puntos</th>
+					<th >Valor Pto.</th>
+					<th >Estatus</th>
+					<th >Observaciones</th>
+					<th >En STIL</th>
+					<th >Acción</th>
 				</tr>
 			</thead>
 			<tbody class="table table-active">
-				<tr>
-					
-				</tr>
+
+					<?php 
+					while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){ ?>
+						<tr>
+							<th ><?php echo $fila['contrato']  ?> </th>
+							<th ><?php echo $fila['emision']  ?></th>
+							<th ><?php echo $fila['sucursal']  ?></th>
+							<th ><?php echo $fila['tot_ptos_cont']  ?></th>
+							<th ><?php echo $fila['val_pto_cont']  ?></th>
+							<th ><?php echo $fila['estatus']  ?></th>
+							<th ><?php echo $fila['observaciones']  ?></th>
+							<th ><input type="checkbox"></th>
+							<th ><a href="#" type="button" class="btn btn-info"><i class="fas fa-edit"></i> Editar</a></th>
+						</tr>
+					<?php } ?>
+
 			</tbody>
 		</table>
 	</div>
