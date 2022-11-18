@@ -100,7 +100,7 @@
             </div>
             -->
             <!-- Password input -->
-            <div class="form-outline mb-4">
+            <div class="col-md-6 mb-4">
 
               <label class="form-label" for="clave_usuario">Password</label>
               <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
