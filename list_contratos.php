@@ -1,3 +1,16 @@
+<?php
+	include("db.php");
+	include("Scripts/consultas_varias.php");
+?>
+
+<?php
+	$sql="select contrato,emision,s.nombre_suc as sucursal,tot_ptos_cont,val_pto_cont,estatus,observaciones from contratos c
+	inner join sucursales s on s.cod_suc=c.doc_suc_cont";
+
+	$resultado = $conn->prepare($sql);
+	$resultado->execute();
+ ?>
+
 <div class="container py-3" name="lista_contratos" id="lista_contratos">
 	<div class="row">
 		<div class="d-flex justify-content-center bg-primary text-white ">
