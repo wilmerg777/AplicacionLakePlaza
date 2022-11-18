@@ -194,7 +194,7 @@
 	}
 
 		if ($_POST['guardar_form']==7) { // contratos
-			$contrato = $_POST['contrato'];
+			$contrato = strtoupper($_POST['contrato']);
 			$fch_venta = $_POST['fch_venta'];
 			$moneda_condic = $_POST['moneda_condic']; 
 			$tasa = $_POST['tasa'];
@@ -221,9 +221,13 @@
 			$val_contrato = $_POST['val_contrato'];
 			$observaciones = $_POST['observaciones'];
 
-	 		$query = "insert into contratos(contrato,emision,moneda,tasa,cod_prod_cont,cod_prog_cont,cod_oper_cont,doc_suc_cont,titular1,titular2,
-				tot_ptos_cont,val_pto_cont,val_pto_comis_cont,porcent_desc_cont,monto_desc_cont,valor_contrato,mtto_anio1,
-				gast_adm_cont,miscelaneos_cont,valot_total_cont,inicial_mesa,inicial_diferida,Capital_espec,
+	 		$query = "insert into contratos(
+	 		contrato,emision,moneda,tasa,cod_prod_cont,
+	 		cod_prog_cont,cod_oper_cont,doc_suc_cont,
+	 		titular1,titular2,tot_ptos_cont,val_pto_cont,
+	 		val_pto_comis_cont,porcent_desc_cont,monto_desc_cont,
+	 		valor_contrato,mtto_anio1,gast_adm_cont,miscelaneos_cont,
+	 		valot_total_cont,inicial_mesa,inicial_diferida,Capital_espec,
 				capital_normal,valor_contrato_dist,observaciones) values (
 				'$contrato',
 				'$fch_venta',
