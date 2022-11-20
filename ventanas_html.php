@@ -592,7 +592,7 @@
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
 					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i>  Contrato:</label>
-					<input type="text" class="form-control text-uppercase fs-6" name="contrato" id="contrato" value="65464">
+					<input type="text" class="form-control text-uppercase fs-6" name="contrato" id="contrato" >
 				</div>			
 			</div>
 			<div class="col p-2" >
