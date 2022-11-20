@@ -14,8 +14,7 @@
 	}
 ?>
 
-
- <!-- Maestro Productos -->
+<!-- Maestro Productos -->
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; } ?>">
 	<div class="row">
 		<div class="col-md-4">
@@ -576,12 +575,12 @@
 <!-- Div contratos -->
 <div class="container bg-primary rounded <?php if ($Tip_form_maestro<>'contrato' ) { echo $ocultar ; } ?>" name="form_contrato">
 	<div class="row align-content-center mt-1 rounded">
-		<div class="col-11">
+		<div class="col-11" id="titulo_contratos_pendientes">
 			<h2 class="text-center">Registro de Contrato</h2>
 		</div>
 		<div class="col-1 mt-2">
-			<button type="button" class="btn btn-success position-relative">
-  			Alerts <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-warning p-2"><span class="visually-hidden">Avisos pendientes</span></span>
+			<button type="button" class="btn btn-success position-relative" >
+  			Alerts <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-warning p-2" ><span class="visually-hidden">Avisos pendientes</span></span>
 			</button>
 
 		</div>
@@ -593,7 +592,7 @@
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
 					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i>  Contrato:</label>
-					<input type="text" class="form-control text-uppercase fs-6" name="contrato" id="contrato">
+					<input type="text" class="form-control text-uppercase fs-6" name="contrato" id="contrato" value="65464">
 				</div>			
 			</div>
 			<div class="col p-2" >
@@ -693,21 +692,22 @@
 		<div class="form-row  bg-info text-center "><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
 		</div>
 		<div class="row">
-			<div class="col p-2">				<div class="input-group  ">
+			<div class="col p-2">
+				<div class="input-group  ">
 					<label for="tot_puntos" class="input-group-text " >Total Puntos:</label>
-					<input type="text" class="form-control" name="tot_puntos" placeholder="00000">
+					<input type="text" class="form-control" name="tot_puntos" placeholder="00000" >
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="val_pto" class="input-group-text " >Valor Pto:</label>
-					<input type="text" class="form-control" name="val_pto">
+					<input type="text" class="form-control" name="val_pto" id="val_pto">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="pto_comici" class="input-group-text " >Pto. Comisc:</label>
-					<input type="text" class="form-control" name="pto_comici">
+					<input type="text" class="form-control" name="pto_comici" id="pto_comici">
 				</div>
 			</div>
 			<div class="col p-2">
