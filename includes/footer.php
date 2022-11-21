@@ -6,7 +6,7 @@
 	  -->
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!-- Jquery JS file -->
-  <script src="js/miscripts.js" defer></script>
+  <script src="js_r/miscripts.js" defer></script>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
 

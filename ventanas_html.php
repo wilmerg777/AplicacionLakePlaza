@@ -585,7 +585,7 @@
 		</div>
 	<hr size=8>
 	</div>	
-	<form action="guardardatos.php " method="post" class="row" >
+	<form action="guardardatos.php " method="post" class="row" id="form_contratos">
 		<input type="text" name="guardar_form" value="7" hidden>
 		<div class="row">
 			<div class="col 	p-2 " >
@@ -670,9 +670,13 @@
 				<div class="input-group  ">
 					<label class="input-group-text " for="ced_titular1">Titular 1:</label>
 					<div class="col-2">
-						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" onchange="verificar_cedula();" placeholder="Cedula" required>
+						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" placeholder="Cedula" required>
 					</div>
-					<div class="lista"></div>
+
+
+					<div class="lista" id="lista"></div>
+
+
 					<input type="text" class="form-control" name="nom_titular1" id="nom_titular1" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular1" id="ape_titular1" placeholder="Apellido">
 				</div>

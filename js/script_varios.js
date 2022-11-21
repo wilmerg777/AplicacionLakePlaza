@@ -30,3 +30,17 @@
 	    }
 	}
 </script>
+
+
+
+function retorna_contrato(){
+	if (document.getElementById('contrato').value.length>7 || document.getElementById('contrato').value.length<6) {
+		
+		document.getElementById('contrato').classList.add('bg-warning')
+		document.getElementById('contrato').value="";
+		document.getElementById('contrato').focus();
+	}else {
+		document.getElementById('contrato').classList.remove('bg-warning')
+		document.getElementById('contrato').classList.add('bg-primary'  , 'text-white')
+	}
+}
