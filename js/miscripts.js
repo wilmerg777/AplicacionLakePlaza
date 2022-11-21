@@ -8,7 +8,7 @@ function retorna_contrato(){
 		document.getElementById('contrato').focus();
 	}else {
 		document.getElementById('contrato').classList.remove('bg-warning')
-		document.getElementById('contrato').classList.add('bg-primary')
+		document.getElementById('contrato').classList.add('bg-primary'  , 'text-white')
 	}
 }
 
@@ -17,13 +17,12 @@ function verificar_cedula(){
 
 	if (document.getElementById('ced_titular1')) {
 
-		let cedula1 = document.getElementById('ced_titular1')
-		let cod_php = "../Scripts/consultas_varias.php"
-		let formData = new FormData()
-
-		console.log(cedula1)
+		let cedula1 = document.getElementById('ced_titular1').value
+		let cod_php = "verificar_cedula.php"
+		let formData = new FormData();
 
 		formData.append('campo', cedula1)
+
 
 		fetch(cod_php, {
 			method: "POST",

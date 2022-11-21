@@ -670,8 +670,9 @@
 				<div class="input-group  ">
 					<label class="input-group-text " for="ced_titular1">Titular 1:</label>
 					<div class="col-2">
-						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" onchange="verificar_cedula();" placeholder="Cedula">
+						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" onchange="verificar_cedula();" placeholder="Cedula" required>
 					</div>
+					<div class="lista"></div>
 					<input type="text" class="form-control" name="nom_titular1" id="nom_titular1" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular1" id="ape_titular1" placeholder="Apellido">
 				</div>
