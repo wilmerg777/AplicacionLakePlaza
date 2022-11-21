@@ -218,7 +218,7 @@
 			$ini_diferida = $_POST['ini_diferida'];
 			$cap_especial = $_POST['cap_especial'];
 			$cap_normal = $_POST['cap_normal'];
-			$val_contrato = $_POST['val_contrato'];
+			$val_contrato_finan = $_POST['val_contrato_finan'];
 			$observaciones = $_POST['observaciones'];
 
 	 		$query = "insert into contratos(
@@ -253,7 +253,7 @@
 				$ini_diferida,
 				$cap_especial,
 				$cap_normal,				
-				$val_contrato,
+				$val_contrato_finan,
 				'$observaciones')";
 		$resultado = $conn->prepare($query);
 
@@ -262,7 +262,6 @@
 			$mensaje='Registro guardado correctamente!';
 			$tipo_mensaje="success";
 			} catch (Exception $e) {
-			//die("Errorx: " . $e->getMessage() );
 			$error = "Error: " . $e->getMessage() ;
 			$mensaje='Problemas al guardar :<br>'.$error;
 			$tipo_mensaje="danger";

@@ -13,7 +13,6 @@
 		}
 	}
 ?>
-
 <!-- Maestro Productos -->
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; } ?>">
 	<div class="row">
@@ -24,7 +23,7 @@
 					<input type="text" name="guardar_form" value="4" hidden>
 					<label class="form-label " for="cod_prod">Código del producto:</label>
 					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_prod" class="form-control " placeholder="Ejm: TP001" autofocus>
+						<input type="text" name="cod_prod" class="form-control " placeholder="Ejm: TP001" >
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="nom_prod">Nomdre del producto:</label>
@@ -90,7 +89,7 @@
 					<input type="text" name="guardar_form" value="5" hidden>
 					<label class="form-label " for="cod_prog_vta">Código del Programa:</label>
 					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_prog_vta" id="cod_prog_vta" class="form-control " placeholder="Ejm: IH001" autofocus>
+						<input type="text" name="cod_prog_vta" id="cod_prog_vta" class="form-control " placeholder="Ejm: IH001" >
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="nom_prog_vta">Nomdre del programa:</label>
@@ -154,7 +153,7 @@
 					<input type="text" name="guardar_form" value="1" hidden>
           <div class="form-outline mb-4">
 						<label class="form-label" for="codUser">Código del usuario:</label>
-						<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" autofocus>
+						<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" >
 					</div>
           <div class="form-outline mb-4">
 						<label class="form-label" for="usuario">Usuario:</label>
@@ -218,7 +217,7 @@
 					<input type="text" name="guardar_form" value="2" hidden>
 					<label class="form-label " for="cod_afil_natu">Código del Afiliado (cédula):</label>
 					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_afil_natu" class="form-control " placeholder="Ejm: 19.999.999" autofocus>
+						<input type="text" name="cod_afil_natu" class="form-control " placeholder="Ejm: 19.999.999" >
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="nom_afil_natu">Nomdres:</label>
@@ -333,7 +332,7 @@
 					<input type="text" name="guardar_form" value="3" hidden>
 					<label class="form-label " for="cod_afil_jurid">Código de la Empresa (RIF):</label>
 					<div class="form-outline mb-4 col-md-6">
-						<input type="text" name="cod_afil_jurid" class="form-control " placeholder="Ejm: J-09999999-1" autofocus>
+						<input type="text" name="cod_afil_jurid" class="form-control " placeholder="Ejm: J-09999999-1" >
 					</div>
 					<div class="form-outline mb-4 col-md-10 ">
 						<label class="form-label " for="nom_afil_jurid">Nombre:</label>
@@ -436,7 +435,7 @@
 					<input type="text" name="guardar_form" value="6" hidden>
 					<label class="form-label " for="cod_cond_vta">Identificador de la condición:</label>
 					<div class="form-outline mb-4 col-md-4 ">
-						<input type="text" name="cod_cond_vta" class="form-control " placeholder="Ejm: TP001" autofocus >
+						<input type="text" name="cod_cond_vta" class="form-control " placeholder="Ejm: TP001"  >
 					</div>
 					<div class="input-group  col-md-3 mb-sm-3">
 						<?php 
@@ -579,7 +578,7 @@
 			<h2 class="text-center">Registro de Contrato</h2>
 		</div>
 		<div class="col-1 mt-2">
-			<button type="button" class="btn btn-success position-relative" >
+			<button type="button" class="btn btn-success position-relative" onclick="prueba1('boton');">
   			Alerts <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-warning p-2" ><span class="visually-hidden">Avisos pendientes</span></span>
 			</button>
 
@@ -592,14 +591,14 @@
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
 					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i>  Contrato:</label>
-					<input type="text" class="form-control text-uppercase fs-6" name="contrato" id="contrato" >
+					<input autofocus type="text" class="form-control text-uppercase fs-6 " name="contrato" id="contrato"  >
 				</div>			
 			</div>
 			<div class="col p-2" >
 				<div class="col-9">
 				<div class="input-group ">
 					<label class="input-group-text "><i class="fas fa-calendar-check"></i> Emisión:</label>
-					<input type="date" class="form-control" name="fch_venta">
+					<input type="date" class="form-control" name="fch_venta" id="fch_venta" onfocus="retorna_contrato();">
 				</div>
 				</div>		
 			</div>
@@ -671,17 +670,17 @@
 				<div class="input-group  ">
 					<label class="input-group-text " for="ced_titular1">Titular 1:</label>
 					<div class="col-2">
-						<input type="text" class="form-control" name="ced_titular1" placeholder="Cedula">
+						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" onchange="verificar_cedula();" placeholder="Cedula">
 					</div>
-					<input type="text" class="form-control" name="nom_titular1" placeholder="Nombre">
-					<input type="text" class="form-control" name="ape_titular1" placeholder="Apellido">
+					<input type="text" class="form-control" name="nom_titular1" id="nom_titular1" placeholder="Nombre">
+					<input type="text" class="form-control" name="ape_titular1" id="ape_titular1" placeholder="Apellido">
 				</div>
 			</div>
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
 					<label class="input-group-text " for="ced_titular2">Titular 2:</label>
 					<div class="col-2">
-						<input type="text" class="form-control" name="ced_titular2" placeholder="Cedula">
+						<input type="text" class="form-control" name="ced_titular2" id="ced_titular2" placeholder="Cedula">
 					</div>
 					<input type="text" class="form-control" name="nom_titular2" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular2" placeholder="Apellido">
@@ -784,8 +783,8 @@
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
-					<label for="val_contrato" class="input-group-text " >Valor Contrato:</label>
-					<input type="text" class="form-control" name="val_contrato">
+					<label for="val_contrato_finan" class="input-group-text " >Valor Contrato:</label>
+					<input type="text" class="form-control" name="val_contrato_finan">
 				</div>
 			</div>
 		</div>
