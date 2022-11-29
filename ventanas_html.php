@@ -578,7 +578,7 @@
 			<h2 class="text-center">Registro de Contrato</h2>
 		</div>
 		<div class="col-1 mt-2">
-			<button type="button" class="btn btn-success position-relative" onclick="prueba1('boton');">
+			<button type="button" class="btn btn-success position-relative"  id="avisos">
   			Alerts <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-warning p-2" ><span class="visually-hidden">Avisos pendientes</span></span>
 			</button>
 
@@ -605,7 +605,7 @@
 			<div class="col p-2" >
 				<div class="input-group ">
 					<span class="input-group-text ">Moneda:</span>
-					<select name="moneda_condic" id="moneda_condic" disabled>
+					<select name="moneda_condic_cont" id="moneda_condic_cont" disabled>
 						<option value="US$" selected>US$</option>
 						<option value="BS." disabled>Bs.</option>
 					</select>
@@ -624,7 +624,7 @@
 				<div class="input-group  ">
 					<?php 
 						$label = '<span class="input-group-text" >Producto:</span>';
-						$name = 'cod_prod_vta';
+						$name = 'cod_prod_cont';
 						$campos=array('cod_prod','nombre');
 						echo cargar_inputs('productos', $campos, $label, $name , $conn);
 					?>
@@ -635,7 +635,7 @@
 					<div class="input-group ">
 						<?php 
 							$label = '<span class="input-group-text" >Operativo:</span>';
-							$name = 'cod_oper_vta';
+							$name = 'cod_oper_cont';
 							$campos=array('cod_oper','nombre_oper');
 							echo cargar_inputs('operativos', $campos, $label, $name , $conn); 
 						?>
@@ -655,7 +655,7 @@
 				<div class="input-group ">
 						<?php 
 							$label = '<span class="input-group-text" >Programa:</span>';
-							$name = 'cod_prog_vta';
+							$name = 'cod_prog_cont';
 							$campos=array('cod_prog','nombre_prog');
 							echo cargar_inputs('prog_ventas', $campos, $label, $name , $conn); 
 						?>

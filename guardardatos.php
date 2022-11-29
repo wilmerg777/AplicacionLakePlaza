@@ -196,12 +196,12 @@
 		if ($_POST['guardar_form']==7) { // contratos
 			$contrato = strtoupper($_POST['contrato']);
 			$fch_venta = $_POST['fch_venta'];
-			$moneda_condic = $_POST['moneda_condic']; 
+			$moneda_condic = $_POST['moneda_condic_cont']; 
 			$tasa = $_POST['tasa'];
-			$cod_prod_vta = $_POST['cod_prod_vta'];
-			$cod_oper_vta = $_POST['cod_oper_vta'];
+			$cod_prod_vta = $_POST['cod_prod_cont'];
+			$cod_oper_vta = $_POST['cod_oper_cont'];
 			$sucursal = $_POST['sucursal'];
-			$cod_prog_vta = $_POST['cod_prog_vta'];
+			$cod_prog_vta = $_POST['cod_prog_cont'];
 			$ced_titular1 = $_POST['ced_titular1']; 
 			$ced_titular2 = $_POST['ced_titular2'];
 			$tot_puntos = $_POST['tot_puntos'];
