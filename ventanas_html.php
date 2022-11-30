@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card card-body">
-				<form action="guardardatos.php" method="post">
+				<form action="guardardatos.php" method="post" id="form_productos">
 					<h3>Registro de Productos</h3><br>
 					<input type="text" name="guardar_form" value="4" hidden>
 					<label class="form-label " for="cod_prod">Código del producto:</label>
@@ -84,7 +84,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card card-body">
-				<form action="guardardatos.php" method="post">
+				<form action="guardardatos.php" method="post" id="form_programas_ventas">
 					<h3>Registro de Programas de Ventas</h3><br>
 					<input type="text" name="guardar_form" value="5" hidden>
 					<label class="form-label " for="cod_prog_vta">Código del Programa:</label>
@@ -148,7 +148,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card card-body">
-				<form action="guardardatos.php" method="POST" >
+				<form action="guardardatos.php" method="POST" id="form_usuarios">
 					<h3>Registro de Usuarios</h3><br>
 					<input type="text" name="guardar_form" value="1" hidden>
           <div class="form-outline mb-4">
@@ -212,7 +212,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card card-body">
-				<form action="guardardatos.php" method="post">
+				<form action="guardardatos.php" method="post" id="form_afil_nat">
 					<h3>Registro de Afiliado Natural</h3><br>
 					<input type="text" name="guardar_form" value="2" hidden>
 					<label class="form-label " for="cod_afil_natu">Código del Afiliado (cédula):</label>
@@ -327,7 +327,7 @@
 
 
 			<div class="card card-body">
-				<form action="guardardatos.php" method="post">
+				<form action="guardardatos.php" method="post" id="form_afil_jur">
 					<h3>Registro de Afiliado Jurídico</h3><br>
 					<input type="text" name="guardar_form" value="3" hidden>
 					<label class="form-label " for="cod_afil_jurid">Código de la Empresa (RIF):</label>
@@ -430,7 +430,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card card-body">
-				<form action="guardardatos.php" method="post" >
+				<form action="guardardatos.php" method="post" id="form_cond_ventas">
 					<h3>Registro de Condiciones de ventas</h3><br>
 					<input type="text" name="guardar_form" value="6" hidden>
 					<label class="form-label " for="cod_cond_vta">Identificador de la condición:</label>
