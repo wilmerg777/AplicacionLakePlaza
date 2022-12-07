@@ -3,9 +3,14 @@ console.log('entrando');
 // console.log(d);
 
 d.addEventListener('focusout',(e)=>{
+	//console.log(e)
 	let elemento = e.target;
-	if (elemento.id=='ced_titular1')
-		getCedula(elemento.value)
+	if (elemento.id.substring(0,11)=='ced_titular')
+		console.log(elemento.id.substring(0,11))
+		let cedula_tit= 'ced_titular'+elemento.id.substring(11)
+		let nom_tit = 'nom_titular'+elemento.id.substring(11)
+		let ape_tit = 'ape_titular'+elemento.id.substring(11)
+		getCedula(elemento.value,cedula_tit,nom_tit,ape_tit)
 		//console.log(elemento.value + " elemento disparador");
 },false);
 
@@ -36,7 +41,7 @@ function retorna_contrato(){
 }
 
 
-function getCedula(cedula){
+function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
 
 	//let cedula1 = document.getElementById('ced_titular1').value
 	let ced = cedula
@@ -53,8 +58,9 @@ function getCedula(cedula){
 		mode: "cors"
 	}).then(response => response.json())
 	.then(data=> {
-		document.getElementById('nom_titular1').value=(data[0].nombre_afil_natu)
+		document.getElementById(nom_tit).value=(data[0].nombre_afil_natu)
 		document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
+		document.getElementById('ced_titular2').focus()
 
 	})
 	.catch(err => console.log(err))
