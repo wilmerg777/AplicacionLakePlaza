@@ -598,7 +598,7 @@
 				<div class="col-9">
 				<div class="input-group ">
 					<label class="input-group-text "><i class="fas fa-calendar-check"></i> Emisión:</label>
-					<input type="date" class="form-control" name="fch_venta" id="fch_venta" onfocus="retorna_contrato();">
+					<input type="date" class="form-control" name="fch_venta" id="fch_venta" >
 				</div>
 				</div>		
 			</div>

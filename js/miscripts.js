@@ -1,5 +1,6 @@
 let d = document;
-console.log('entrando');
+let now = new  Date().toLocaleDateString('es-ve', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+console.log('entrando: '+now);
 // console.log(d);
 
 d.addEventListener('focusout',(e)=>{
@@ -12,6 +13,9 @@ d.addEventListener('focusout',(e)=>{
 		let ape_tit = 'ape_titular'+elemento.id.substring(11)
 		getCedula(elemento.value,cedula_tit,nom_tit,ape_tit)
 		//console.log(elemento.value + " elemento disparador");
+
+	if (elemento.id=='contrato')
+		retorna_contrato(elemento.value)
 },false);
 
 d.addEventListener('click',(e)=>{
@@ -26,14 +30,16 @@ d.addEventListener('click',(e)=>{
 
 //document.getElementById('form_contratos')
 
-function retorna_contrato(){
-	let contrato = document.getElementById('contrato')
+function retorna_contrato(valor){
 
-	if (contrato.value.length>7 || contrato.value.length<6 || contrato.value.length==0) {
+	let nuevo_contrato = valor ;
+	console.log(nuevo_contrato.length) ;
+
+	if (nuevo_contrato.length>7 || nuevo_contrato.length<6 || nuevo_contrato.length==0) {
 		
 		document.getElementById('contrato').classList.add('bg-warning')
 		document.getElementById('contrato').value="";
-		document.getElementById('contrato').focus();
+		document.getElementById('contrato').focus;
 	}else {
 		document.getElementById('contrato').classList.remove('bg-warning')
 		document.getElementById('contrato').classList.add('bg-primary'  , 'text-white')
@@ -42,6 +48,10 @@ function retorna_contrato(){
 
 
 function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
+
+	let prueba = fetch ('index.php')
+
+	console.log(prueba);
 
 	//let cedula1 = document.getElementById('ced_titular1').value
 	let ced = cedula
@@ -66,5 +76,3 @@ function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
 	.catch(err => console.log(err))
 
 }
-
-
