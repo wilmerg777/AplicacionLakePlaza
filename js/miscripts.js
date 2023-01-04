@@ -4,14 +4,14 @@ console.log('entrando: '+now);
 // console.log(d);
 
 d.addEventListener('focusout',(e)=>{
-	//console.log(e)
+	//console.log(e.target.name)
 	let elemento = e.target;
 	if (elemento.id.substring(0,11)=='ced_titular')
-		console.log(elemento.id.substring(0,11))
-		let cedula_tit= 'ced_titular'+elemento.id.substring(11)
-		let nom_tit = 'nom_titular'+elemento.id.substring(11)
-		let ape_tit = 'ape_titular'+elemento.id.substring(11)
-		getCedula(elemento.value,cedula_tit,nom_tit,ape_tit)
+		// console.log(elemento.id.substring(0,11))
+		// let cedula_tit = 'ced_titular'+elemento.id.substring(11);
+		// let nom_tit = 'nom_titular'+elemento.id.substring(11)
+		// let ape_tit = 'ape_titular'+elemento.id.substring(11)
+		// getCedula(elemento.value,cedula_tit,nom_tit,ape_tit)
 		//console.log(elemento.value + " elemento disparador");
 
 	if (elemento.id=='contrato')
@@ -24,7 +24,13 @@ d.addEventListener('click',(e)=>{
 		alert('Funcion en construcción');
 	}
 
+	if (elemento.id==='guardar_contrato') {
+		alert('Verificar todos los campos del formulario');
+		e.preventDefault();
+	}
+
 });
+
 
 //document.getElementById('ced_titular1').addEventListener("blur", getCedula)
 
@@ -33,7 +39,7 @@ d.addEventListener('click',(e)=>{
 function retorna_contrato(valor){
 
 	let nuevo_contrato = valor ;
-	console.log(nuevo_contrato.length) ;
+	//console.log(nuevo_contrato.length) ;
 
 	if (nuevo_contrato.length>7 || nuevo_contrato.length<6 || nuevo_contrato.length==0) {
 		
@@ -48,10 +54,6 @@ function retorna_contrato(valor){
 
 
 function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
-
-	let prueba = fetch ('index.php')
-
-	console.log(prueba);
 
 	//let cedula1 = document.getElementById('ced_titular1').value
 	let ced = cedula
@@ -68,10 +70,11 @@ function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
 		mode: "cors"
 	}).then(response => response.json())
 	.then(data=> {
-		document.getElementById(nom_tit).value=(data[0].nombre_afil_natu)
-		document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
-		document.getElementById('ced_titular2').focus()
-
+			
+			document.getElementById(nom_tit).value=(data[0].nombre_afil_natu)
+			document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
+			document.getElementById('ced_titular2').focus()
+		
 	})
 	.catch(err => console.log(err))
 

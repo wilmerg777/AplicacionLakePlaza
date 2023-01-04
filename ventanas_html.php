@@ -834,7 +834,7 @@
 		</div>
 		<div class="row ">
 			<div class="col p-2 text-center">
-				<button type="submit" class="btn btn-secondary btn-lg" name="guardar" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
+				<button type="submit" class="btn btn-secondary btn-lg" name="guardar_contrato" id="guardar_contrato" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
 	</form>
 </div>
 
