@@ -25,6 +25,8 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <!-- ICON AWESOME -->
   <link rel="stylesheet" href="css/all.min.css" >
+  <!-- Estilos propios -->  
+  <link rel="stylesheet" href="css/estilo_propio.css" >
   <!-- Icon page -->
 	<link rel="icon"  href="images/logo_lake.ico">
 

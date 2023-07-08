@@ -693,13 +693,13 @@
 			</div>
 		</div>
 		<hr>
-		<div class="form-row  bg-info text-center "><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
+		<div class="form-row  bg-info text-center " onclick="haciendoClic(event)"><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
 		</div>
 		<div  id="esq_venta" class="row">
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="tot_puntos" class="input-group-text " >Total Puntos:</label>
-					<input type="number" class="form-control" name="tot_puntos" id="tot_puntos" placeholder="00000" value="500" onblur='mostrar_puntos();' >
+					<input type="number" class="form-control" name="tot_puntos" id="tot_puntos" placeholder="00000" value="500" onfocus="mostrar_puntos();" onblur='saliendo_foco_input();' >
 				</div>
 			</div>
 			<div class="col p-2">
