@@ -585,7 +585,7 @@
 		</div>
 	<hr size=8>
 	</div>	
-	<form action="guardardatos.php " method="post" class="row" id="form_contratos">
+	<form action="#" method="post" class="row" id="form_contratos">
 		<input type="text" name="guardar_form" value="7" hidden>
 		<div class="row">
 			<div class="col 	p-2 " >
@@ -595,7 +595,7 @@
 				</div>			
 			</div>
 			<div class="col p-2" >
-				<div class="col-9">
+				<div class="col-12">
 				<div class="input-group ">
 					<label class="input-group-text "><i class="fas fa-calendar-check"></i> Emisión:</label>
 					<input type="date" class="form-control" name="fch_venta" id="fch_venta" >
@@ -693,7 +693,7 @@
 			</div>
 		</div>
 		<hr>
-		<div class="form-row  bg-info text-center " onclick="haciendoClic(event)"><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
+		<div class="form-row  bg-info text-center " ><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
 		</div>
 		<div  id="esq_venta" class="row">
 			<div class="col p-2">

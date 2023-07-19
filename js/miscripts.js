@@ -14,11 +14,12 @@ d.addEventListener('focusout',(e)=>{
 		// getCedula(elemento.value,cedula_tit,nom_tit,ape_tit)
 		//console.log(elemento.value + " elemento disparador");
 
+
 	if (elemento.id=='contrato')
 		retorna_contrato(elemento.value)
 },false);
 
-d.addEventListener('click',(e)=>{
+/*d.addEventListener('click',(e)=>{
 	let elemento = e.target;
 	if (elemento.id==='avisos') {
 		alert('Funcion en construcción');
@@ -29,17 +30,13 @@ d.addEventListener('click',(e)=>{
 		e.preventDefault();
 	}
 
-});
+});*/
 
-
-//document.getElementById('ced_titular1').addEventListener("blur", getCedula)
-
-//document.getElementById('form_contratos')
 
 function retorna_contrato(valor){
 
 	let nuevo_contrato = valor ;
-	//console.log(nuevo_contrato.length) ;
+
 
 	if (nuevo_contrato.length>7 || nuevo_contrato.length<6 || nuevo_contrato.length==0) {
 		
@@ -55,7 +52,6 @@ function retorna_contrato(valor){
 
 function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
 
-	//let cedula1 = document.getElementById('ced_titular1').value
 	let ced = cedula
 	let lista = document.getElementById('lista')
 
@@ -78,4 +74,17 @@ function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
 	})
 	.catch(err => console.log(err))
 
+}
+
+
+if (!!document.getElementById('form_contratos')) {
+	const formContratos = document.getElementById('form_contratos');
+
+	formContratos.addEventListener('submit', e => {
+		e.preventDefault();
+		const data = Object.fromEntries(
+				new FormData(e.target)
+			)
+		alert(JSON.stringify(data))
+	});
 }

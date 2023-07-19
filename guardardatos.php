@@ -193,7 +193,7 @@
 
 	}
 
-		if ($_POST['guardar_form']==7) { // contratos
+		if ($_POST['guardar_form']==8) { // contratos
 			$contrato = strtoupper($_POST['contrato']);
 			$fch_venta = $_POST['fch_venta'];
 			$moneda_condic = $_POST['moneda_condic_cont']; 
