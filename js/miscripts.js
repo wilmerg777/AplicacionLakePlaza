@@ -67,13 +67,12 @@ function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
 	}).then(response => response.json())
 	.then(data=> {
 			
-			document.getElementById(nom_tit).value=(data[0].nombre_afil_natu)
-			document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
-			document.getElementById('ced_titular2').focus()
+		document.getElementById(nom_tit).value=(data[0].nombre_afil_natu)
+		document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
+		document.getElementById('ced_titular2').focus()
 		
 	})
 	.catch(err => console.log(err))
-
 }
 
 
