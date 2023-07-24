@@ -44,7 +44,7 @@ document.getElementById('avisos').addEventListener('click',(e)=>{
 });
 
 function retorna_contrato(e){
-	console.log(e) ;
+	//console.log(e) ;
 	let nuevo_contrato = e.value.trim() ;
 
 	if (nuevo_contrato.length!=7 ) {
@@ -61,16 +61,15 @@ function retorna_contrato(e){
 }
 
 
-function getCedula(cedula, cualTitular){
+function getCedula(valCedula, elemento){
 
-	//let cedula1 = document.getElementById('ced_titular1').value
-	let ced = cedula
+	let ced = valCedula
 	let lista = document.getElementById('lista')
 
 	let cod_php = "verificar_campo.php"
 	let formData = new FormData()
 
-	formData.append('campo', cualTitular)
+	formData.append('elemento', elemento)
 	formData.append('valor', ced)
 
 	fetch(cod_php, {
@@ -79,7 +78,7 @@ function getCedula(cedula, cualTitular){
 		mode: "cors"
 	}).then(response => response.json())
 	.then(data=> {
-			if (cualTitular=="ced_titular1") {
+			if (elemento=="ced_titular1") {
 				document.getElementById('nom_titular1').value=(data[0].nombre_afil_natu)
 				document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
 				document.getElementById('ced_titular2').focus()
