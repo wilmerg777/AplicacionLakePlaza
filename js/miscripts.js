@@ -1,68 +1,77 @@
-let d = document;
 let now = new  Date().toLocaleDateString('es-ve', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
-console.log('entrando: '+now);
-// console.log(d);
+console.log('entrando: '+ now);
 
-d.addEventListener('focusout',(e)=>{
-	//console.log(e.target.name)
-	let elemento = e.target;
-	if (elemento.id.substring(0,11)=='ced_titular')
-		// console.log(elemento.id.substring(0,11))
-		// let cedula_tit = 'ced_titular'+elemento.id.substring(11);
-		// let nom_tit = 'nom_titular'+elemento.id.substring(11)
-		// let ape_tit = 'ape_titular'+elemento.id.substring(11)
-		// getCedula(elemento.value,cedula_tit,nom_tit,ape_tit)
-		//console.log(elemento.value + " elemento disparador");
+const formContrato = document.querySelectorAll("#form_contratos input");
 
-	if (elemento.id=='contrato')
-		retorna_contrato(elemento.value)
-},false);
+const validarInput = (e)=>{
+	//console.log(e.target.id);
+	let campoValidar = e.target.id;
+	let campoValor = e.target.value;
+	switch (campoValidar) {
+		case 'contrato':
+				console.log("Validando "+  e.target.id + " " + campoValor);
+				retorna_contrato(e.target)
+			break;
+		case 'fch_venta':
+				console.log("Validando " + e.target.id + " " + campoValor);
+			break;
+		case 'ced_titular1':
+			console.log("Validando "+ e.target.id + " " + campoValor);
+			getCedula(campoValor,campoValidar);
+			break;
+		case 'ced_titular2':
+			console.log("Validando "+ e.target.id + " " + campoValor);
+			getCedula(campoValor,campoValidar);
+			break;
+		default:
+			console.log("Otro campo no especificado");
+			// statements_def
+			break;
+	}
+};
 
-d.addEventListener('click',(e)=>{
+formContrato.forEach(e =>{
+	e.addEventListener('focusout', validarInput);
+	
+});
+
+document.getElementById('avisos').addEventListener('click',(e)=>{
 	let elemento = e.target;
 	if (elemento.id==='avisos') {
-		alert('Funcion en construcción');
-	}
-
-	if (elemento.id==='guardar_contrato') {
-		alert('Verificar todos los campos del formulario');
-		e.preventDefault();
+		alert('Funcion en construcción ');
 	}
 
 });
 
+function retorna_contrato(e){
+	console.log(e) ;
+	let nuevo_contrato = e.value.trim() ;
 
-//document.getElementById('ced_titular1').addEventListener("blur", getCedula)
-
-//document.getElementById('form_contratos')
-
-function retorna_contrato(valor){
-
-	let nuevo_contrato = valor ;
-	//console.log(nuevo_contrato.length) ;
-
-	if (nuevo_contrato.length>7 || nuevo_contrato.length<6 || nuevo_contrato.length==0) {
+	if (nuevo_contrato.length!=7 ) {
 		
-		document.getElementById('contrato').classList.add('bg-warning')
-		document.getElementById('contrato').value="";
-		document.getElementById('contrato').focus;
+		e.classList.add('bg-warning')
+			e.classList.remove('bg-primary'  , 'text-white')
+			e.value=""
+			e.focus;
 	}else {
-		document.getElementById('contrato').classList.remove('bg-warning')
-		document.getElementById('contrato').classList.add('bg-primary'  , 'text-white')
+		e.classList.remove('bg-warning')
+		e.classList.add('bg-primary'  , 'text-white');
+
 	}
 }
 
 
-function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
+function getCedula(cedula, cualTitular){
 
 	//let cedula1 = document.getElementById('ced_titular1').value
 	let ced = cedula
 	let lista = document.getElementById('lista')
 
-	let cod_php = "verificar_cedula.php"
+	let cod_php = "verificar_campo.php"
 	let formData = new FormData()
 
-	formData.append('campo', ced)
+	formData.append('campo', cualTitular)
+	formData.append('valor', ced)
 
 	fetch(cod_php, {
 		method: "POST",
@@ -70,10 +79,15 @@ function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
 		mode: "cors"
 	}).then(response => response.json())
 	.then(data=> {
-			
-			document.getElementById(nom_tit).value=(data[0].nombre_afil_natu)
-			document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
-			document.getElementById('ced_titular2').focus()
+			if (cualTitular=="ced_titular1") {
+				document.getElementById('nom_titular1').value=(data[0].nombre_afil_natu)
+				document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
+				document.getElementById('ced_titular2').focus()
+			} else {
+				document.getElementById('nom_titular2').value=(data[0].nombre_afil_natu)
+				document.getElementById('ape_titular2').value=(data[0].apellido_afil_natu)
+				document.getElementById('tot_puntos').focus()
+			}
 		
 	})
 	.catch(err => console.log(err))
