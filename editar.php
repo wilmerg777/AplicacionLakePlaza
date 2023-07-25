@@ -493,7 +493,7 @@
 									$label = '<label class="form-label " for="cod_prod_vta">Producto:</label>';
 									$name = 'cod_prod_vta';
 									$campos=array('cod_prod','nombre');
-									echo cargar_inputs_update('productos', $campos, $label, $name , $conn); 
+									echo cargar_selects_update('productos', $campos, $label, $name , $conn); 
 								?>							
 							</div>
 							<div class="form-outline mb-3 col-10">
@@ -502,7 +502,7 @@
 									$name = 'cod_oper_vta';
 									$campos=array('cod_oper','nombre_oper');
 									$camp_cond="cod_oper";
-									echo cargar_inputs_update('operativos', $campos, $label, $name , $conn); 
+									echo cargar_selects_update('operativos', $campos, $label, $name , $conn); 
 								?>							
 							</div>
 							<div class="input-group  col-md-3 mb-sm-3 ">

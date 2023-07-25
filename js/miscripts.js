@@ -1,9 +1,10 @@
-let d = document;
 let now = new  Date().toLocaleDateString('es-ve', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
 console.log('entrando: '+now);
 // console.log(d);
 
-d.addEventListener('focusout',(e)=>{
+
+const validarCedula = document.getElementById('ced_titular1');
+	validarCedula.addEventListener('focusout',(e)=>{
 	//console.log(e.target.name)
 	let elemento = e.target;
 	if (elemento.id.substring(0,11)=='ced_titular')
@@ -19,18 +20,6 @@ d.addEventListener('focusout',(e)=>{
 		retorna_contrato(elemento.value)
 },false);
 
-/*d.addEventListener('click',(e)=>{
-	let elemento = e.target;
-	if (elemento.id==='avisos') {
-		alert('Funcion en construcción');
-	}
-
-	if (elemento.id==='guardar_contrato') {
-		alert('Verificar todos los campos del formulario');
-		e.preventDefault();
-	}
-
-});*/
 
 
 function retorna_contrato(valor){
@@ -75,15 +64,17 @@ function getCedula(cedula,cedula_tit,nom_tit,ape_tit){
 	.catch(err => console.log(err))
 }
 
+inpuntsContrato = document.querySelectorAll('form[id="form_contratos"] input');
+
+inpuntsContrato.forEach( (e)=> {
+	console.log(e.id);
+
+});
 
 if (!!document.getElementById('form_contratos')) {
 	const formContratos = document.getElementById('form_contratos');
 
 	formContratos.addEventListener('submit', e => {
 		e.preventDefault();
-		const data = Object.fromEntries(
-				new FormData(e.target)
-			)
-		alert(JSON.stringify(data))
 	});
 }
