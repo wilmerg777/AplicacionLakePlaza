@@ -586,7 +586,9 @@
 	<hr size=8>
 	</div>	
 	<form action="#" method="post" class="row" id="form_contratos">
+
 		<input type="text" name="guardar_form" value="7" hidden id="guardar_form">
+
 		<div class="row">
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
@@ -673,9 +675,7 @@
 						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" placeholder="Cedula" required>
 					</div>
 
-
 					<div class="lista" id="lista"></div>
-
 
 					<input type="text" class="form-control" name="nom_titular1" id="nom_titular1" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular1" id="ape_titular1" placeholder="Apellido">
@@ -699,7 +699,7 @@
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="tot_puntos" class="input-group-text " >Total Puntos:</label>
-					<input type="number" class="form-control" name="tot_puntos" id="tot_puntos" placeholder="00000" value="500" onfocus="mostrar_puntos();" onblur='saliendo_foco_input();' >
+					<input type="number" class="form-control" name="tot_puntos" id="tot_puntos" placeholder="00000"  >
 				</div>
 			</div>
 			<div class="col p-2">
