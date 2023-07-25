@@ -585,8 +585,10 @@
 		</div>
 	<hr size=8>
 	</div>	
-	<form action="guardardatos.php " method="post" class="row" id="form_contratos">
-		<input type="text" name="guardar_form" id="guardar_form" value="7" hidden>
+	<input type="text" name="guardar_form" id="guardar_form" value="7" hidden>
+
+	<form action="#" method="post" class="row" id="form_contratos">
+
 		<div class="row">
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
@@ -673,9 +675,7 @@
 						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" placeholder="Cedula" required>
 					</div>
 
-
 					<div class="lista" id="lista"></div>
-
 
 					<input type="text" class="form-control" name="nom_titular1" id="nom_titular1" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular1" id="ape_titular1" placeholder="Apellido">
@@ -693,7 +693,7 @@
 			</div>
 		</div>
 		<hr>
-		<div class="form-row  bg-info text-center " onclick="haciendoClic(event)"><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
+		<div class="form-row  bg-info text-center " ><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
 		</div>
 		<div  id="esq_venta" class="row">
 			<div class="col p-2">
