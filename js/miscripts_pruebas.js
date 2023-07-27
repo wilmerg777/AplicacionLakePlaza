@@ -1,9 +1,8 @@
 
 function haciendoClic(e){
-	console.log(e.target.innerText)
-	//alert(e.target.innerText)
-
-	let cedulawil = '9349312'
+	//console.log(e.target.innerText)
+	alert(e.target.innerText)
+	let cedulawil = document.getElementById('ced_titular1').value;
 
 	const datos = new FormData();
 
@@ -24,23 +23,8 @@ function haciendoClic(e){
     body: datos // body data type must match "Content-Type" header
   
 	})
-	.then((respuesta) => respuesta.json())
-	.then((valores) => {console.log(valores)});
+	.then((respuesta) => respuesta);
+	//.then((valores) => {console.log(valores)});
 
 }
 
-
-fetch("flores.jpg")
-  .then(function (response) {
-    if (response.ok) {
-      response.blob().then(function (miBlob) {
-        var objectURL = URL.createObjectURL(miBlob);
-        miImagen.src = objectURL;
-      });
-    } else {
-      console.log("Respuesta de red OK pero respuesta HTTP no OK");
-    }
-  })
-  .catch(function (error) {
-    console.log("Hubo un problema con la petición Fetch:" + error.message);
-  });

@@ -5,6 +5,6 @@
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		} catch (Exception $e) {
-		die("Error: " . $e->getMessage() );
+		die("Error en la conexion, verifique los parametros: " . $e->getMessage() );
 	}
  ?>
