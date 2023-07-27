@@ -10,7 +10,7 @@ const validarInput = (e)=>{
 	switch (campoValidar) {
 		case 'contrato':
 				console.log("Validando "+  e.target.id + " " + campoValor);
-				retorna_contrato(e.target)
+				retorna_contrato(e);
 			break;
 		case 'fch_venta':
 				console.log("Validando " + e.target.id + " " + campoValor);
@@ -36,9 +36,9 @@ formContrato.forEach(e =>{
 	
 });
 
-function retorna_contrato(valor){
+function retorna_contrato(e){
 
-	let nuevo_contrato = valor ;
+	let nuevo_contrato = e.target.value ;
 
 
 	if (nuevo_contrato.length>7 || nuevo_contrato.length<6 || nuevo_contrato.length==0) {
@@ -49,8 +49,8 @@ function retorna_contrato(valor){
 			e.value=""
 			e.focus;
 	}else {
-		e.classList.remove('bg-warning')
-		e.classList.add('bg-primary'  , 'text-white');
+		e.target.classList.remove('bg-warning')
+		e.target.classList.add('bg-primary'  , 'text-white');
 
 	}
 }

@@ -5,13 +5,21 @@
 		$valor =	$_POST['valor'];
 
 
-		$sql = "select cod_afil_natu,nombre_afil_natu,apellido_afil_natu from
-		 afiliados_natu where cod_afil_natu like ? order by 1";
+		$sql = "select * from afiliados_natu  order by 1";
 		$resultado = $conn->prepare($sql);
-		$resultado->execute([$valor]);
-		$row = $resultado->fetchall(PDO::FETCH_ASSOC);
-		printf(json_encode($row));
+		if (!$resultado) {
+		    echo "Hay problemas en el script de la consulta";       // Si la preparación de la consulta falla
+		} elseif (!$resultado->execute([$valor])) {
+		    
 
+		   echo "Hay problemas en el script de la consulta"; 
 
+		} else {
+		    
+		    // Si la consulta se ejecuta correctamente
+			$row = $resultado->fetchall(PDO::FETCH_ASSOC);
+			printf(json_encode($row));
+		}
+		
 
  ?>
