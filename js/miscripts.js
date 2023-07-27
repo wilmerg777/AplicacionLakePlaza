@@ -30,7 +30,6 @@ const validarInput = (e)=>{
 	}
 };
 
-
 formContrato.forEach(e =>{
 	e.addEventListener('focusout', validarInput);
 	
@@ -38,17 +37,14 @@ formContrato.forEach(e =>{
 
 function retorna_contrato(e){
 
-	let nuevo_contrato = e.target.value ;
-
-
+	let nuevo_contrato = e.value ;
 	if (nuevo_contrato.length>7 || nuevo_contrato.length<6 || nuevo_contrato.length==0) {
-
-		
 		e.classList.add('bg-warning')
 			e.classList.remove('bg-primary'  , 'text-white')
 			e.value=""
 			e.focus;
 	}else {
+
 		e.target.classList.remove('bg-warning')
 		e.target.classList.add('bg-primary'  , 'text-white');
 
