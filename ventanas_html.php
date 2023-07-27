@@ -442,7 +442,7 @@
 							$label = '<span class="input-group-text" >Producto:</span>';
 							$name = 'cod_prod_vta';
 							$campos=array('cod_prod','nombre');
-							echo cargar_inputs('productos', $campos, $label, $name , $conn); 
+							echo cargar_selects('productos', $campos, $label, $name , $conn); 
 						?>
 					</div>
 					<div class="input-group  col-md-3 mb-3 ">
@@ -450,7 +450,7 @@
 							$label = '<span class="input-group-text" >Operativo:</span>';
 							$name = 'cod_oper_vta';
 							$campos=array('cod_oper','nombre_oper');
-							echo cargar_inputs('operativos', $campos, $label, $name , $conn); 
+							echo cargar_selects('operativos', $campos, $label, $name , $conn); 
 						?>
 					</div>
 					<div class="input-group  col-md-3 mb-3 ">
@@ -585,9 +585,9 @@
 		</div>
 	<hr size=8>
 	</div>	
-	<input type="text" name="guardar_form" id="guardar_form" value="7" hidden>
-
 	<form action="#" method="post" class="row" id="form_contratos">
+
+		<input type="text" name="guardar_form" value="7" hidden id="guardar_form">
 
 		<div class="row">
 			<div class="col 	p-2 " >
@@ -628,7 +628,7 @@
 						$label = '<span class="input-group-text" >Producto:</span>';
 						$name = 'cod_prod_cont';
 						$campos=array('cod_prod','nombre');
-						echo cargar_inputs('productos', $campos, $label, $name , $conn);
+						echo cargar_selects('productos', $campos, $label, $name , $conn);
 					?>
 				</div>			
 			</div>
@@ -639,7 +639,7 @@
 							$label = '<span class="input-group-text" >Operativo:</span>';
 							$name = 'cod_oper_cont';
 							$campos=array('cod_oper','nombre_oper');
-							echo cargar_inputs('operativos', $campos, $label, $name , $conn); 
+							echo cargar_selects('operativos', $campos, $label, $name , $conn); 
 						?>
 					</div>
 				</div>		
@@ -659,7 +659,7 @@
 							$label = '<span class="input-group-text" >Programa:</span>';
 							$name = 'cod_prog_cont';
 							$campos=array('cod_prog','nombre_prog');
-							echo cargar_inputs('prog_ventas', $campos, $label, $name , $conn); 
+							echo cargar_selects('prog_ventas', $campos, $label, $name , $conn); 
 						?>
 				</div>			
 			</div>
@@ -742,14 +742,14 @@
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="gastos_admin" class="input-group-text " >Gast. Admin:</label>
-					<input type="text" class="form-control" name="gastos_admin"id ="gastos_admin">
+					<input type="text" class="form-control" name="gastos_admin" id="gastos_admin">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="miscelaneos" class="input-group-text " >Miscelaneos:</label>
 					<input type="text" class="form-control" name="miscelaneos" id="miscelaneos">
-				</div> 
+				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">

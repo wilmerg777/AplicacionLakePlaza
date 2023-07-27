@@ -83,15 +83,17 @@ function getCedula(valCedula, elemento){
 	.catch(err => console.log(err))
 }
 
+inpuntsContrato = document.querySelectorAll('form[id="form_contratos"] input');
+
+inpuntsContrato.forEach( (e)=> {
+	console.log(e.id);
+
+});
 
 if (!!document.getElementById('form_contratos')) {
 	const formContratos = document.getElementById('form_contratos');
 
 	formContratos.addEventListener('submit', e => {
 		e.preventDefault();
-		const data = Object.fromEntries(
-				new FormData(e.target)
-			)
-		alert(JSON.stringify(data))
 	});
 }

@@ -2,7 +2,7 @@
 	include("db.php");
 
 
-	function cargar_inputs($tabla, $campos, $label,$name,$conn){
+	function cargar_selects($tabla, $campos, $label,$name,$conn){
 			$query = "select * from ".$tabla;
 			$resultado = $conn->prepare($query);
 			$resultado->execute();
@@ -18,7 +18,7 @@
 			return  $codigo;
 		}
 
-		function cargar_inputs_update($tabla, $campos, $label,$name, $conn){
+		function cargar_selects_update($tabla, $campos, $label,$name, $conn){
 			$query = "select * from ".$tabla ;
 			$resultado = $conn->prepare($query);
 			$resultado->execute();
