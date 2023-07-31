@@ -30,4 +30,3 @@ function haciendoClic(e){
 	//.then((valores) => {console.log(valores)});
 
 }
-

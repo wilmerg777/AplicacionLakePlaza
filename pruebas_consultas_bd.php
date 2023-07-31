@@ -4,6 +4,16 @@
 		$valor =	$_POST['valor'];
 		$campo =	$_POST['elemento'];
 
+		$sql = "select cod_afil_natu from afiliados_natu where cod_afil_natu = ? order by 1";
+		$resultado = $conn->prepare($sql);
+
+		if (!$resultado) {
+		    echo "Hay problemas en el script de la consulta";       // Si la preparación de la consulta falla
+		} elseif (!$resultado->execute([$valor])) {
+		    
+
+		   echo "Hay problemas en el script de la consulta"; 
+		}
 
 		switch ($campo) {
 			case "contrato":

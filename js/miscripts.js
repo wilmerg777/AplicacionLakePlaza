@@ -15,7 +15,7 @@ function validarInput(e){
 	switch (campoValidar) {
 		case 'contrato':
 				console.log("Validando "+  e.target.id + " " + campoValor);
-				retorna_contrato(e.target)
+				retorna_contrato(e);
 			break;
 		case 'fch_venta':
 				console.log("Validando " + e.target.id + " " + campoValor);
@@ -45,8 +45,10 @@ function retorna_contrato(e){
 			e.value=""
 			e.focus;
 	}else {
-		e.classList.remove('bg-warning')
-		e.classList.add('bg-primary'  , 'text-white');
+
+		e.target.classList.remove('bg-warning')
+		e.target.classList.add('bg-primary'  , 'text-white');
+
 	}
 }
 
