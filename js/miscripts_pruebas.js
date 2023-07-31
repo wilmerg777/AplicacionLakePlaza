@@ -23,7 +23,7 @@ function haciendoClic(e){
     body: datos // body data type must match "Content-Type" header
   
 	})
-	.then((respuesta) => respuesta);
-	//.then((valores) => {console.log(valores)});
+	.then((respuesta) => console.log(respuesta.json()))
+	.then((valores) => {console.log(valores)});
 
 }

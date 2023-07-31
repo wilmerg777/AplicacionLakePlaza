@@ -1,7 +1,12 @@
 let now = new  Date().toLocaleDateString('es-ve', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
 console.log('entrando: '+ now);
 
-const formContrato = document.querySelectorAll("#form_contratos input");
+inpuntsContrato = document.querySelectorAll('form[id="form_contratos"] input');
+
+inpuntsContrato.forEach( (e)=> {
+	// console.log(e.id);
+
+});
 
 const validarInput = (e)=>{
 	//console.log(e.target.id);
@@ -30,23 +35,25 @@ const validarInput = (e)=>{
 	}
 };
 
-formContrato.forEach(e =>{
+inpuntsContrato.forEach(e =>{
 	e.addEventListener('focusout', validarInput);
 	
 });
 
 function retorna_contrato(e){
 
-	let nuevo_contrato = e.value ;
+	let nuevo_contrato = e.target.value ;
 	if (nuevo_contrato.length>7 || nuevo_contrato.length<6 || nuevo_contrato.length==0) {
-		e.classList.add('bg-warning')
-			e.classList.remove('bg-primary'  , 'text-white')
-			e.value=""
-			e.focus;
+			e.target.classList.add('bg-warning')
+			e.target.classList.remove('bg-primary'  , 'text-white')
+			e.target.value=""
+			e.target.focus;
 	}else {
 
 		e.target.classList.remove('bg-warning')
 		e.target.classList.add('bg-primary'  , 'text-white');
+
+		//buscar si existe el numero de contrato
 
 	}
 }
@@ -71,31 +78,25 @@ function getCedula(valCedula, elemento){
 		mode: "cors"
 	}).then(response => response.json())
 	.then(data=> {
-
-			if (elemento=="ced_titular1") {
-				document.getElementById('nom_titular1').value=(data[0].nombre_afil_natu)
-				document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
-				document.getElementById('ced_titular2').focus()
-			} else {
-				document.getElementById('nom_titular2').value=(data[0].nombre_afil_natu)
-				document.getElementById('ape_titular2').value=(data[0].apellido_afil_natu)
-				document.getElementById('tot_puntos').focus()
-			}		
+		if (elemento=="ced_titular1") {
+			document.getElementById('nom_titular1').value=(data.nombre_afil_natu)
+			document.getElementById('ape_titular1').value=(data.apellido_afil_natu)
+			document.getElementById('ced_titular2').focus()
+		} else {
+			document.getElementById('nom_titular2').value=(data.nombre_afil_natu)
+			document.getElementById('ape_titular2').value=(data.apellido_afil_natu)
+			document.getElementById('tot_puntos').focus()
+		}		
 	})
-	.catch(err => console.log(err))
+	.catch(err => console.log("El error encontrado es: " + err))
 }
 
-inpuntsContrato = document.querySelectorAll('form[id="form_contratos"] input');
-
-inpuntsContrato.forEach( (e)=> {
-	console.log(e.id);
-
-});
 
 if (!!document.getElementById('form_contratos')) {
 	const formContratos = document.getElementById('form_contratos');
 
 	formContratos.addEventListener('submit', e => {
 		e.preventDefault();
+		console.log("Datos enviados!");
 	});
 }

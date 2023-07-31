@@ -19,8 +19,8 @@
 				 afiliados_natu where cod_afil_natu like ? order by 1";
 				$resultado = $conn->prepare($sql);
 				$resultado->execute([$valor]);
-				$row = $resultado->fetchall(PDO::FETCH_ASSOC);
-				printf(json_encode($row));
+				$row = $resultado->fetch();
+				printf(json_encode($row));  // json_encode traduce cualquier cosa codificada en UTF-8 (salvo resources) de PHP a un string JSON
 				break;
 				
 			case 'ced_titular2':
@@ -28,7 +28,7 @@
 				 afiliados_natu where cod_afil_natu like ? order by 1";
 				$resultado = $conn->prepare($sql);
 				$resultado->execute([$valor]);
-				$row = $resultado->fetchall(PDO::FETCH_ASSOC);
+				$row = $resultado->fetch(PDO::FETCH_ASSOC);
 				printf(json_encode($row));
 				break;
 
