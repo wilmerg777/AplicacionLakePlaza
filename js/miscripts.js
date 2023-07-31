@@ -3,13 +3,12 @@ console.log('entrando: '+ now);
 
 inpuntsContrato = document.querySelectorAll('form[id="form_contratos"] input');
 
-inpuntsContrato.forEach( (e)=> {
-	// console.log(e.id);
-
+inpuntsContrato.forEach((e)=>{
+	e.addEventListener('click',validarInput);
 });
 
-const validarInput = (e)=>{
-	//console.log(e.target.id);
+function validarInput(e){
+	console.log(e.target);
 	let campoValidar = e.target.id;
 	let campoValor = e.target.value;
 	switch (campoValidar) {
@@ -34,11 +33,6 @@ const validarInput = (e)=>{
 			break;
 	}
 };
-
-inpuntsContrato.forEach(e =>{
-	e.addEventListener('focusout', validarInput);
-	
-});
 
 function retorna_contrato(e){
 
@@ -69,8 +63,8 @@ function getCedula(valCedula, elemento){
 	let cod_php = "verificar_campo.php"
 	let formData = new FormData()
 
-	formData.append('elemento', elemento)
 	formData.append('valor', ced)
+	formData.append('elemento', elemento)
 
 	fetch(cod_php, {
 		method: "POST",
@@ -87,6 +81,7 @@ function getCedula(valCedula, elemento){
 			document.getElementById('ape_titular2').value=(data.apellido_afil_natu)
 			document.getElementById('tot_puntos').focus()
 		}		
+
 	})
 	.catch(err => console.log("El error encontrado es: " + err))
 }

@@ -593,7 +593,7 @@
 			<div class="col 	p-2 " >
 				<div class="input-group  ">
 					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i>  Contrato:</label>
-					<input autofocus type="text" class="form-control text-uppercase fs-6 " name="contrato" id="contrato"  >
+					<input autofocus  type="text" class="form-control text-uppercase fs-6 " name="contrato" id="contrato"  >
 				</div>			
 			</div>
 			<div class="col p-2" >
@@ -693,7 +693,9 @@
 			</div>
 		</div>
 		<hr>
-		<div class="form-row  bg-info text-center " onclick="haciendoClic(event)"><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
+
+		<div class="form-row  bg-info text-center "  ><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
+
 		</div>
 		<div  id="esq_venta" class="row">
 			<div class="col p-2">
