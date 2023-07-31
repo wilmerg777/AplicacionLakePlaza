@@ -1,10 +1,15 @@
 let now = new  Date().toLocaleDateString('es-ve', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
 console.log('entrando: '+ now);
 
-const formContrato = document.querySelectorAll("#form_contratos input");
+inpuntsContrato = document.querySelectorAll('form[id="form_contratos"] input');
+inpuntsContrato.forEach((e)=>{
+	e.addEventListener('click',validarInput);
+});
 
-const validarInput = (e)=>{
-	//console.log(e.target.id);
+
+
+function validarInput(e){
+	console.log(e.target);
 	let campoValidar = e.target.id;
 	let campoValor = e.target.value;
 	switch (campoValidar) {
@@ -30,10 +35,6 @@ const validarInput = (e)=>{
 	}
 };
 
-formContrato.forEach(e =>{
-	e.addEventListener('focusout', validarInput);
-	
-});
 
 function retorna_contrato(e){
 
@@ -60,8 +61,8 @@ function getCedula(valCedula, elemento){
 	let cod_php = "verificar_campo.php"
 	let formData = new FormData()
 
-	formData.append('elemento', elemento)
 	formData.append('valor', ced)
+	formData.append('elemento', elemento)
 
 	fetch(cod_php, {
 		method: "POST",
@@ -71,24 +72,18 @@ function getCedula(valCedula, elemento){
 	.then(data=> {
 
 			if (elemento=="ced_titular1") {
-				document.getElementById('nom_titular1').value=(data[0].nombre_afil_natu)
-				document.getElementById('ape_titular1').value=(data[0].apellido_afil_natu)
+				document.getElementById('nom_titular1').value=(data.nombre_afil_natu)
+				document.getElementById('ape_titular1').value=(data.apellido_afil_natu)
 				document.getElementById('ced_titular2').focus()
 			} else {
-				document.getElementById('nom_titular2').value=(data[0].nombre_afil_natu)
-				document.getElementById('ape_titular2').value=(data[0].apellido_afil_natu)
+				document.getElementById('nom_titular2').value=(data.nombre_afil_natu)
+				document.getElementById('ape_titular2').value=(data.apellido_afil_natu)
 				document.getElementById('tot_puntos').focus()
 			}		
 	})
 	.catch(err => console.log(err))
 }
 
-inpuntsContrato = document.querySelectorAll('form[id="form_contratos"] input');
-
-inpuntsContrato.forEach( (e)=> {
-	console.log(e.id);
-
-});
 
 if (!!document.getElementById('form_contratos')) {
 	const formContratos = document.getElementById('form_contratos');
