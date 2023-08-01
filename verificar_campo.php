@@ -6,11 +6,10 @@
 
 		switch ($campo){
 			case 'contrato':
-				$sql = "select cod_afil_natu,nombre_afil_natu,apellido_afil_natu from
-				 afiliados_natu where cod_afil_natu like ? order by 1";
+				$sql = "select contrato from contratos where contrato = ? order by 1";
 				$resultado = $conn->prepare($sql);
 				$resultado->execute([$valor]);
-				$row = $resultado->fetchall(PDO::FETCH_ASSOC);
+				$row = $resultado->fetch(PDO::FETCH_ASSOC);
 				printf(json_encode($row));
 				break;
 
