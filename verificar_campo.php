@@ -29,8 +29,16 @@
 				$resultado = $conn->prepare($sql);
 				$resultado->execute([$valor]);
 				$row = $resultado->fetch(PDO::FETCH_ASSOC);
-
 				printf(json_encode($row));
+				break;
+
+			case 'fch_venta':
+				$fechaActual = date("Y-m-d",time());
+				if ($valor<=$fechaActual) {
+					printf("validado");
+				}else{
+					printf("Invalido");
+				};
 				break;
 
 		}

@@ -110,7 +110,30 @@ function retorna_contrato(e, a, b){
 }
 
 function validFechaEmi(e,a,b){
-	console.log(a,Date.parse());
+
+	let formData = new FormData()
+	formData.append('valor', a)
+	formData.append('elemento', b)
+
+		//validar fecha igual o menor a la actual
+		let cod_php = "verificar_campo.php"	
+		fetch(cod_php, {
+			method:'POST',
+			body: formData,
+			mode: "cors"
+			})
+			.then(response => response.text())
+			.then(data=>  { //fecha correcta
+					if(data=="validado"){
+						e.classList.remove('bg-danger','text-black');						
+						e.classList.add('bg-primary','text-white');
+
+					}else{
+						e.classList.remove('bg-primary','text-white');
+						e.classList.add('bg-danger','text-black');
+					}
+			})
+			.catch(err=>console.log(err));
 }
 
 function getCedula(valCedula, elemento){
@@ -119,7 +142,7 @@ function getCedula(valCedula, elemento){
 
 	let cod_php = "verificar_campo.php"
 
-	let formData = new FormData()
+	let formData = new FormData();
 	formData.append('valor', valCedula)
 	formData.append('elemento', elemento)
 
