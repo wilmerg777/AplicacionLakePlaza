@@ -3,9 +3,12 @@ console.log('entrando: '+ now);
 
 inpuntsContrato = document.querySelectorAll('form[id="form_contratos"] input');
 
+
 inpuntsContrato.forEach((e)=>{
+
 	e.addEventListener('blur',validarInput);
 });
+
 
 function validarInput(e){
 	// console.log(e.target);
@@ -110,7 +113,15 @@ function retorna_contrato(e, a, b){
 }
 
 function validFechaEmi(e,a,b){
-	console.log(a,Date.parse());
+	console.log(a);
+	formData = new FormData();
+	formData.append('valor', a);
+	formData.append('elemento', b);
+	fetch('verificar_campo.php',{
+		method:'POST',
+		body:formData,
+		mode:'cors'
+	});
 }
 
 function getCedula(valCedula, elemento){
