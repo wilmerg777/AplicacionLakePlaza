@@ -713,7 +713,7 @@
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="pto_comici" class="input-group-text " >Pto. Comisc:</label>
-					<input type="text" class="form-control" name="pto_comici" id="pto_comici" disabled>
+					<input type="number" class="form-control" name="pto_comici" id="pto_comici" disabled>
 				</div>
 			</div>
 			<div class="col p-2">

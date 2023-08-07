@@ -217,16 +217,16 @@ function cargarCondiciones(){
 			mode: "cors"
 		}).then(response => response.json())
 		.then(data=> {
-				document.getElementById('tot_puntos').value=(data.puntos_fin)
-				document.getElementById('val_pto').value=(data.monto_pto)
-				document.getElementById('pto_comici').value=(data.mto_pto_comici)
-				document.getElementById('gastos_admin').value=(data.monto_gasto_admin)
-				document.getElementById('val_contrato').value=((data.puntos_fin * data.monto_pto) + Number(data.monto_gasto_admin))
-
+			document.getElementById('tot_puntos').value=(data.puntos_fin)
+			document.getElementById('val_pto').value=(data.monto_pto)
+			document.getElementById('pto_comici').value=(data.mto_pto_comici)
+			document.getElementById('gastos_admin').value=(data.monto_gasto_admin)
+			document.getElementById('val_contrato').value=((data.puntos_fin * data.monto_pto) + Number(data.monto_gasto_admin))
+			document.querySelector('label[for="tot_puntos"]').innerHTML+= " Min: "+(data.puntos_ini)
 		})
 		.catch(err => console.log("El error encontrado es: " + err))
-		} else {
-			alert("Debe seleccionar un producto y un operativo!")
+	} else {
+		alert("Debe seleccionar un producto y un operativo!")
 	}
 }
 
