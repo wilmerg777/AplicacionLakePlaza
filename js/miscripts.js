@@ -10,29 +10,40 @@ inpuntsContrato.forEach((e)=>{
 });
 
 
+if (document.getElementById('tot_puntos')) {
+	totalPuntos = document.getElementById('tot_puntos');
+	totalPuntos.addEventListener('focus',cargarCondiciones);
+}
+
 function validarInput(e){
 	// console.log(e.target);
-	let campoValidar = e.target.id;
 	let campoValor = e.target.value;
+	let campoValidar = e.target.id;
 	switch (campoValidar) {
 		case 'contrato':
 				//console.log("Validando "+  e.target.id + " " + campoValor);
 				retorna_contrato(e.target,campoValor, campoValidar);
 			break;
 		case 'fch_venta':
-				console.log("Validando "+ e.target.id + " " + campoValor);
+				//console.log("Validando "+ e.target.id + " " + campoValor);
 				validFechaEmi(e.target,campoValor,campoValidar);
 				break;
 		case 'tasa':
-			//console.log("Validando "+ e.target.id + " " + campoValor);
-			//getTasa(campoValor,campoValidar);
+			const cMoneda = document.getElementById('moneda_condic_cont').value;
+			const dFechaEmi = document.getElementById('fch_venta').value;
+
+			if (cMoneda && dFechaEmi) {
+				//getTasa(e.target,dFechaEmi,campoValidar,cMoneda);
+			} else {
+				alert("verifique fecha de emisión y moneda");
+			}
 			break;
 		case 'ced_titular1':
-			console.log("Validando "+ e.target.id + " " + campoValor);
+			//console.log("Validando "+ e.target.id + " " + campoValor);
 			getCedula(campoValor,campoValidar);
 			break;
 		case 'ced_titular2':
-			console.log("Validando "+ e.target.id + " " + campoValor);
+			//console.log("Validando "+ e.target.id + " " + campoValor);
 			getCedula(campoValor,campoValidar);
 			break;
 		default:
@@ -40,26 +51,12 @@ function validarInput(e){
 			// statements_def
 			break;
 			/*
-		case 'tasa':
-			console.log("Validando "+ e.target.id + " " + campoValor);
-			getTasa(campoValor,campoValidar);
-			break;
-			
-			
-			ced_titular1
-			nom_titular1
-			ape_titular1
-			ced_titular2
-			nom_titular2
-			ape_titular2
-			tot_puntos
-			val_pto
-			pto_comici
+			Campos actualizables:
+
 			descuento_%
 			monto_desc
 			val_contrato
 			mtto_anio1
-			gastos_admin
 			miscelaneos
 			val_total
 			ini_mesa
@@ -125,15 +122,47 @@ function validFechaEmi(e,a,b){
 			body: formData,
 			mode: "cors"
 			})
-			.then(response => response.text())
-			.then(data=>  { //fecha correcta
-					if(data=="validado"){
+			.then(response => response.json())
+			.then(data=>  {  
+					if(data=="validado"){ //fecha correcta
 						e.classList.remove('bg-danger','text-black');						
 						e.classList.add('bg-primary','text-white');
-
+						getTasa(a);
 					}else{
 						e.classList.remove('bg-primary','text-white');
 						e.classList.add('bg-danger','text-black');
+						document.getElementById('tasa').value=0;
+						document.getElementById('tasa').classList.remove('bg-primary','text-white');
+					}
+			})
+			.catch(err=>console.log(err));
+}
+
+function getTasa(a){
+
+	const e = document.getElementById('tasa')
+	let formData = new FormData()
+	formData.append('valor', a)
+	formData.append('elemento', "tasa")
+	formData.append('moneda', "US$")
+
+		//validar tasa correspondiente a la fecha de emision
+		let cod_php = "verificar_campo.php"	
+		fetch(cod_php, {
+			method:'POST',
+			body: formData,
+			mode: "cors"
+			})
+			.then(response => response.json())
+			.then(data=>  { 
+					if(data){
+						e.classList.remove('bg-danger','text-black');						
+						e.classList.add('bg-primary','text-white');
+						e.value=(data.valor_m_alterna);
+					}else{
+						e.classList.remove('bg-primary','text-white');
+						e.classList.add('bg-danger','text-black');
+						e.value=0;
 					}
 			})
 			.catch(err=>console.log(err));
@@ -169,6 +198,37 @@ function getCedula(valCedula, elemento){
 	.catch(err => console.log("El error encontrado es: " + err))
 }
 
+function cargarCondiciones(){
+	const productoCond  = document.getElementById('cod_prod_cont');
+	const operativoCond = document.getElementById('cod_oper_cont');
+
+	if (productoCond.value.length>1 && operativoCond.value.length>1) {
+
+		let cod_php = "verificar_campo.php"
+		let formData = new FormData();
+		formData.append('valor', productoCond.value)
+		formData.append('elemento', "condiciones_ventas")
+		formData.append('operativo', operativoCond.value)
+		formData.append('moneda', "US$")
+
+		fetch(cod_php, {
+			method: "POST",
+			body: formData,
+			mode: "cors"
+		}).then(response => response.json())
+		.then(data=> {
+				document.getElementById('tot_puntos').value=(data.puntos_fin)
+				document.getElementById('val_pto').value=(data.monto_pto)
+				document.getElementById('pto_comici').value=(data.mto_pto_comici)
+				document.getElementById('gastos_admin').value=(data.monto_gasto_admin)
+				document.getElementById('val_contrato').value=((data.puntos_fin * data.monto_pto) + Number(data.monto_gasto_admin))
+
+		})
+		.catch(err => console.log("El error encontrado es: " + err))
+		} else {
+			alert("Debe seleccionar un producto y un operativo!")
+	}
+}
 
 if (!!document.getElementById('form_contratos')) {
 	const formContratos = document.getElementById('form_contratos');

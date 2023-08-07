@@ -615,8 +615,8 @@
 			</div>
 			<div class="col p-2" >
 				<div class="input-group ">
-					<span class="input-group-text ">tasa:</span>
-					<input type="text" class="form-control" name="tasa" id="tasa">
+					<span class="input-group-text ">tasa Bs.:</span>
+					<input type="text" class="form-control" name="tasa" id="tasa" disabled>
 				</div>			
 			</div>
 		</div>
@@ -707,13 +707,13 @@
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="val_pto" class="input-group-text " >Valor Pto:</label>
-					<input type="text" class="form-control" name="val_pto" id="val_pto">
+					<input type="number" class="form-control" name="val_pto" id="val_pto" disabled>
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="pto_comici" class="input-group-text " >Pto. Comisc:</label>
-					<input type="text" class="form-control" name="pto_comici" id="pto_comici">
+					<input type="text" class="form-control" name="pto_comici" id="pto_comici" disabled>
 				</div>
 			</div>
 			<div class="col p-2">
@@ -732,31 +732,31 @@
 		<div class="row">
 			<div class="col p-2">				<div class="input-group  ">
 					<label for="val_contrato" class="input-group-text " >Valor Contrato:</label>
-					<input type="text" class="form-control" name="val_contrato" id="val_contrato">
+					<input type="number" class="form-control" name="val_contrato" id="val_contrato" disabled>
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="mtto_anio1" class="input-group-text " >Mtto 1er Año:</label>
-					<input type="text" class="form-control" name="mtto_anio1" id="mtto_anio1">
+					<input type="number" class="form-control" name="mtto_anio1" id="mtto_anio1">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="gastos_admin" class="input-group-text " >Gast. Admin:</label>
-					<input type="text" class="form-control" name="gastos_admin" id="gastos_admin">
+					<input type="number" class="form-control" name="gastos_admin" id="gastos_admin" disabled>
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="miscelaneos" class="input-group-text " >Miscelaneos:</label>
-					<input type="text" class="form-control" name="miscelaneos" id="miscelaneos">
+					<input type="number" class="form-control" name="miscelaneos" id="miscelaneos">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="val_total" class="input-group-text " >Valor Total:</label>
-					<input type="text" class="form-control" name="val_total" id="val_total">
+					<input type="number" class="form-control" name="val_total" id="val_total" disabled>
 				</div>
 			</div>
 		</div>
@@ -767,31 +767,31 @@
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="ini_mesa" class="input-group-text " >Inicial en Mesa:</label>
-					<input type="text" class="form-control" name="ini_mesa" id="ini_mesa">
+					<input type="number" class="form-control" name="ini_mesa" id="ini_mesa">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="ini_diferida" class="input-group-text " >Inicial Diferida:</label>
-					<input type="text" class="form-control" name="ini_diferida" id="ini_diferida">
+					<input type="number" class="form-control" name="ini_diferida" id="ini_diferida">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="cap_especial" class="input-group-text " >Cap. Especial:</label>
-					<input type="text" class="form-control" name="cap_especial" id="cap_especial">
+					<input type="number" class="form-control" name="cap_especial" id="cap_especial">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="cap_normal" class="input-group-text " >Cap. Normal:</label>
-					<input type="text" class="form-control" name="cap_normal" id="cap_normal">
+					<input type="number" class="form-control" name="cap_normal" id="cap_normal">
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="val_contrato_finan" class="input-group-text " >Valor Contrato:</label>
-					<input type="text" class="form-control" name="val_contrato_finan" id="val_contrato_finan">
+					<input type="number" class="form-control" name="val_contrato_finan" id="val_contrato_finan" disabled>
 				</div>
 			</div>
 		</div>
@@ -799,7 +799,7 @@
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="ini_mesa_%" class="input-group-text " >%</label>
-					<input type="text" class="form-control" name="ini_mesa_%" id="ini_mesa_%">
+					<input type="text" class="form-control" name="ini_mesa_%" id="ini_mesa_%" disabled disabled>
 				</div>
 			</div>
 			<div class="col p-2">
@@ -811,19 +811,19 @@
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="cap_especial_%" class="input-group-text " >%</label>
-					<input type="text" class="form-control" name="cap_especial_%" id="cap_especial_%">
+					<input type="text" class="form-control" name="cap_especial_%" id="cap_especial_%" disabled>
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="cap_normal_%" class="input-group-text " >%</label>
-					<input type="text" class="form-control" name="cap_normal_%" id="cap_normal_%">
+					<input type="text" class="form-control" name="cap_normal_%" id="cap_normal_%" disabled>
 				</div>
 			</div>
 			<div class="col p-2">
 				<div class="input-group  ">
 					<label for="val_contrato_%" class="input-group-text " >%</label>
-					<input type="text" class="form-control" name="val_contrato_%" id="val_contrato_%">
+					<input type="text" class="form-control" name="val_contrato_%" id="val_contrato_%" disabled>
 				</div>
 			</div>
 		<div class="row">
