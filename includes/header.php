@@ -11,12 +11,16 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
   function getTasaBCV(){
     $conn = new PDO("mysql:host=localhost; dbname=lakeplaza", "root", "wilmer");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Activando el atributo que se encarga de gestionar los errores de conexion y/o respuesta de la BD
-     $query1 ="select valor_m_alterna from tasas where fecha_tasa = '2023-08-09' and moneda_alterna='Bs.' ";
-    $query = "select valor_m_alterna from tasas where fecha_tasa = ".date('Y-m-d')  ;
-    $resultado = $conn->prepare($query1);
+    
+    $query = "select * from tasas where fecha_tasa = '".date('Y-m-d') ."'" ;
+    $resultado = $conn->prepare($query);
     $resultado->execute();
-        $row = $resultado->fetch();
-        return $row[0];
+    $row = $resultado->fetchColumn(5); // fetchColum(numero de columna)
+    if ($row) {
+      return $row;
+    } else {          
+    return "tasa no registrada";
+    }
   }
 
 ?>
