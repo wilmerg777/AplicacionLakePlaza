@@ -2,6 +2,7 @@
 	include('sesion.php');
 	include('db.php');
 	include('Scripts/consultas_varias.php');
+
 	error_reporting(E_ERROR | E_WARNING | E_PARSE );
 	$ocultar = 'd-none';
 	if (isset($_SESSION['autoridad'])) { 

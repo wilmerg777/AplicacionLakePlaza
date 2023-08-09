@@ -1,12 +1,25 @@
-<?php 
-if (!isset($_SESSION)) {
+<?php if (!isset($_SESSION)) {
   session_start();
 }
 $usuario = "";
 if (isset($_SESSION['usuario'])) {
   $usuario = $_SESSION['usuario'];
 }
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
+
+  function getTasaBCV(){
+    $conn = new PDO("mysql:host=localhost; dbname=lakeplaza", "root", "wilmer");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Activando el atributo que se encarga de gestionar los errores de conexion y/o respuesta de la BD
+     $query1 ="select valor_m_alterna from tasas where fecha_tasa = '2023-08-09' and moneda_alterna='Bs.' ";
+    $query = "select valor_m_alterna from tasas where fecha_tasa = ".date('Y-m-d')  ;
+    $resultado = $conn->prepare($query1);
+    $resultado->execute();
+        $row = $resultado->fetch();
+        return $row[0];
+  }
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -71,9 +84,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
            ?>
           <a class="nav-link <?php echo $cerrar_sesion ; ?>" href="cerrar_sesion.php">Cerrar sesion" <?php echo $usuario; ?>"</a>
         </li>
-        <label class>Fecha: <?php echo date('Y-m-d') ;?></label>
       </ul>
-
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Escriba lo que está buscando" aria-label="Search">
         <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-search"></i></button>
@@ -81,4 +92,4 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
     </div>
   </div>
 	</nav>
-  <div class="bg-primary text-white" align="center">Fecha: <?php echo date('d - m - Y') ;?></div>
+  <div class="bg-primary text-white" align="center">Fecha: <?php echo date('d - m - Y') ;echo " (Tasa BCV: ". getTasaBCV().")"; ?></div>

@@ -1,6 +1,5 @@
 <?php
 	include("db.php");
-	include("Scripts/consultas_varias.php");
 ?>
 
 <div class="container py-3" name="lista_contratos" id="lista_contratos">

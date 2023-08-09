@@ -15,8 +15,6 @@
 
 <div class="container p-4 ">
 		<?php include('list_contratos.php') ?>
-
-
 <hr>
 </div>
 <main class="container">
