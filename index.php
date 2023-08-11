@@ -23,6 +23,13 @@
 	    <a href="#"> <img src="https://www.chartgo.com/embed.do?id=6ea83911aa" title="CM 2023" alt="Cobranza CM" border="0" /></a><br/>
 	-->
 	</div>
+
+
+	<div id="section-modal">
+		<?php include("modales/modalMaestros.php"); ?>
+	</div>
+
+	
 	<div class="d-flex justify-content-center">
 		<p><img src="images/Bcv.png" width="200" height="200" alt="Tasa BCV"></p>
 	</div>

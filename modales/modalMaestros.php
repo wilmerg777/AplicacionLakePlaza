@@ -1,8 +1,13 @@
-<div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productoModal">
+  Launch demo modal x
+</button>
+
+<div class="modal fade" id="productoModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="productoModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="nuevoModalLabel">Titulo Modal</h1>
+				<h1 class="modal-title fs-5" id="nuevoModalLabel">Registro de:</h1>
 				<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
@@ -24,3 +29,5 @@
 		</div>
 	</div>
 </div>
+
+

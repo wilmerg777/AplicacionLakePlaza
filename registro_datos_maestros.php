@@ -1,12 +1,13 @@
 <?php
 	include('sesion.php');
 	include('includes/header.php');
-	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
 
 	if (isset($_GET['maestro'])) {
 
 		function registro_maestro($tabla,$campos,$Tip_form_maestro){
 			include("ventanas_html.php" );
+			include("modales/modalMaestros.php"); 
 		}
 
 
