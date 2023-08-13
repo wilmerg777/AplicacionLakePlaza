@@ -5,6 +5,8 @@
 
 	error_reporting(E_ERROR | E_WARNING | E_PARSE );
 	$ocultar = 'd-none';
+
+	// Accesos a botones de Editar y elimiar registros
 	if (isset($_SESSION['autoridad'])) { 
 		$nivel_autoridad = $_SESSION['autoridad'];
 		if ($nivel_autoridad <>1) {
@@ -17,7 +19,10 @@
 <!-- Maestro Productos -->
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; } ?>">
 	<div class="row">
-		<div class="col-md-4">
+		<section id="section-modal">
+			<?php include("modales/modalMaestros.php"); ?>
+		</section>
+		<!-- <div class="col-md-4">
 			<div class="card card-body">
 				<form action="guardardatos.php" method="post" id="form_productos">
 					<h3>Registro de Productos</h3><br>
@@ -43,7 +48,7 @@
 					</div>				
 				</form>
 			</div>
-		</div>
+		</div> -->
 		<div class="col-md-6">
 					<table class="table table-bordered border-dark">
 						<thead>
@@ -622,13 +627,12 @@
 					?>
 			</div>
 			<div class="col p-1" >
-
-						<?php 
-							$label = '<label class="input-group-text" >Operativo:</label>';
-							$name = 'cod_oper_cont';
-							$campos=array('cod_oper','nombre_oper');
-							echo cargar_selects('operativos', $campos, $label, $name , $conn); 
-						?>
+				<?php 
+					$label = '<label class="input-group-text" >Operativo:</label>';
+					$name = 'cod_oper_cont';
+					$campos=array('cod_oper','nombre_oper');
+					echo cargar_selects('operativos', $campos, $label, $name , $conn); 
+				?>
 			</div>
 			<div class="col p-1" >
 					<label class="input-group-text ">Sucursal:</label>

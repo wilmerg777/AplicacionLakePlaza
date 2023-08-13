@@ -26,7 +26,7 @@
 
 
 	<div id="section-modal">
-		<?php include("modales/modalMaestros.php"); ?>
+		<!-- <?php include("modales/modalMaestros.php"); ?> -->
 	</div>
 
 	

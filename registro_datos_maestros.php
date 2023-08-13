@@ -10,12 +10,9 @@
 			include("modales/modalMaestros.php"); 
 		}
 
-
 		$Tip_form_maestro=$_GET['maestro'];
 
-
 		function mostrar_maestro($Tip_form_maestro){
-
 
 			switch ($Tip_form_maestro) {
 		    case "contrato":
@@ -63,8 +60,7 @@
 		        registro_maestro($tabla="",$campos="", $Tip_form_maestro);
 		        break;
 				}
-		}		
-
+		}
 	}
 	
 	mostrar_maestro($Tip_form_maestro);
