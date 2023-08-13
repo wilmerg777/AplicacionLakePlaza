@@ -590,130 +590,107 @@
 
 		<input type="text" name="guardar_form" value="7" hidden id="guardar_form">
 
-		<div class="row">
-			<div class="col 	p-2 " >
-				<div class="input-group  ">
+		<div class="input-group">
+			<div class="col 	p-1 " >
 					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i>  Contrato:</label>
 					<input autofocus  type="text" class="form-control text-uppercase fs-6 " name="contrato" id="contrato"  >
-				</div>			
 			</div>
-			<div class="col p-2" >
-				<div class="col-12">
-				<div class="input-group ">
+			<div class="col p-1" >
 					<label class="input-group-text "><i class="fas fa-calendar-check"></i> Emisión:</label>
 					<input type="date" class="form-control" name="fch_venta" id="fch_venta" >
-				</div>
-				</div>		
 			</div>
-			<div class="col p-2" >
-				<div class="input-group ">
-					<span class="input-group-text ">Moneda:</span>
+			<div class="col p-1" >
+					<label class="input-group-text ">Moneda:</label>
 					<select name="moneda_condic_cont" id="moneda_condic_cont" disabled>
 						<option value="US$" selected>US$</option>
 						<option value="BS." disabled>Bs.</option>
 					</select>
-				</div>			
 			</div>
-			<div class="col p-2" >
-				<div class="input-group ">
-					<span class="input-group-text ">tasa Bs.:</span>
+			<div class="col p-1" >
+					<label class="input-group-text ">tasa Bs.:</label>
 					<input type="text" class="form-control" name="tasa" id="tasa" disabled>
-				</div>			
 			</div>
 		</div>
 		<hr >
-		<div class="row"> 
-			<div class="col 	p-2 " >
-				<div class="input-group  ">
+		<div class="input-group"> 
+			<div class="col	p-1 " >
 					<?php 
-						$label = '<span class="input-group-text" >Producto:</span>';
+						$label = '<label class="input-group-text" >Producto:</label>';
 						$name = 'cod_prod_cont';
 						$campos=array('cod_prod','nombre');
 						echo cargar_selects('productos', $campos, $label, $name , $conn);
 					?>
-				</div>			
 			</div>
-			<div class="col p-2" >
-				<div class="col-9">
-					<div class="input-group ">
+			<div class="col p-1" >
+
 						<?php 
-							$label = '<span class="input-group-text" >Operativo:</span>';
+							$label = '<label class="input-group-text" >Operativo:</label>';
 							$name = 'cod_oper_cont';
 							$campos=array('cod_oper','nombre_oper');
 							echo cargar_selects('operativos', $campos, $label, $name , $conn); 
 						?>
-					</div>
-				</div>		
 			</div>
-			<div class="col p-2" >
-				<div class="input-group ">
-					<span class="input-group-text ">Sucursal:</span>
+			<div class="col p-1" >
+					<label class="input-group-text ">Sucursal:</label>
 					<select name="sucursal" id="sucursal">
 						<option value="00001" selected>Mérida</option>
 						<option value="00002" >Margarita</option>
 					</select>
-				</div>			
 			</div>
-			<div class="col p-2" >
-				<div class="input-group ">
+			<div class="col p-1" >
 						<?php 
-							$label = '<span class="input-group-text" >Programa:</span>';
+							$label = '<label class="input-group-text" >Programa:</label>';
 							$name = 'cod_prog_cont';
 							$campos=array('cod_prog','nombre_prog');
 							echo cargar_selects('prog_ventas', $campos, $label, $name , $conn); 
 						?>
-				</div>			
 			</div>
 		</div>
 		<hr >
 		<div class="form-row  bg-info text-center"><h6 class="m-0">T i t u l a r e s</h6>
 		</div>
-		<div class="row"> 
-			<div class="col 	p-2 " >
-				<div class="input-group  ">
+		<div class="input-group"> 
+			<div class="col-6	p-1 " >
 					<label class="input-group-text " for="ced_titular1">Titular 1:</label>
-					<div class="col-2">
+
 						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" placeholder="Cedula" required>
-					</div>
+
 
 					<div class="lista" id="lista"></div>
 
 					<input type="text" class="form-control" name="nom_titular1" id="nom_titular1" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular1" id="ape_titular1" placeholder="Apellido">
-				</div>
 			</div>
-			<div class="col 	p-2 " >
-				<div class="input-group  ">
+			<div class="col-6 p-1 " >
 					<label class="input-group-text " for="ced_titular2">Titular 2:</label>
 					<div class="col-2">
 						<input type="text" class="form-control" name="ced_titular2" id="ced_titular2" placeholder="Cedula">
 					</div>
 					<input type="text" class="form-control" name="nom_titular2" id="nom_titular2" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular2" id="ape_titular2" placeholder="Apellido">
-				</div>			
 			</div>
 		</div>
 		<hr>
 		<div class="form-row  bg-info text-center "  ><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
 		</div>
 		<div  id="esq_venta" class="input-group">
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="tot_puntos" class="input-group-text " >Total Puntos:</label>
 					<input type="number" class="form-control" name="tot_puntos" id="tot_puntos" placeholder="00000"  >
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="val_pto" class="input-group-text " >Valor Pto:</label>
 					<input type="number" class="form-control" name="val_pto" id="val_pto" disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="pto_comici" class="input-group-text " >Pto. Comisc:</label>
 					<input type="number" class="form-control" name="pto_comici" id="pto_comici" disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="descuento_%" class="input-group-text " >% Descuento:</label>
 					<input type="number" class="form-control" name="descuento_%" id="descuento_%">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="monto_desc" class="input-group-text " >Monto Desc:</label>
 					<input type="number" class="form-control" name="monto_desc" id="monto_desc">
 			</div>
@@ -744,57 +721,57 @@
 		<div class="form-row  bg-info text-center "><h6 class="m-0">Distribución de Financiamiento de los Puntos Adquiridos</h6>
 		</div>
 		<div class="input-group">
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="ini_mesa" class="input-group-text " >Inicial en Mesa:</label>
 					<input type="number" class="form-control" name="ini_mesa" id="ini_mesa">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="ini_diferida" class="input-group-text " >Inicial Diferida:</label>
 					<input type="number" class="form-control" name="ini_diferida" id="ini_diferida">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="cap_especial" class="input-group-text " >Cap. Especial:</label>
 					<input type="number" class="form-control" name="cap_especial" id="cap_especial">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="cap_normal" class="input-group-text " >Cap. Normal:</label>
 					<input type="number" class="form-control" name="cap_normal" id="cap_normal">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="val_contrato_finan" class="input-group-text " >Valor Contrato:</label>
 					<input type="number" class="form-control" name="val_contrato_finan" id="val_contrato_finan" disabled>
 			</div>
 		</div>
 		<div class="input-group">
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="ini_mesa_%" class="input-group-text " >%</label>
 					<input type="text" class="form-control" name="ini_mesa_%" id="ini_mesa_%" disabled disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="ini_diferida_%" class="input-group-text " >%:</label>
 					<input type="text" class="form-control" name="ini_diferida_%" id="ini_diferida_%">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="cap_especial_%" class="input-group-text " >%</label>
 					<input type="text" class="form-control" name="cap_especial_%" id="cap_especial_%" disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="cap_normal_%" class="input-group-text " >%</label>
 					<input type="text" class="form-control" name="cap_normal_%" id="cap_normal_%" disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="val_contrato_%" class="input-group-text " >%</label>
 					<input type="text" class="form-control" name="val_contrato_%" id="val_contrato_%" disabled>
 			</div>
 		</div>
-		<div class="row">
-			<div class="p-2">
+		<div class="input-group ">
+			<div class="col-12 p-1">
 					<label for="observaciones" class="input-group-text " >Observaciones:</label>
 					<textarea class="form-control" name="observaciones"></textarea>
 			</div>
 		</div>
 		<div class="row ">
-			<div class="col p-2 text-center">
+			<div class="col p-1 text-center">
 				<button type="submit" class="btn btn-secondary btn-lg" name="guardar_contrato" id="guardar_contrato" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
 			</div>
 	</form>

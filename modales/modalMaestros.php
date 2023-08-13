@@ -1,6 +1,6 @@
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productoModal">
-  Launch demo modal x
+  Lanzar Modal
 </button>
 
 <div class="modal fade" id="productoModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="productoModalLabel" aria-hidden="true">
