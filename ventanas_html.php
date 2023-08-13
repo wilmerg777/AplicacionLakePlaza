@@ -16,12 +16,12 @@
 		}
 	}
 ?>
-<!-- Maestro Productos -->
-<div class="main container p-4  <?php if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; } ?>">
-	<div class="row">
 		<section id="section-modal">
 			<?php include("modales/modalMaestros.php"); ?>
 		</section>
+<!-- Maestro Productos -->
+<div class="main container p-4  <?php if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; } ?>">
+	<div class="row">
 		<!-- <div class="col-md-4">
 			<div class="card card-body">
 				<form action="guardardatos.php" method="post" id="form_productos">
@@ -49,7 +49,7 @@
 				</form>
 			</div>
 		</div> -->
-		<div class="col-md-6">
+		<div class="col-md-10">
 					<table class="table table-bordered border-dark">
 						<thead>
 							<tr>
