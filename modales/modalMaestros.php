@@ -1,18 +1,4 @@
-<?php 
 
-	include('db.php');
-
-	error_reporting(E_ERROR | E_WARNING | E_PARSE );
-	$ocultar = 'd-none';
-	if (isset($_SESSION['autoridad'])) { 
-		$nivel_autoridad = $_SESSION['autoridad'];
-		if ($nivel_autoridad <>1) {
-			$desactivar="disabled";
-		} else {
-			$desactivar="";
-		}
-	}
-?>
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end <?php if ($Tip_form_maestro=='contrato' ) { echo $ocultar ; } ?>">
 	<div class="col-4 justify-content-end me-md-5" >
