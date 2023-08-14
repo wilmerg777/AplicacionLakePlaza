@@ -22,33 +22,6 @@
 <!-- Maestro Productos -->
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; } ?>">
 	<div class="row">
-		<!-- <div class="col-md-4">
-			<div class="card card-body">
-				<form action="guardardatos.php" method="post" id="form_productos">
-					<h3>Registro de Productos</h3><br>
-					<input type="text" name="guardar_form" value="4" hidden>
-					<label class="form-label " for="cod_prod">Código del producto:</label>
-					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_prod" class="form-control " placeholder="Ejm: TP001" >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="nom_prod">Nomdre del producto:</label>
-						<input type="text" name="nom_prod" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-4 ">
-				    <label for="estado_producto" class="form-label">Estado</label>
-				    <select class="form-select" id="estado_producto" name="estado_producto" >
-				      <option selected value="1">Activo</option>
-				      <option value="0">Inactivo</option>
-				    </select>
-					</div>
-					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
-					<div class="form-outline mb-4">
-						<button type="submit" class="btn btn-primary btn-lg" name="guardar" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
-					</div>				
-				</form>
-			</div>
-		</div> -->
 		<div class="col-md-10">
 					<table class="table table-bordered border-dark">
 						<thead>

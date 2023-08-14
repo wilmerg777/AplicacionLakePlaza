@@ -7,7 +7,7 @@
 
 		function registro_maestro($tabla,$campos,$Tip_form_maestro, $cTitulo_modal){
 			include("ventanas_html.php" );
-			include("modales/modalMaestros.php"); 
+			//include("modales/modalMaestros.php"); 
 		}
 
 		$Tip_form_maestro=$_GET['maestro'];

@@ -19,7 +19,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
     if ($row) {
       return $row;
     } else {          
-    return "tasa no registrada";
+    return "tasa del día no registrada";
     }
   }
 
@@ -96,4 +96,4 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
     </div>
   </div>
 	</nav>
-  <div class="bg-primary text-white" align="center">Fecha: <?php echo date('d - m - Y') ;echo " (Tasa BCV: ". getTasaBCV().")"; ?></div>
+  <div class="bg-primary text-white" align="center">Fecha: <?php echo date('d - m - Y') ;echo " (Tasa BCV: ". getTasaBCV()." <a class='actualiza_tasa' href='#' onClick=alert('En_construcción')> 'Actualízala'</a>)"; ?> </div>
