@@ -5,6 +5,8 @@
 
 	error_reporting(E_ERROR | E_WARNING | E_PARSE );
 	$ocultar = 'd-none';
+
+	// Accesos a botones de Editar y elimiar registros
 	if (isset($_SESSION['autoridad'])) { 
 		$nivel_autoridad = $_SESSION['autoridad'];
 		if ($nivel_autoridad <>1) {
@@ -14,37 +16,13 @@
 		}
 	}
 ?>
+<section id="section-modal">
+	<?php include("modales/modalMaestros.php"); ?>
+</section>
 <!-- Maestro Productos -->
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'producto' ) { echo $ocultar ; } ?>">
 	<div class="row">
-		<div class="col-md-4">
-			<div class="card card-body">
-				<form action="guardardatos.php" method="post" id="form_productos">
-					<h3>Registro de Productos</h3><br>
-					<input type="text" name="guardar_form" value="4" hidden>
-					<label class="form-label " for="cod_prod">Código del producto:</label>
-					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_prod" class="form-control " placeholder="Ejm: TP001" >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="nom_prod">Nomdre del producto:</label>
-						<input type="text" name="nom_prod" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-4 ">
-				    <label for="estado_producto" class="form-label">Estado</label>
-				    <select class="form-select" id="estado_producto" name="estado_producto" >
-				      <option selected value="1">Activo</option>
-				      <option value="0">Inactivo</option>
-				    </select>
-					</div>
-					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
-					<div class="form-outline mb-4">
-						<button type="submit" class="btn btn-primary btn-lg" name="guardar" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
-					</div>				
-				</form>
-			</div>
-		</div>
-		<div class="col-md-6">
+		<div class="col-md-10">
 					<table class="table table-bordered border-dark">
 						<thead>
 							<tr>
@@ -83,33 +61,7 @@
  <!-- Maestro programas ventas -->
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'prog_vtas' ) { echo $ocultar ; } ?>">
 	<div class="row">
-		<div class="col-md-4">
-			<div class="card card-body">
-				<form action="guardardatos.php" method="post" id="form_programas_ventas">
-					<h3>Registro de Programas de Ventas</h3><br>
-					<input type="text" name="guardar_form" value="5" hidden>
-					<label class="form-label " for="cod_prog_vta">Código del Programa:</label>
-					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_prog_vta" id="cod_prog_vta" class="form-control " placeholder="Ejm: IH001" >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="nom_prog_vta">Nomdre del programa:</label>
-						<input type="text" name="nom_prog_vta" id="nom_prog_vta" class="form-control" placeholder="Ejm: IN HOUSE">
-					</div>
-					<div class="form-outline mb-4 col-md-4 ">
-				    <label for="estado_programa" class="form-label">Estado</label>
-				    <select class="form-select" id="estado_programa" name="estado_programa" >
-				      <option selected value="1">Activo</option>
-				      <option value="0">Inactivo</option>
-				    </select>
-					</div>
-					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
-					<div class="form-outline mb-4">
-						<button type="submit" class="btn btn-primary btn-lg" name="guardar" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
-					</div>				
-				</form>
-			</div>
-		</div>
+
 		<div class="col-md-6">
 					<table class="table table-bordered border-dark">
 						<thead>
@@ -143,6 +95,44 @@
 			</div>
 	</div>
 </div> <!-- cierra div programas ventas -->
+
+ <!-- Maestro operativos -->
+<div class="main container p-4  <?php if ($Tip_form_maestro<>'operativo' ) { echo $ocultar ; } ?>">
+	<div class="row">
+
+		<div class="col-md-6">
+					<table class="table table-bordered border-dark">
+						<thead>
+							<tr>
+								<th>Código</th>
+								<th>Programa</th>
+								<th>Estado</th>
+								<th>Acciones</th>
+							</tr>
+							<?php 	
+								$query = "select * from prog_ventas order by 2";
+								$programas = $conn->prepare($query);
+								$programas->execute();
+								while( $row = $programas->fetch(PDO::FETCH_ASSOC)) { ?>
+									<tr>
+										<td> <?php echo $row['cod_prog'] ?></td>
+										<td> <?php echo $row['nombre_prog'] ?></td>
+										<td> <?php echo $row['estatus'] ?></td>
+										<td>
+											<a href="editar.php?id_prog=<?php echo $row['id_prog'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
+												<i class="fas fa-marker"></i>
+											</a> 
+											<a href="eliminar.php?id_prog=<?php echo $row['id_prog'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" >
+												<i class="fas fa-trash"></i>
+											</a>
+										</td>
+									</tr>
+								<?php } ?>
+						</thead>
+					</table>
+			</div>
+	</div>
+</div> <!-- cierra div operativos -->
 
   <!-- Maestro Usuarios -->
 <div class="main container p-4 <?php if ($Tip_form_maestro<>'usuarios' ) { echo $ocultar ; } ?>">
@@ -211,67 +201,6 @@
 <!-- Maestro Afiliados Naturales -->
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'afilnat' ) { echo $ocultar ; } ?>">
 	<div class="row">
-		<div class="col-md-4">
-			<div class="card card-body">
-				<form action="guardardatos.php" method="post" id="form_afil_nat">
-					<h3>Registro de Afiliado Natural</h3><br>
-					<input type="text" name="guardar_form" value="2" hidden>
-					<label class="form-label " for="cod_afil_natu">Código del Afiliado (cédula):</label>
-					<div class="form-outline mb-4 col-md-4">
-						<input type="text" name="cod_afil_natu" class="form-control " placeholder="Ejm: 19.999.999" >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="nom_afil_natu">Nomdres:</label>
-						<input type="text" name="nom_afil_natu" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="ape_afil_natu">Apellidos:</label>
-						<input type="text" name="ape_afil_natu" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="fch_nat">Fecha de Nacimiento:</label>
-						<input type="date" name="fch_nat" class="form-control " >
-					</div>
-					<div class="form-control mb-4">
-						<label class="form-label" >Sexo:</label>
-						<div>
-						  <label class="form-check-label" for="F">
-						    Femenino
-						  <input class="form-check-input" type="radio" name="sexo_afil_natu" id="sexo_afil_natu_F" value="F">
-						  </label><br>
-							<label class="form-check-label" for="M">
-								Masculino
-						  <input class="form-check-input" type="radio" name="sexo_afil_natu" id="sexo_afil_natu_M" value="M">
-						  </label>
-						</div>
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="pais_orig_afil_natu">Pais Origen:</label>
-						<input type="text" name="pais_orig_afil_natu" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="direccion_afil_natu">Direccion Hab.:</label>
-						<input type="text" name="direccion_afil_natu" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="cod_ciudad">Ciudad:</label>
-						<input type="text" name="cod_ciudad" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="telefonos">Telefonos:</label>
-						<input type="text" name="telefonos" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-4 ">
-				    <label for="email_afil_natu" class="form-label">Email:</label>
-						<input type="text" name="email_afil_natu" class="form-control " >
-					</div>
-					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
-					<div class="form-outline mb-4">
-						<button type="submit" class="btn btn-primary btn-lg" name="guardardatos" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
-					</div>				
-				</form>
-			</div>
-		</div>
 		<div class="col-md-6">
 					<table class="table table-bordered border-dark">
 						<thead>
@@ -320,204 +249,60 @@
 	</div>
 </div> <!-- cierra div Afiliados Naturales -->
 
-
 <!-- Maestro Afiliados Juridicos -->
 <div class="main container p-4  <?php if ($Tip_form_maestro<>'afiljur' ) { echo $ocultar ; } ?>">
 	<div class="row">
-		<div class="col-md-4">
-
-
-			<div class="card card-body">
-				<form action="guardardatos.php" method="post" id="form_afil_jur">
-					<h3>Registro de Afiliado Jurídico</h3><br>
-					<input type="text" name="guardar_form" value="3" hidden>
-					<label class="form-label " for="cod_afil_jurid">Código de la Empresa (RIF):</label>
-					<div class="form-outline mb-4 col-md-6">
-						<input type="text" name="cod_afil_jurid" class="form-control " placeholder="Ejm: J-09999999-1" >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="nom_afil_jurid">Nombre:</label>
-						<input type="text" name="nom_afil_jurid" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="fch_reg">Fecha de Registro:</label>
-						<input type="date" name="fch_reg" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="registro_jurid">Registro:</label>
-						<input type="text" name="registro_jurid" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="tomo_reg">Tomo Registro:</label>
-						<input type="text" name="tomo_reg" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="direccion_afil_jurid">Dirección:</label>
-						<input type="text" name="direccion_afil_jurid" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="telefonos">Telefonos:</label>
-						<input type="text" name="telefonos" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-				    <label for="email_afil_jurid" class="form-label">Email:</label>
-						<input type="text" name="email_afil_jurid" class="form-control " >
-					</div>
-					<div class="form-outline mb-4 col-md-10 ">
-						<label class="form-label " for="nom_representante">Nombre Representante:</label>
-						<input type="text" name="nom_representante" class="form-control " >
-					</div>
-					<label class="form-label " for="ced_representante">Cédula Representante:</label>
-					<div class="form-outline mb-4 col-md-6">
-						<input type="text" name="ced_representante" class="form-control " placeholder="Ejm: 99.999.999" >
-					</div>
-					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
-					<div class="form-outline mb-4">
-						<button type="submit" class="btn btn-primary btn-lg" name="guardardatos" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
-					</div>				
-				</form>
-			</div>
-		</div>
 		<div class="col-md-6">
-					<table class="table table-bordered border-dark">
-						<thead>
+			<table class="table table-bordered border-dark">
+				<thead>
+					<tr>
+						<th>Código (RIF)</th>
+						<th>Nombres Empresa</th>
+						<th>Fecha de Registro</th>
+						<th>Registro</th>
+						<th>Tomo Registro</th>
+						<th>Dirección Jurídica</th>
+						<th>Telefonos</th>
+						<th>Email's</th>
+						<th>Nombres Representante</th>
+						<th>Cédula Representante</th>
+						<th>Acciones</th>
+					</tr>
+					<?php 	
+						$query = "select * from afiliados_jurid order by 3";
+						$afiljurid = $conn->prepare($query);
+						$afiljurid->execute();
+						while( $row = $afiljurid->fetch(PDO::FETCH_ASSOC)) { ?>
 							<tr>
-								<th>Código (RIF)</th>
-								<th>Nombres Empresa</th>
-								<th>Fecha de Registro</th>
-								<th>Registro</th>
-								<th>Tomo Registro</th>
-								<th>Dirección Jurídica</th>
-								<th>Telefonos</th>
-								<th>Email's</th>
-								<th>Nombres Representante</th>
-								<th>Cédula Representante</th>
-								<th>Acciones</th>
+								<td> <?php echo $row['cod_afil_jur'] ?></td>
+								<td> <?php echo $row['nombre_afil_jur'] ?></td>
+								<td> <?php echo $row['fch_registro'] ?></td>
+								<td> <?php echo $row['registro'] ?></td>
+								<td> <?php echo $row['tomo_reg'] ?></td>
+								<td> <?php echo $row['direccion_afil_jur'] ?></td>
+								<td> <?php echo $row['telefono_afil_jur'] ?></td>
+								<td> <?php echo $row['email_afil_jur'] ?></td>
+								<td> <?php echo $row['nombre_rep_afil_jur'] ?></td>
+								<td> <?php echo $row['cedula_rep_afil_jur'] ?></td>
+								<td>
+									<a href="editar.php?id_afil_jur=<?php echo $row['id_afil_jur'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
+										<i class="fas fa-marker"></i>
+									</a> 
+									<a href="eliminar.php?id_afil_jur=<?php echo $row['id_afil_jur'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" >
+										<i class="fas fa-trash"></i>
+									</a>
+								</td>
 							</tr>
-							<?php 	
-								$query = "select * from afiliados_jurid order by 3";
-								$afiljurid = $conn->prepare($query);
-								$afiljurid->execute();
-								while( $row = $afiljurid->fetch(PDO::FETCH_ASSOC)) { ?>
-									<tr>
-										<td> <?php echo $row['cod_afil_jur'] ?></td>
-										<td> <?php echo $row['nombre_afil_jur'] ?></td>
-										<td> <?php echo $row['fch_registro'] ?></td>
-										<td> <?php echo $row['registro'] ?></td>
-										<td> <?php echo $row['tomo_reg'] ?></td>
-										<td> <?php echo $row['direccion_afil_jur'] ?></td>
-										<td> <?php echo $row['telefono_afil_jur'] ?></td>
-										<td> <?php echo $row['email_afil_jur'] ?></td>
-										<td> <?php echo $row['nombre_rep_afil_jur'] ?></td>
-										<td> <?php echo $row['cedula_rep_afil_jur'] ?></td>
-										<td>
-											<a href="editar.php?id_afil_jur=<?php echo $row['id_afil_jur'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
-												<i class="fas fa-marker"></i>
-											</a> 
-											<a href="eliminar.php?id_afil_jur=<?php echo $row['id_afil_jur'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" >
-												<i class="fas fa-trash"></i>
-											</a>
-										</td>
-									</tr>
-								<?php } ?>
-						</thead>
-					</table>
-			</div>
+						<?php } ?>
+				</thead>
+			</table>
+		</div>
 	</div>
 </div> <!-- cierra div Afiliados Juridicos -->
 
  <!-- Maestro Condiciones de ventas -->
-<div class="main container-fluid p-4  <?php if ($Tip_form_maestro<>'condiciones_ventas' ) { echo $ocultar ; } ?>">
+<div class="main container p-4  <?php if ($Tip_form_maestro<>'condiciones_ventas' ) { echo $ocultar ; } ?>">
 	<div class="row">
-		<div class="col-md-4">
-			<div class="card card-body">
-				<form action="guardardatos.php" method="post" id="form_cond_ventas">
-					<h3>Registro de Condiciones de ventas</h3><br>
-					<input type="text" name="guardar_form" value="6" hidden>
-					<label class="form-label " for="cod_cond_vta">Identificador de la condición:</label>
-					<div class="form-outline mb-4 col-md-4 ">
-						<input type="text" name="cod_cond_vta" class="form-control " placeholder="Ejm: TP001"  >
-					</div>
-					<div class="input-group  col-md-3 mb-sm-3">
-						<?php 
-							$label = '<span class="input-group-text" >Producto:</span>';
-							$name = 'cod_prod_vta';
-							$campos=array('cod_prod','nombre');
-							echo cargar_selects('productos', $campos, $label, $name , $conn); 
-						?>
-					</div>
-					<div class="input-group  col-md-3 mb-3 ">
-						<?php 
-							$label = '<span class="input-group-text" >Operativo:</span>';
-							$name = 'cod_oper_vta';
-							$campos=array('cod_oper','nombre_oper');
-							echo cargar_selects('operativos', $campos, $label, $name , $conn); 
-						?>
-					</div>
-					<div class="input-group  col-md-3 mb-3 ">
-					  <span class="input-group-text">Ptos. Desde</span>
-					  <div class="form-outline  col-md-4 ">
-						  <input name="ptos_ini_vta" type="text" class="form-control " placeholder="000" >
-						</div>
-					</div>
-
-					<div class="input-group  col-md-3 mb-sm-3 ">
-						<span class="input-group-text">Ptos. hasta:</span>
-						<div class="form-outline  col-md-4 ">
-							<input type="text" name="ptos_fin_vta" class="form-control " placeholder="000">
-						</div>
-					</div>
-					<div class="input-group  col-md-3 mb-sm-3 ">
-						<span class="input-group-text">Precio Pto.</span>
-						<div class="form-outline  col-md-4 ">
-							<input type="text" name="precio_pto_vta" class="form-control" placeholder="0,00" >
-						</div>
-					</div>
-					<div class="input-group  col-md-3 mb-sm-3 ">
-						<span class="input-group-text">Precio Pto. Comisión:</span>
-						<div class="form-outline  col-md-4 ">
-							<input type="money" name="precio_pto_com" class="form-control " >
-						</div>
-					</div>
-					<div class="form-outline mb-3 col-md-10 ">
-						<label class="form-label " for="moneda_condic">Moneda:</label>
-						<select name="moneda_condic" id="moneda_condic">
-							<option value="US$" selected>US$</option>
-							<option value="BS.">Bs.</option>
-						</select>
-					</div>
-					<div class="input-group  col-md-3 mb-sm-3 ">
-						<span class="input-group-text">Maximo de Cuotas:</span>
-						<div class="form-outline  col-md-4 ">
-							<input type="text" name="cuot_max_vta" class="form-control " >
-						</div>
-					</div>
-					<div class="input-group mb-sm-3">
-					  <span class="input-group-text">Gastos Adm.</span>
-					  <span class="input-group-text">US$</span>
-						<div class="form-outline  col-md-4 ">
-							<input type="text" class="form-control" name="gastos_admin" placeholder="0.00" >
-						</div>					  
-					</div>
-					<div class="input-group mb-sm-3">
-					  <span class="input-group-text">Tipo Interes:</span>
-					  <div class="form-outline  col-md-4 ">
-							<input type="text" name="tip_interes" class="form-control " >
-						</div>
-					</div>
-					<div class="input-group mb-sm-3">
-					  <span class="input-group-text">Descuento:</span>
-					  <div class="form-outline  col-md-4 ">
-							<input type="text" name="%_desc_vta" class="form-control " placeholder="%" >
-						</div>
-					</div>
-					<input type="text" name="cod_user" class="form-control " Value='<?php echo $_SESSION['id_user'] ?>' hidden>
-					<div class="form-outline mb-4">
-						<button type="submit" class="btn btn-primary btn-lg" name="guardar" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
-					</div>				
-				</form>
-			</div>
-		</div>
 		<div class="col-md-6">
 					<table class="table table-sm table-bordered border-dark">
 						<thead>
@@ -570,7 +355,7 @@
 					</table>
 			</div>
 	</div>
-</div> <!-- cierra div productos -->
+</div> <!-- cierra div Condiciones de ventas -->
 
 <!-- Div contratos -->
 <div class="container bg-primary rounded <?php if ($Tip_form_maestro<>'contrato' ) { echo $ocultar ; } ?>" name="form_contrato">
@@ -590,130 +375,106 @@
 
 		<input type="text" name="guardar_form" value="7" hidden id="guardar_form">
 
-		<div class="row">
-			<div class="col 	p-2 " >
-				<div class="input-group  ">
+		<div class="input-group">
+			<div class="col 	p-1 " >
 					<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i>  Contrato:</label>
 					<input autofocus  type="text" class="form-control text-uppercase fs-6 " name="contrato" id="contrato"  >
-				</div>			
 			</div>
-			<div class="col p-2" >
-				<div class="col-12">
-				<div class="input-group ">
+			<div class="col p-1" >
 					<label class="input-group-text "><i class="fas fa-calendar-check"></i> Emisión:</label>
 					<input type="date" class="form-control" name="fch_venta" id="fch_venta" >
-				</div>
-				</div>		
 			</div>
-			<div class="col p-2" >
-				<div class="input-group ">
-					<span class="input-group-text ">Moneda:</span>
+			<div class="col p-1" >
+					<label class="input-group-text ">Moneda:</label>
 					<select name="moneda_condic_cont" id="moneda_condic_cont" disabled>
 						<option value="US$" selected>US$</option>
 						<option value="BS." disabled>Bs.</option>
 					</select>
-				</div>			
 			</div>
-			<div class="col p-2" >
-				<div class="input-group ">
-					<span class="input-group-text ">tasa Bs.:</span>
+			<div class="col p-1" >
+					<label class="input-group-text ">tasa Bs.:</label>
 					<input type="text" class="form-control" name="tasa" id="tasa" disabled>
-				</div>			
 			</div>
 		</div>
 		<hr >
-		<div class="row"> 
-			<div class="col 	p-2 " >
-				<div class="input-group  ">
+		<div class="input-group"> 
+			<div class="col	p-1 " >
 					<?php 
-						$label = '<span class="input-group-text" >Producto:</span>';
+						$label = '<label class="input-group-text" >Producto:</label>';
 						$name = 'cod_prod_cont';
 						$campos=array('cod_prod','nombre');
 						echo cargar_selects('productos', $campos, $label, $name , $conn);
 					?>
-				</div>			
 			</div>
-			<div class="col p-2" >
-				<div class="col-9">
-					<div class="input-group ">
-						<?php 
-							$label = '<span class="input-group-text" >Operativo:</span>';
-							$name = 'cod_oper_cont';
-							$campos=array('cod_oper','nombre_oper');
-							echo cargar_selects('operativos', $campos, $label, $name , $conn); 
-						?>
-					</div>
-				</div>		
+			<div class="col p-1" >
+				<?php 
+					$label = '<label class="input-group-text" >Operativo:</label>';
+					$name = 'cod_oper_cont';
+					$campos=array('cod_oper','nombre_oper');
+					echo cargar_selects('operativos', $campos, $label, $name , $conn); 
+				?>
 			</div>
-			<div class="col p-2" >
-				<div class="input-group ">
-					<span class="input-group-text ">Sucursal:</span>
+			<div class="col p-1" >
+					<label class="input-group-text ">Sucursal:</label>
 					<select name="sucursal" id="sucursal">
 						<option value="00001" selected>Mérida</option>
 						<option value="00002" >Margarita</option>
 					</select>
-				</div>			
 			</div>
-			<div class="col p-2" >
-				<div class="input-group ">
+			<div class="col p-1" >
 						<?php 
-							$label = '<span class="input-group-text" >Programa:</span>';
+							$label = '<label class="input-group-text" >Programa:</label>';
 							$name = 'cod_prog_cont';
 							$campos=array('cod_prog','nombre_prog');
 							echo cargar_selects('prog_ventas', $campos, $label, $name , $conn); 
 						?>
-				</div>			
 			</div>
 		</div>
 		<hr >
 		<div class="form-row  bg-info text-center"><h6 class="m-0">T i t u l a r e s</h6>
 		</div>
-		<div class="row"> 
-			<div class="col 	p-2 " >
-				<div class="input-group  ">
+		<div class="input-group"> 
+			<div class="col-6	p-1 " >
 					<label class="input-group-text " for="ced_titular1">Titular 1:</label>
-					<div class="col-2">
+
 						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" placeholder="Cedula" required>
-					</div>
+
 
 					<div class="lista" id="lista"></div>
 
 					<input type="text" class="form-control" name="nom_titular1" id="nom_titular1" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular1" id="ape_titular1" placeholder="Apellido">
-				</div>
 			</div>
-			<div class="col 	p-2 " >
-				<div class="input-group  ">
+			<div class="col-6 p-1 " >
 					<label class="input-group-text " for="ced_titular2">Titular 2:</label>
 					<div class="col-2">
 						<input type="text" class="form-control" name="ced_titular2" id="ced_titular2" placeholder="Cedula">
 					</div>
 					<input type="text" class="form-control" name="nom_titular2" id="nom_titular2" placeholder="Nombre">
 					<input type="text" class="form-control" name="ape_titular2" id="ape_titular2" placeholder="Apellido">
-				</div>			
 			</div>
 		</div>
 		<hr>
 		<div class="form-row  bg-info text-center "  ><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
 		</div>
 		<div  id="esq_venta" class="input-group">
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="tot_puntos" class="input-group-text " >Total Puntos:</label>
 					<input type="number" class="form-control" name="tot_puntos" id="tot_puntos" placeholder="00000"  >
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="val_pto" class="input-group-text " >Valor Pto:</label>
 					<input type="number" class="form-control" name="val_pto" id="val_pto" disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="pto_comici" class="input-group-text " >Pto. Comisc:</label>
 					<input type="number" class="form-control" name="pto_comici" id="pto_comici" disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="descuento_%" class="input-group-text " >% Descuento:</label>
 					<input type="number" class="form-control" name="descuento_%" id="descuento_%">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="monto_desc" class="input-group-text " >Monto Desc:</label>
 					<input type="number" class="form-control" name="monto_desc" id="monto_desc">
 			</div>
@@ -744,57 +505,57 @@
 		<div class="form-row  bg-info text-center "><h6 class="m-0">Distribución de Financiamiento de los Puntos Adquiridos</h6>
 		</div>
 		<div class="input-group">
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="ini_mesa" class="input-group-text " >Inicial en Mesa:</label>
 					<input type="number" class="form-control" name="ini_mesa" id="ini_mesa">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="ini_diferida" class="input-group-text " >Inicial Diferida:</label>
 					<input type="number" class="form-control" name="ini_diferida" id="ini_diferida">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="cap_especial" class="input-group-text " >Cap. Especial:</label>
 					<input type="number" class="form-control" name="cap_especial" id="cap_especial">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="cap_normal" class="input-group-text " >Cap. Normal:</label>
 					<input type="number" class="form-control" name="cap_normal" id="cap_normal">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="val_contrato_finan" class="input-group-text " >Valor Contrato:</label>
 					<input type="number" class="form-control" name="val_contrato_finan" id="val_contrato_finan" disabled>
 			</div>
 		</div>
 		<div class="input-group">
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="ini_mesa_%" class="input-group-text " >%</label>
 					<input type="text" class="form-control" name="ini_mesa_%" id="ini_mesa_%" disabled disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="ini_diferida_%" class="input-group-text " >%:</label>
 					<input type="text" class="form-control" name="ini_diferida_%" id="ini_diferida_%">
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="cap_especial_%" class="input-group-text " >%</label>
 					<input type="text" class="form-control" name="cap_especial_%" id="cap_especial_%" disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="cap_normal_%" class="input-group-text " >%</label>
 					<input type="text" class="form-control" name="cap_normal_%" id="cap_normal_%" disabled>
 			</div>
-			<div class="col p-2">
+			<div class="col p-1">
 					<label for="val_contrato_%" class="input-group-text " >%</label>
 					<input type="text" class="form-control" name="val_contrato_%" id="val_contrato_%" disabled>
 			</div>
 		</div>
-		<div class="row">
-			<div class="p-2">
+		<div class="input-group ">
+			<div class="col-12 p-1">
 					<label for="observaciones" class="input-group-text " >Observaciones:</label>
 					<textarea class="form-control" name="observaciones"></textarea>
 			</div>
 		</div>
 		<div class="row ">
-			<div class="col p-2 text-center">
+			<div class="col p-1 text-center">
 				<button type="submit" class="btn btn-secondary btn-lg" name="guardar_contrato" id="guardar_contrato" ><i class="fa-solid fa-save"></i> Guardar Datos</button>
 			</div>
 	</form>

@@ -1,8 +1,12 @@
-.row, .form-row{
 
-
+.actualiza_tasa {
+  font-size: 14pt; font-family: arial; text-decoration: none;
+  color:antiquewhite;
+  background: blue;
 }
 
-div[id="esq_venta"]{ 
-  /*background-color:   #a19292 ;*/
+
+.actualiza_tasa:hover {
+  background: green;
+  color:antiquewhite;
 }
