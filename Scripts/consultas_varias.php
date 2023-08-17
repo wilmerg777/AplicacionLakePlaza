@@ -1,5 +1,5 @@
 <?php
-	include("db.php");
+	// include("db.php");
 
 	function cargar_selects($tabla, $campos, $label,$name,$conn){
 		$query = "select * from ".$tabla;
