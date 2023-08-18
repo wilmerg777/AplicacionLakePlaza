@@ -75,6 +75,40 @@
 		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
 
+
+	// Operativos
+	if (isset($_GET['id_oper'])) {
+		$id = $_GET['id_oper'];
+		$query = "Select * from operativos where id_oper = $id";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+		if ($cuantos == 1) {
+			$row = $resultado->fetch(PDO::FETCH_ASSOC);
+			$codOper = $row['cod_oper'];
+			$nombre = $row['nombre_oper'];
+			$estatus = $row['estatus'];
+		}
+	}
+
+	if (isset($_POST['update_oper'])) {
+		$id = $_GET['id_oper'];
+		$nombre = $_POST['nombre_oper'];
+		$estatus = $_POST['estatus_oper'];
+		$query = "Update operativos set nombre_oper='$nombre', estatus='$estatus' where id_oper='$id' ";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+
+		if ($cuantos<1) {
+			die("Accion de editar fallida! ".$cuantos);
+		}
+		$_SESSION['message'] = "Registro actualizado correctamente.";
+		$_SESSION['message_type'] = 'success';
+
+
+		header('location:registro_datos_maestros.php?maestro=operativo');
+		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+	}
+
 	// Programas
 	if (isset($_GET['id_prog'])) {
 		$id = $_GET['id_prog'];
@@ -337,6 +371,35 @@
 		  		</div>
 				</div> <!--Fin form Edit producto -->
 
+				<!-- Form Edit operativos -->
+
+				<div <?php if (!isset($_GET['id_oper'])) { echo $ocultar ; } ?> >
+					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR OPERATIVO</div>
+			  	<div class="card-body text-success">
+						<form action="editar.php?id_oper=<?php echo $_GET['id_oper'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="nombre_oper" class="form-label">Nombre del Operativo:</label>
+								<input type="text" name="nombre_oper" value="<?php echo $nombre ;?>" class="form-control" placeholder="Actualiza operativo" autofocus>
+							</div>
+							<div class="form-outline mb-3 col-md-5 ">
+						    <label for="estatus_oper" class="form-label">Estado</label>
+						    <select class="form-select" id="estatus_oper" name="estatus_oper" >
+						    	<?php if ($estatus == 1) { ?>
+											<option selected value="1">Activo</option>
+											<option value="0">Inactivo</option>
+							    <?php }else{ ?>
+											<option  value="1">Activo</option>
+											<option selected value="0">Inactivo</option>					    	
+									<?php } ?>
+						    </select>
+							</div>							
+				  		<div class="card-footer bg-transparent border-success text-center">
+								<button type="submit" class="btn btn-success" name="update_oper"><i class="fa-solid fa-save"></i> Actualizar</button>
+				  		</div>
+		  			</form>
+		  		</div>
+				</div> <!--Fin form Edit operativo -->
+
 				<!-- Form Edit programas ventas -->
 
 				<div <?php if (!isset($_GET['id_prog'])) { echo $ocultar ; } ?> >
@@ -364,7 +427,7 @@
 				  		</div>
 		  			</form>
 		  		</div>
-				</div> <!--Fin form Edit producto -->
+				</div> <!--Fin form Edit programas ventas -->
 
 				<!-- Form Edit afiliados naturales -->
 
@@ -550,6 +613,7 @@
 		  			</form>
 		  		</div>
 				</div> <!--Fin form Edit condiciones de ventas -->
+			<input type="button" onclick="history.back()" name="cancelar" value="Cancelar">
 			</div>
 		</div>
 	</div>

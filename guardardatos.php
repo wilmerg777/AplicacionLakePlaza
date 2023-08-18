@@ -56,6 +56,31 @@
 
 	}
 
+	if ($_POST['guardar_form']==8) { // Operativo
+		$codOper = $_POST['cod_operativo'];
+		$nomOper = $_POST['nom_operativo'];
+		$estatus = $_POST['estatus_operativo'];
+		$usuario = $_POST['cod_user'];
+
+	 	$query = "insert into operativos(cod_oper,nombre_oper,fch_inicio,fch_fin,estatus,usuario) values ('$codOper','$nomOper','','', '$estatus','$usuario')";
+		$resultado = $conn->prepare($query);
+
+		try {
+			$resultado->execute();
+			$mensaje='Operativo guardado correctamente!';
+			$tipo_mensaje="success";
+			} catch (Exception $e) {
+			$error = "Error: " . $e->getMessage() ;
+			$mensaje='Problemas al guardar :<br>'.$error;
+			$tipo_mensaje="danger";
+		}
+
+	  $_SESSION['message'] = $mensaje;
+	  $_SESSION['message_type'] = $tipo_mensaje;
+	  echo "<script>window.location.replace('https://localhost/AplicacionLakePlaza/registro_datos_maestros.php?maestro=operativo ')</script>";
+
+	}
+
 	if ($_POST['guardar_form']==5) { // Programas ventas
 		$codProg = $_POST['cod_prog_vta'];
 		$nombreProg = $_POST['nom_prog_vta'];

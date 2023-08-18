@@ -112,24 +112,28 @@ if (isset($_SESSION['message'])) { ?>
 						<thead>
 							<tr>
 								<th>Código</th>
-								<th>Programa</th>
-								<th>Estado</th>
+								<th>Operativo</th>
+								<th>Fecha de Inicio</th>
+								<th>Fecha Fin</th>
+								<th>Estatus</th>
 								<th>Acciones</th>
 							</tr>
 							<?php 	
-								$query = "select * from prog_ventas order by 2";
-								$programas = $conn->prepare($query);
-								$programas->execute();
-								while( $row = $programas->fetch(PDO::FETCH_ASSOC)) { ?>
+								$query = "select * from operativos order by 2";
+								$operativos = $conn->prepare($query);
+								$operativos->execute();
+								while( $row = $operativos->fetch(PDO::FETCH_ASSOC)) { ?>
 									<tr>
-										<td> <?php echo $row['cod_prog'] ?></td>
-										<td> <?php echo $row['nombre_prog'] ?></td>
+										<td> <?php echo $row['cod_oper'] ?></td>
+										<td> <?php echo $row['nombre_oper'] ?></td>
+										<td> <?php echo $row['fch_inicio'] ?></td>
+										<td> <?php echo $row['fch_fin'] ?></td>
 										<td> <?php echo $row['estatus'] ?></td>
 										<td>
-											<a href="editar.php?id_prog=<?php echo $row['id_prog'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
+											<a href="editar.php?id_oper=<?php echo $row['id_oper'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
 												<i class="fas fa-marker"></i>
 											</a> 
-											<a href="eliminar.php?id_prog=<?php echo $row['id_prog'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" >
+											<a href="eliminar.php?id_oper=<?php echo $row['id_oper'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" >
 												<i class="fas fa-trash"></i>
 											</a>
 										</td>
@@ -443,10 +447,7 @@ if (isset($_SESSION['message'])) { ?>
 		<div class="input-group"> 
 			<div class="col-6	p-1 " >
 					<label class="input-group-text " for="ced_titular1">Titular 1:</label>
-
-						<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" placeholder="Cedula" required>
-
-
+					<input type="text" class="form-control" name="ced_titular1" id="ced_titular1" size="10" maxlength="10" placeholder="Cedula" required>
 					<div class="lista" id="lista"></div>
 
 					<input type="text" class="form-control" name="nom_titular1" id="nom_titular1" placeholder="Nombre">
@@ -462,7 +463,8 @@ if (isset($_SESSION['message'])) { ?>
 			</div>
 		</div>
 		<hr>
-		<div class="form-row  bg-info text-center "  ><h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
+		<div class="form-row  bg-info text-center">
+			<h6 class="m-0">E s q u e m a  -   d e  -   v e n t a</h6>
 		</div>
 		<div  id="esq_venta" class="input-group">
 			<div class="col p-1">

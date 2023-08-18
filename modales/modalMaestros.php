@@ -102,8 +102,8 @@
 						<input type="text" name="nom_operativo" id="nom_operativo" class="form-control" placeholder="Ejm: GLOBAL 7 AÑOS">
 					</div>
 					<div class="form-outline mb-4 col-md-4 ">
-				    <label for="estado_operativo" class="form-label">Estado</label>
-				    <select class="form-select" id="estado_operativo" name="estado_operativo" >
+				    <label for="estatus_operativo" class="form-label">Estado</label>
+				    <select class="form-select" id="estatus_operativo" name="estatus_operativo" >
 				      <option selected value="1">Activo</option>
 				      <option value="0">Inactivo</option>
 				    </select>
