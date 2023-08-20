@@ -3,14 +3,7 @@
 	error_reporting(E_ERROR | E_WARNING | E_PARSE );
 
 	$ocultar = 'd-none';
-	if (isset($_SESSION['autoridad'])) { 
-		$nivel_autoridad = $_SESSION['autoridad'];
-		if ($nivel_autoridad <>1) {
-			$desactivar="disabled";
-		} else {
-			$desactivar="";
-		}
-	}
+
 ?>
 
 
@@ -92,7 +85,7 @@
 				break;
 			case 'Operativo':
 				return $inputsModal = '
-					<input type="text" name="guardar_form" value="8" hidden>
+					<input type="text" name="guardar_form" value="7" hidden>
 					<label class="form-label " for="cod_operativo">Código del Operativo:</label>
 					<div class="form-outline mb-4 col-md-4">
 						<input type="text" name="cod_operativo" id="cod_operativo" class="form-control " placeholder="Ejm: G0701" >
@@ -295,10 +288,28 @@
 				echo $inputsx;
 
 				break;
-			case 'Programa de Venta':
-				'xxx
-				';
 
+			case 'Usuario':
+				
+				return $inputsModal = '
+					<input type="text" name="guardar_form" value="1" hidden>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="codUser">Código del usuario:</label>
+						<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" >
+					</div>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="usuario">Usuario:</label>
+						<input type="text" name="usuario" class="form-control " placeholder="Nick de usuario" >
+					</div>
+          <div class="form-outline mb-4">
+          	<label class="form-label" for="email_user">Correo Electrónico:</label>
+						<input type="email" name="email_user" class="form-control"  placeholder="Escriba su correo electrónico" >
+					</div>
+					<div class="form-outline mb-4">
+            <label class="form-label" for="clave_usuario">Password:</label>
+            <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
+          </div>
+				';
 				break;
 			default:
 				// code...

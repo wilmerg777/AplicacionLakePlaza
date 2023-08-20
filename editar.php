@@ -18,7 +18,6 @@
 			$codUser = $row['cod_user'];
 			$usuario = $row['usuario'];
 			$email = $row['email_user'];
-
 		}
 	}
 
@@ -58,9 +57,10 @@
 
 	if (isset($_POST['update_prod'])) {
 		$id = $_GET['id_prod'];
+		$codProd = $_POST['cod_prod'];
 		$nombre = $_POST['nombre'];
 		$estado = $_POST['estado'];
-		$query = "Update productos set nombre='$nombre', estado='$estado' where id_prod='$id' ";
+		$query = "Update productos set cod_prod='$codProd',nombre='$nombre', estado='$estado' where id_prod='$id' ";
 		$resultado = $conn->prepare($query);
 		$cuantos=$resultado->execute();
 
@@ -92,9 +92,10 @@
 
 	if (isset($_POST['update_oper'])) {
 		$id = $_GET['id_oper'];
+		$codOper = $_POST['cod_oper'];
 		$nombre = $_POST['nombre_oper'];
 		$estatus = $_POST['estatus_oper'];
-		$query = "Update operativos set nombre_oper='$nombre', estatus='$estatus' where id_oper='$id' ";
+		$query = "Update operativos set cod_oper='$codOper',nombre_oper='$nombre', estatus='$estatus' where id_oper='$id' ";
 		$resultado = $conn->prepare($query);
 		$cuantos=$resultado->execute();
 
@@ -103,8 +104,6 @@
 		}
 		$_SESSION['message'] = "Registro actualizado correctamente.";
 		$_SESSION['message_type'] = 'success';
-
-
 		header('location:registro_datos_maestros.php?maestro=operativo');
 		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
@@ -125,9 +124,10 @@
 
 	if (isset($_POST['update_prog'])) {
 		$id = $_GET['id_prog'];
+		$codProg = $_POST['cod_prog'];
 		$nombre_prog = $_POST['nom_prog_vta'];
 		$estatus = $_POST['estado_programa'];
-		$query = "Update prog_ventas set nombre_prog='$nombre_prog', estatus='$estatus' where id_prog='$id' ";
+		$query = "Update prog_ventas set cod_prog='$codProg', nombre_prog='$nombre_prog', estatus='$estatus' where id_prog='$id' ";
 		$resultado = $conn->prepare($query);
 		$cuantos=$resultado->execute();
 
@@ -325,15 +325,15 @@
 						<form action="editar.php?id_user=<?php echo $_GET['id_user'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
 								<label for="usuario" class="form-label">Usuario:</label>
-								<input type="text" name="usuario" value="<?php echo $usuario ;?>" class="form-control" placeholder="Actualiza usuario" autofocus>
+								<input type="text" name="usuario" value="<?php echo $usuario ;?>" class="form-control" autofocus>
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="email_user" class="form-label">Correo:</label>
-								<input type="email" name="email_user" class="form-control" value="<?php echo $email; ?>" placeholder="Actualiza el correo">
+								<input type="email" name="email_user" class="form-control" value="<?php echo $email; ?>">
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="clave_usuario" class="form-label">Contraseña:</label>
-								<input type="password" name="clave_usuario" value="<?php echo $password ;?>" class="form-control" placeholder="Nueva clave" >
+								<input type="password" name="clave_usuario"  class="form-control" placeholder="Nueva clave" >
 							</div>
 							<div class="card-footer bg-transparent border-success text-center">
 								<button type="submit" class="btn btn-success" name="update_user"><i class="fa-solid fa-save"></i> Actualizar</button>
@@ -348,6 +348,10 @@
 					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR PRODUCTO</div>
 			  	<div class="card-body text-success">
 						<form action="editar.php?id_prod=<?php echo $_GET['id_prod'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="cod_prod" class="form-label">Código del Producto:</label>
+								<input type="text" name="cod_prod" value="<?php echo $codProd ;?>" class="form-control" readonly>
+							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="nombre" class="form-label">Nombre del Producto:</label>
 								<input type="text" name="nombre" value="<?php echo $nombre ;?>" class="form-control" placeholder="Actualiza producto" autofocus>
@@ -378,6 +382,10 @@
 			  	<div class="card-body text-success">
 						<form action="editar.php?id_oper=<?php echo $_GET['id_oper'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
+								<label for="cod_oper" class="form-label">Código del Operativo:</label>
+								<input type="text" name="cod_oper" value="<?php echo $codOper ;?>" class="form-control" readonly>
+							</div>
+							<div class="form-outline mb-3 col-10">
 								<label for="nombre_oper" class="form-label">Nombre del Operativo:</label>
 								<input type="text" name="nombre_oper" value="<?php echo $nombre ;?>" class="form-control" placeholder="Actualiza operativo" autofocus>
 							</div>
@@ -406,6 +414,10 @@
 					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR PROGRAMA</div>
 			  	<div class="card-body text-success">
 						<form action="editar.php?id_prog=<?php echo $_GET['id_prog'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="cod_prog" class="form-label">Código del Programa:</label>
+								<input type="text" name="cod_prog" value="<?php echo $codProg ;?>" class="form-control" readonly>
+							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="nom_prog_vta" class="form-label">Nombre del Programa:</label>
 								<input type="text" name="nom_prog_vta" value="<?php echo $nombre_prog ;?>" class="form-control" placeholder="Actualiza programa" autofocus>
@@ -437,7 +449,7 @@
 						<form action="editar.php?id_afil_natu=<?php echo $_GET['id_afil_natu'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
 								<label for="cod_afil_natu" class="form-label">Código:</label>
-								<input type="text" name="cod_afil_natu" value="<?php echo $cod_afil_natu ;?>" class="form-control" placeholder="código o cédula" autofocus>
+								<input type="text" name="cod_afil_natu" value="<?php echo $cod_afil_natu ;?>" class="form-control" readonly>
 							</div>
 
 							<div class="form-outline mb-3 col-10">
@@ -494,7 +506,7 @@
 						<form action="editar.php?id_afil_jur=<?php echo $_GET['id_afil_jur'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
 								<label for="cod_afil_jur" class="form-label">Código:</label>
-								<input type="text" name="cod_afil_jur" value="<?php echo $cod_afil_jur ;?>" class="form-control" placeholder="código o RIF" autofocus>
+								<input type="text" name="cod_afil_jur" value="<?php echo $cod_afil_jur ;?>" class="form-control" readonly>
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="nombre_afil_jur" class="form-label">Nombre:</label>
@@ -549,14 +561,14 @@
 						<form action="editar.php?id_cond=<?php echo $_GET['id_cond'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
 								<label class="form-label " for="cod_cond_vta">Código Condic:</label>
-								<input type="text" name="cod_cond_vta" class="form-control " value="<?php echo $cod_cond ; ?>">							
+								<input type="text" name="cod_cond_vta" class="form-control " value="<?php echo $cod_cond ; ?>" readonly>							
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<?php 
 									$label = '<label class="form-label " for="cod_prod_vta">Producto:</label>';
 									$name = 'cod_prod_vta';
 									$campos=array('cod_prod','nombre');
-									echo cargar_selects_update('productos', $campos, $label, $name , $conn); 
+									echo cargar_selects_update('productos', $campos, $label, $name , $conn, $producto); 
 								?>							
 							</div>
 							<div class="form-outline mb-3 col-10">
@@ -565,7 +577,7 @@
 									$name = 'cod_oper_vta';
 									$campos=array('cod_oper','nombre_oper');
 									$camp_cond="cod_oper";
-									echo cargar_selects_update('operativos', $campos, $label, $name , $conn); 
+									echo cargar_selects_update('operativos', $campos, $label, $name , $conn, $operativo); 
 								?>							
 							</div>
 							<div class="input-group  col-md-3 mb-sm-3 ">

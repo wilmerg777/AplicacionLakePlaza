@@ -13,8 +13,7 @@
 				<a href="registro_datos_maestros.php?maestro=contrato" class="btn btn-dark mb-2"><i class="fa-solid fa-circle-plus"></i> Nuevo Contrato</a>
 			</div>
 		</div>
-
-		<table class="table table-sm table-striped table-hover">
+		<table class="table table-sm table-bordered border-dark ">
 			<thead class="table-dark">
 				<tr>
 					<th >Contrato</th>
@@ -28,29 +27,25 @@
 					<th >Acción</th>
 				</tr>
 			</thead>
-			<tbody class="table table-active">
-
-					<?php 
-
-						$sql="select contrato,emision,s.nombre_suc as sucursal,tot_ptos_cont,val_pto_cont,estatus,observaciones from contratos c inner join sucursales s on s.cod_suc=c.doc_suc_cont";
-
-						$resultado = $conn->prepare($sql);
-						$resultado->execute();
-						
-					while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){ ?>
-						<tr>
-							<th ><?php echo $fila['contrato']  ?> </th>
-							<th ><?php echo $fila['emision']  ?></th>
-							<th ><?php echo $fila['sucursal']  ?></th>
-							<th ><?php echo $fila['tot_ptos_cont']  ?></th>
-							<th ><?php echo $fila['val_pto_cont']  ?></th>
-							<th ><?php echo $fila['estatus']  ?></th>
-							<th ><?php echo $fila['observaciones']  ?></th>
-							<th ><input type="checkbox"></th>
-							<th ><a href="#" type="button" class="btn btn-info"><i class="fas fa-edit"></i> Editar</a></th>
-						</tr>
-					<?php } ?>
-
+			<tbody >
+			<?php
+				$sql="select contrato,emision,s.nombre_suc as sucursal,tot_ptos_cont,val_pto_cont,estatus,observaciones from contratos c inner join sucursales s on s.cod_suc=c.doc_suc_cont";
+				$resultado = $conn->prepare($sql);
+				$resultado->execute();
+				while ( $fila = $resultado->fetch(PDO::FETCH_ASSOC)){ 
+			?>
+			<tr>
+				<th ><?php echo $fila['contrato']  ?> </th>
+				<th ><?php echo $fila['emision']  ?></th>
+				<th ><?php echo $fila['sucursal']  ?></th>
+				<th ><?php echo $fila['tot_ptos_cont']  ?></th>
+				<th ><?php echo $fila['val_pto_cont']  ?></th>
+				<th ><?php echo $fila['estatus']  ?></th>
+				<th ><?php echo $fila['observaciones']  ?></th>
+				<th ><input type="checkbox"></th>
+				<th ><a href="#" type="button" class="btn btn-info"><i class="fas fa-edit"></i> Editar</a></th>
+			</tr>
+			<?php } ?>
 			</tbody>
 		</table>
 	</div>

@@ -2,7 +2,7 @@
 	include("sesion.php");
 	include("db.php");
 
-	// (guardar: usuario = 1 ; afilnat = 2 ; afiljur = 3 ; Producto = 4 ; prog_vtas = 5 ;condicion_ventas = 6 ;)
+	// (guardar: usuario = 1 ; afilnat = 2 ; afiljur = 3 ; Producto = 4 ;Operativo = 7 ; prog_vtas = 5 ;condicion_ventas = 6 ;)
 
 	if ($_POST['guardar_form']==1) { // usuario
 		$codUser = $_POST['codUser'];
@@ -56,13 +56,13 @@
 
 	}
 
-	if ($_POST['guardar_form']==8) { // Operativo
+	if ($_POST['guardar_form']==7) { // Operativo
 		$codOper = $_POST['cod_operativo'];
 		$nomOper = $_POST['nom_operativo'];
 		$estatus = $_POST['estatus_operativo'];
 		$usuario = $_POST['cod_user'];
 
-	 	$query = "insert into operativos(cod_oper,nombre_oper,fch_inicio,fch_fin,estatus,usuario) values ('$codOper','$nomOper','','', '$estatus','$usuario')";
+	 	$query = "insert into operativos(cod_oper,nombre_oper,estatus,usuario) values ('$codOper','$nomOper', '$estatus','$usuario')";
 		$resultado = $conn->prepare($query);
 
 		try {
@@ -71,7 +71,7 @@
 			$tipo_mensaje="success";
 			} catch (Exception $e) {
 			$error = "Error: " . $e->getMessage() ;
-			$mensaje='Problemas al guardar :<br>'.$error;
+			$mensaje='Problemas al guardarx :<br>'.$error;
 			$tipo_mensaje="danger";
 		}
 

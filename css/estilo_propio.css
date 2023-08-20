@@ -1,12 +1,24 @@
-
 .actualiza_tasa {
   font-size: 14pt; font-family: arial; text-decoration: none;
   color:antiquewhite;
   background: blue;
 }
 
-
 .actualiza_tasa:hover {
   background: green;
   color:antiquewhite;
+}
+
+.campo-tabla:hover{
+   background-color:  #1e3ef2 ;
+}
+
+.campo-tabla > label{
+  color:  #041677;
+  align-items: center;
+  padding: 0.08rem;
+}
+
+.BG_contratos{
+  background:  #88ccec;
 }

@@ -238,3 +238,8 @@ if (!!document.getElementById('form_contratos')) {
 		console.log("Datos enviados!");
 	});
 }
+
+function confirmar(mensaje){
+	const respuesta =  confirm(mensaje) ;
+	return respuesta;
+}
