@@ -333,6 +333,50 @@ if (isset($_SESSION['message'])) { ?>
 	</div>
 </div> <!-- cierra div Condiciones de ventas -->
 
+<!-- Maestro tasa -->
+<div class="main container p-2  <?php if ($Tip_form_maestro<>'tasa' ) { echo $ocultar ; } ?>">
+	<div class="row">
+		<table class="table table-bordered border-dark">
+			<thead>
+				<tr>
+					<th>Moneda base</th>
+					<th>Valor</th>
+					<th>Operador</th>
+					<th>Moneda alterna</th>
+					<th>Valor</th>
+					<th>Fecha</th>
+					<th>Acciones</th>
+				</tr>
+				<?php 	
+					$query = "select * from tasas order by 7";
+					$tasas = $conn->prepare($query);
+					$tasas->execute();
+					while( $row = $tasas->fetch(PDO::FETCH_ASSOC)) { 
+						$id_moneda = $row['id'];
+				?>
+				<tr>
+					<td> <?php echo $row['moneda_base'] ?></td>
+					<td> <?php echo $row['valor_m_base'] ?></td>
+					<td> <?php echo $row['operador_cambio'] ?></td>
+					<td> <?php echo $row['moneda_alterna'] ?></td>
+					<td> <?php echo $row['valor_m_alterna'] ?></td>
+					<td> <?php echo $row['fecha_tasa'] ?></td>
+					<td>
+						<a href="editar.php?id_moneda=<?php echo $row['id_moneda'] ?>" class="btn btn-secondary <?php echo $desactivar  ?>">
+							<i class="fas fa-marker"></i>
+						</a> 
+						<a href="eliminar.php?id_moneda=<?php echo $row['id_moneda'] ?>" class="btn btn-danger <?php echo $desactivar  ?>" onClick="return confirmar('Desea eliminar el registro?');">
+							<i class="fas fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+				<?php } 
+				?>
+			</thead>
+		</table>
+	</div>
+</div> <!-- cierra div tasa -->
+
 <!-- Div contratos -->
 <div class="container BG_contratos rounded <?php if ($Tip_form_maestro<>'contrato' ) { echo $ocultar ; } ?>" name="form_contrato">
 	<div class="row align-content-center mt-1 rounded">
@@ -403,7 +447,7 @@ if (isset($_SESSION['message'])) { ?>
 			</div>
 		</div>
 		<hr >
-		<div class="form-row  bg-primary text-center"><h3 class="m-0"><b>T I T U L A R E S</b></h3>
+		<div class="form-row text-center"><h3 class="m-0"><b>T I T U L A R E S</b></h3>
 		</div>
 		<div class="input-group"> 
 			<div class="col-6	p-1 campo-tabla " >
@@ -425,7 +469,7 @@ if (isset($_SESSION['message'])) { ?>
 			</div>
 		</div>
 		<hr>
-		<div class="form-row  bg-primary text-center">
+		<div class="form-row  text-center">
 			<h3 class="m-0"><B>E S Q U E M A - D E - V E N T A </B></h3>
 		</div>
 		<div  id="esq_venta" class="input-group">
@@ -473,7 +517,7 @@ if (isset($_SESSION['message'])) { ?>
 			</div>
 		</div>
 		<hr>
-		<div class="form-row  bg-info text-center "><h6 class="m-0">Distribución de Financiamiento de los Puntos Adquiridos</h6>
+		<div class="form-row text-center "><h3 class="m-0"><b>Distribución de Financiamiento de los Puntos Adquiridos</b></h3>
 		</div>
 		<div class="input-group">
 			<div class="col p-1 campo-tabla">

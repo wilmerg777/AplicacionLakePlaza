@@ -10,7 +10,7 @@
 }
 
 .campo-tabla:hover{
-   background-color:  #1e3ef2 ;
+   background-color: #677f8a ;
 }
 
 .campo-tabla > label{
@@ -20,5 +20,13 @@
 }
 
 .BG_contratos{
-  background:  #88ccec;
+  background:  #425057  ;
+}
+
+#form_contratos  h3 {
+  background: #a0711d ;
+}
+
+#titulo_contratos_pendientes h2 {
+  background:  #928979 ;
 }

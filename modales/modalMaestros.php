@@ -311,6 +311,37 @@
           </div>
 				';
 				break;
+
+			case 'Tasa':
+				
+				return $inputsModal = '
+					<input type="text" name="guardar_form" value="9" hidden>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="moneda_base">Moneda base:</label>
+						<input type="text" name="moneda_base" class="form-control " value="US$" >
+					</div>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="valor_m_base">Valor base:</label>
+						<input type="text" name="valor_m_base" class="form-control " value="0,00" >
+					</div>
+          <div class="form-outline mb-4">
+          	<label class="form-label" for="operador_cambio">Operador:</label>
+						<input type="text" name="operador_cambio" class="form-control"  placeholder="* o /" >
+					</div>
+					<div class="form-outline mb-4">
+            <label class="form-label" for="moneda_alterna">Moneda alterna:</label>
+            <input type="text" id="moneda_alterna" name="moneda_alterna" placeholder="Moneda cambio" class="form-control" />
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="valor_m_alterna">Valor alterno:</label>
+            <input type="text" id="valor_m_alterna" name="valor_m_alterna" placeholder="0,00" class="form-control" />
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="fecha_tasa">Fecha BCV:</label>
+            <input type="date" id="fecha_tasa" name="fecha_tasa"  class="form-control" />
+          </div>
+				';
+				break;
 			default:
 				// code...
 				break;

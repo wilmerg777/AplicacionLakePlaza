@@ -52,11 +52,11 @@
 		        $campos = array('cod_user','usuario','email_user','password','fch_registro') ;
 		        registro_maestro($tabla="",$campos="", $Tip_form_maestro, "Usuario");
 		        break;
-		    case "operativos":
-		    	$tabla = 'operativos';
-		        $campos = array('cod_user','usuario','email_user','password','fch_registro') ;
-		        registro_maestro($tabla="",$campos="", $Tip_form_maestro, "Operativo");
-		        break;
+		    case "tasa":
+		    	$tabla = 'tasas';
+		      $campos = array('cod_user','usuario','email_user','password','fch_registro') ;
+		      registro_maestro($tabla="",$campos="", $Tip_form_maestro, "Tasa");
+		      break;
 		    case "error":
 		    	$tabla = 'errores';
 		        $campos = array('cod_err','error','email_reporte','fch_err') ;
