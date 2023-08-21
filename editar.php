@@ -302,7 +302,8 @@
 								<input type="password" name="clave_usuario" value="<?php echo $password ;?>" class="form-control" placeholder="Nueva clave" >
 							</div>
 							<div class="card-footer bg-transparent border-success text-center">
-								<button type="submit" class="btn btn-success" name="update_user"><i class="fa-solid fa-save"></i> Actualizar</button>
+								<button type="submit" class="btn btn-success" name="update_user"><i class="fa-solid fa-save"></i> Actualizarx</button>
+								
 				  		</div>
 						</form>
 					</div>
@@ -550,6 +551,7 @@
 		  			</form>
 		  		</div>
 				</div> <!--Fin form Edit condiciones de ventas -->
+				<button type="button" class="btn-close" aria-label="Close" onClick="history.go(-1);">Cancelar</button>
 			</div>
 		</div>
 	</div>
