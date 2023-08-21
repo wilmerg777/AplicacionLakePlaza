@@ -18,7 +18,6 @@
 			$codUser = $row['cod_user'];
 			$usuario = $row['usuario'];
 			$email = $row['email_user'];
-
 		}
 	}
 
@@ -58,9 +57,10 @@
 
 	if (isset($_POST['update_prod'])) {
 		$id = $_GET['id_prod'];
+		$codProd = $_POST['cod_prod'];
 		$nombre = $_POST['nombre'];
 		$estado = $_POST['estado'];
-		$query = "Update productos set nombre='$nombre', estado='$estado' where id_prod='$id' ";
+		$query = "Update productos set cod_prod='$codProd',nombre='$nombre', estado='$estado' where id_prod='$id' ";
 		$resultado = $conn->prepare($query);
 		$cuantos=$resultado->execute();
 
@@ -72,6 +72,39 @@
 
 
 		header('location:registro_datos_maestros.php?maestro=producto');
+		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+	}
+
+
+	// Operativos
+	if (isset($_GET['id_oper'])) {
+		$id = $_GET['id_oper'];
+		$query = "Select * from operativos where id_oper = $id";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+		if ($cuantos == 1) {
+			$row = $resultado->fetch(PDO::FETCH_ASSOC);
+			$codOper = $row['cod_oper'];
+			$nombre = $row['nombre_oper'];
+			$estatus = $row['estatus'];
+		}
+	}
+
+	if (isset($_POST['update_oper'])) {
+		$id = $_GET['id_oper'];
+		$codOper = $_POST['cod_oper'];
+		$nombre = $_POST['nombre_oper'];
+		$estatus = $_POST['estatus_oper'];
+		$query = "Update operativos set cod_oper='$codOper',nombre_oper='$nombre', estatus='$estatus' where id_oper='$id' ";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+
+		if ($cuantos<1) {
+			die("Accion de editar fallida! ".$cuantos);
+		}
+		$_SESSION['message'] = "Registro actualizado correctamente.";
+		$_SESSION['message_type'] = 'success';
+		header('location:registro_datos_maestros.php?maestro=operativo');
 		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
 
@@ -91,9 +124,10 @@
 
 	if (isset($_POST['update_prog'])) {
 		$id = $_GET['id_prog'];
+		$codProg = $_POST['cod_prog'];
 		$nombre_prog = $_POST['nom_prog_vta'];
 		$estatus = $_POST['estado_programa'];
-		$query = "Update prog_ventas set nombre_prog='$nombre_prog', estatus='$estatus' where id_prog='$id' ";
+		$query = "Update prog_ventas set cod_prog='$codProg', nombre_prog='$nombre_prog', estatus='$estatus' where id_prog='$id' ";
 		$resultado = $conn->prepare($query);
 		$cuantos=$resultado->execute();
 
@@ -274,6 +308,46 @@
 		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
 	}
 
+		// Tasas
+	if (isset($_GET['id_tasa'])) {
+		$id = $_GET['id_tasa'];
+		$query = "Select * from tasas where id = $id";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+		if ($cuantos == 1) {
+			$row = $resultado->fetch(PDO::FETCH_ASSOC);
+			$monedaBase = $row['moneda_base'];
+			$valorMBase = $row['valor_m_base'];
+			$operador = $row['operador'];
+			$monedaAlterna = $row['moneda_alterna'];
+			$valorMAlterna = $row['valor_m_alterna'];
+			$fechaTasa = $row['fecha_tasa'];
+		}
+	}
+
+	if (isset($_POST['update_tasa'])) {
+		$id = $_GET['id_tasa'];
+		$monedaBase = $_POST['moneda_base'];
+		$valorMBase = $_POST['valor_m_base'];
+		$operador = $_POST['operador'];
+		$monedaAlterna = $_POST['moneda_alterna'];
+		$valorMAlterna = $_POST['valor_m_alterna'];
+		$fechaTasa = $_POST['fecha_tasa'];
+		$query = "Update tasas set moneda_base='$monedaBase',valor_m_base='$valorMBase', operador_cambio='$operador' , moneda_alterna='$monedaAlterna' , valor_m_alterna='$valorMAlterna', fecha_tasa='$fechaTasa' where id='$id' ";
+		$resultado = $conn->prepare($query);
+		$cuantos=$resultado->execute();
+
+		if ($cuantos<1) {
+			die("Accion de editar fallida! ".$cuantos);
+		}
+		$_SESSION['message'] = "Registro actualizado correctamente.";
+		$_SESSION['message_type'] = 'success';
+
+
+		header('location:registro_datos_maestros.php?maestro=tasa');
+		//echo "<script>window.location.replace('http://localhost/AplicacionLakePlaza/index.php')</script>";
+	}
+
 ?>
 
 <?php include("includes/header.php") ?>
@@ -291,15 +365,15 @@
 						<form action="editar.php?id_user=<?php echo $_GET['id_user'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
 								<label for="usuario" class="form-label">Usuario:</label>
-								<input type="text" name="usuario" value="<?php echo $usuario ;?>" class="form-control" placeholder="Actualiza usuario" autofocus>
+								<input type="text" name="usuario" value="<?php echo $usuario ;?>" class="form-control" autofocus>
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="email_user" class="form-label">Correo:</label>
-								<input type="email" name="email_user" class="form-control" value="<?php echo $email; ?>" placeholder="Actualiza el correo">
+								<input type="email" name="email_user" class="form-control" value="<?php echo $email; ?>">
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="clave_usuario" class="form-label">Contraseña:</label>
-								<input type="password" name="clave_usuario" value="<?php echo $password ;?>" class="form-control" placeholder="Nueva clave" >
+								<input type="password" name="clave_usuario"  class="form-control" placeholder="Nueva clave" >
 							</div>
 							<div class="card-footer bg-transparent border-success text-center">
 								<button type="submit" class="btn btn-success" name="update_user"><i class="fa-solid fa-save"></i> Actualizarx</button>
@@ -315,6 +389,10 @@
 					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR PRODUCTO</div>
 			  	<div class="card-body text-success">
 						<form action="editar.php?id_prod=<?php echo $_GET['id_prod'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="cod_prod" class="form-label">Código del Producto:</label>
+								<input type="text" name="cod_prod" value="<?php echo $codProd ;?>" class="form-control" readonly>
+							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="nombre" class="form-label">Nombre del Producto:</label>
 								<input type="text" name="nombre" value="<?php echo $nombre ;?>" class="form-control" placeholder="Actualiza producto" autofocus>
@@ -338,12 +416,49 @@
 		  		</div>
 				</div> <!--Fin form Edit producto -->
 
+				<!-- Form Edit operativos -->
+
+				<div <?php if (!isset($_GET['id_oper'])) { echo $ocultar ; } ?> >
+					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR OPERATIVO</div>
+			  	<div class="card-body text-success">
+						<form action="editar.php?id_oper=<?php echo $_GET['id_oper'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="cod_oper" class="form-label">Código del Operativo:</label>
+								<input type="text" name="cod_oper" value="<?php echo $codOper ;?>" class="form-control" readonly>
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="nombre_oper" class="form-label">Nombre del Operativo:</label>
+								<input type="text" name="nombre_oper" value="<?php echo $nombre ;?>" class="form-control" placeholder="Actualiza operativo" autofocus>
+							</div>
+							<div class="form-outline mb-3 col-md-5 ">
+						    <label for="estatus_oper" class="form-label">Estado</label>
+						    <select class="form-select" id="estatus_oper" name="estatus_oper" >
+						    	<?php if ($estatus == 1) { ?>
+											<option selected value="1">Activo</option>
+											<option value="0">Inactivo</option>
+							    <?php }else{ ?>
+											<option  value="1">Activo</option>
+											<option selected value="0">Inactivo</option>					    	
+									<?php } ?>
+						    </select>
+							</div>							
+				  		<div class="card-footer bg-transparent border-success text-center">
+								<button type="submit" class="btn btn-success" name="update_oper"><i class="fa-solid fa-save"></i> Actualizar</button>
+				  		</div>
+		  			</form>
+		  		</div>
+				</div> <!--Fin form Edit operativo -->
+
 				<!-- Form Edit programas ventas -->
 
 				<div <?php if (!isset($_GET['id_prog'])) { echo $ocultar ; } ?> >
 					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR PROGRAMA</div>
 			  	<div class="card-body text-success">
 						<form action="editar.php?id_prog=<?php echo $_GET['id_prog'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="cod_prog" class="form-label">Código del Programa:</label>
+								<input type="text" name="cod_prog" value="<?php echo $codProg ;?>" class="form-control" readonly>
+							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="nom_prog_vta" class="form-label">Nombre del Programa:</label>
 								<input type="text" name="nom_prog_vta" value="<?php echo $nombre_prog ;?>" class="form-control" placeholder="Actualiza programa" autofocus>
@@ -365,7 +480,7 @@
 				  		</div>
 		  			</form>
 		  		</div>
-				</div> <!--Fin form Edit producto -->
+				</div> <!--Fin form Edit programas ventas -->
 
 				<!-- Form Edit afiliados naturales -->
 
@@ -375,7 +490,7 @@
 						<form action="editar.php?id_afil_natu=<?php echo $_GET['id_afil_natu'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
 								<label for="cod_afil_natu" class="form-label">Código:</label>
-								<input type="text" name="cod_afil_natu" value="<?php echo $cod_afil_natu ;?>" class="form-control" placeholder="código o cédula" autofocus>
+								<input type="text" name="cod_afil_natu" value="<?php echo $cod_afil_natu ;?>" class="form-control" readonly>
 							</div>
 
 							<div class="form-outline mb-3 col-10">
@@ -427,12 +542,12 @@
 				<!-- Form Edit afiliados juridicos -->
 
 				<div <?php if (!isset($_GET['id_afil_jur'])) { echo $ocultar ; } ?> >
-					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR DATOS DEL JURÍDICO</div>
+					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR DATOS DEL AFILIADO JURÍDICO</div>
 			  	<div class="card-body text-success">
 						<form action="editar.php?id_afil_jur=<?php echo $_GET['id_afil_jur'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
 								<label for="cod_afil_jur" class="form-label">Código:</label>
-								<input type="text" name="cod_afil_jur" value="<?php echo $cod_afil_jur ;?>" class="form-control" placeholder="código o RIF" autofocus>
+								<input type="text" name="cod_afil_jur" value="<?php echo $cod_afil_jur ;?>" class="form-control" readonly>
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<label for="nombre_afil_jur" class="form-label">Nombre:</label>
@@ -487,14 +602,14 @@
 						<form action="editar.php?id_cond=<?php echo $_GET['id_cond'];?>" method="POST">
 							<div class="form-outline mb-3 col-10">
 								<label class="form-label " for="cod_cond_vta">Código Condic:</label>
-								<input type="text" name="cod_cond_vta" class="form-control " value="<?php echo $cod_cond ; ?>">							
+								<input type="text" name="cod_cond_vta" class="form-control " value="<?php echo $cod_cond ; ?>" readonly>							
 							</div>
 							<div class="form-outline mb-3 col-10">
 								<?php 
 									$label = '<label class="form-label " for="cod_prod_vta">Producto:</label>';
 									$name = 'cod_prod_vta';
 									$campos=array('cod_prod','nombre');
-									echo cargar_selects_update('productos', $campos, $label, $name , $conn); 
+									echo cargar_selects_update('productos', $campos, $label, $name , $conn, $producto); 
 								?>							
 							</div>
 							<div class="form-outline mb-3 col-10">
@@ -503,7 +618,7 @@
 									$name = 'cod_oper_vta';
 									$campos=array('cod_oper','nombre_oper');
 									$camp_cond="cod_oper";
-									echo cargar_selects_update('operativos', $campos, $label, $name , $conn); 
+									echo cargar_selects_update('operativos', $campos, $label, $name , $conn, $operativo); 
 								?>							
 							</div>
 							<div class="input-group  col-md-3 mb-sm-3 ">
@@ -551,7 +666,33 @@
 		  			</form>
 		  		</div>
 				</div> <!--Fin form Edit condiciones de ventas -->
-				<button type="button" class="btn-close" aria-label="Close" onClick="history.go(-1);">Cancelar</button>
+
+				<!-- Form Edit tasas -->
+
+				<div <?php if (!isset($_GET['id_tasa'])) { echo $ocultar ; } ?> >
+					<div class="card-header bg-transparent text-primary border-success text-center">EDITAR TASA</div>
+			  	<div class="card-body text-success">
+						<form action="editar.php?id_tasa=<?php echo $_GET['id_tasa'];?>" method="POST">
+							<div class="form-outline mb-3 col-10">
+								<label for="moneda_base" class="form-label">Moneda base:</label>
+								<input type="text" name="moneda_base" value="<?php echo $monedaBase ;?>" class="form-control" readonly>
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="valor_m_base" class="form-label">Valor moneda base:</label>
+								<input type="number" name="valor_m_base" value="<?php echo $valorMBase ;?>" class="form-control" >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="operador" class="form-label">Operador de cambio:</label>
+								<input type="text" name="operador" value="<?php echo $operador ;?>" class="form-control" >
+							</div>
+						
+				  		<div class="card-footer bg-transparent border-success text-center">
+								<button type="submit" class="btn btn-success" name="update_prod"><i class="fa-solid fa-save"></i> Actualizar</button>
+				  		</div>
+		  			</form>
+		  		</div>
+				</div> <!--Fin form Edit producto -->
+				<input type="button" onclick="history.back()" name="cancelar" value="Cancelar">
 			</div>
 		</div>
 	</div>

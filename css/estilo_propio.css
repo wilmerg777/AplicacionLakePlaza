@@ -1,12 +1,32 @@
-
 .actualiza_tasa {
   font-size: 14pt; font-family: arial; text-decoration: none;
   color:antiquewhite;
   background: blue;
 }
 
-
 .actualiza_tasa:hover {
   background: green;
   color:antiquewhite;
+}
+
+.campo-tabla:hover{
+   background-color: #677f8a ;
+}
+
+.campo-tabla > label{
+  color:  #041677;
+  align-items: center;
+  padding: 0.08rem;
+}
+
+.BG_contratos{
+  background:  #425057  ;
+}
+
+#form_contratos  h3 {
+  background: #a0711d ;
+}
+
+#titulo_contratos_pendientes h2 {
+  background:  #928979 ;
 }

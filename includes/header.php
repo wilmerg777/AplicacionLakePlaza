@@ -97,4 +97,4 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
     </div>
   </div>
 	</nav>
-  <div class="bg-primary text-white" align="center">Fecha: <?php echo date('d - m - Y') ;echo " (Tasa BCV: ". getTasaBCV()." <a class='actualiza_tasa' href='#' onClick=alert('En_construcción')> 'Actualízala'</a>)"; ?> </div>
+  <div class="bg-primary text-white" align="center">Fecha: <?php echo date('d - m - Y') ;echo " (Tasa BCV: ". getTasaBCV()." <a class='actualiza_tasa' href='registro_datos_maestros.php?maestro=tasa'>Ir</a>)"; ?> </div>

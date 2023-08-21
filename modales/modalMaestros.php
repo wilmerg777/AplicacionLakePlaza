@@ -1,16 +1,11 @@
+
 <?php
 	error_reporting(E_ERROR | E_WARNING | E_PARSE );
 
 	$ocultar = 'd-none';
-	if (isset($_SESSION['autoridad'])) { 
-		$nivel_autoridad = $_SESSION['autoridad'];
-		if ($nivel_autoridad <>1) {
-			$desactivar="disabled";
-		} else {
-			$desactivar="";
-		}
-	}
+
 ?>
+
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
 	<div class="col-4 justify-content-end me-md-5 <?php if ($Tip_form_maestro=='contrato' ) { echo $ocultar ; } ?> " >
@@ -90,7 +85,7 @@
 				break;
 			case 'Operativo':
 				return $inputsModal = '
-					<input type="text" name="guardar_form" value="8" hidden>
+					<input type="text" name="guardar_form" value="7" hidden>
 					<label class="form-label " for="cod_operativo">Código del Operativo:</label>
 					<div class="form-outline mb-4 col-md-4">
 						<input type="text" name="cod_operativo" id="cod_operativo" class="form-control " placeholder="Ejm: G0701" >
@@ -100,8 +95,8 @@
 						<input type="text" name="nom_operativo" id="nom_operativo" class="form-control" placeholder="Ejm: GLOBAL 7 AÑOS">
 					</div>
 					<div class="form-outline mb-4 col-md-4 ">
-				    <label for="estado_operativo" class="form-label">Estado</label>
-				    <select class="form-select" id="estado_operativo" name="estado_operativo" >
+				    <label for="estatus_operativo" class="form-label">Estado</label>
+				    <select class="form-select" id="estatus_operativo" name="estatus_operativo" >
 				      <option selected value="1">Activo</option>
 				      <option value="0">Inactivo</option>
 				    </select>
@@ -293,10 +288,59 @@
 				echo $inputsx;
 
 				break;
-			case 'Programa de Venta':
-				'xxx
-				';
 
+			case 'Usuario':
+				
+				return $inputsModal = '
+					<input type="text" name="guardar_form" value="1" hidden>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="codUser">Código del usuario:</label>
+						<input type="text" name="codUser" class="form-control " placeholder="Numero de cedula preferiblemente" >
+					</div>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="usuario">Usuario:</label>
+						<input type="text" name="usuario" class="form-control " placeholder="Nick de usuario" >
+					</div>
+          <div class="form-outline mb-4">
+          	<label class="form-label" for="email_user">Correo Electrónico:</label>
+						<input type="email" name="email_user" class="form-control"  placeholder="Escriba su correo electrónico" >
+					</div>
+					<div class="form-outline mb-4">
+            <label class="form-label" for="clave_usuario">Password:</label>
+            <input type="password" id="clave_usuario" name="clave_usuario" placeholder="Debe tener max. 10 caracteres." class="form-control" />
+          </div>
+				';
+				break;
+
+			case 'Tasa':
+				
+				return $inputsModal = '
+					<input type="text" name="guardar_form" value="9" hidden>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="moneda_base">Moneda base:</label>
+						<input type="text" name="moneda_base" class="form-control " value="US$" >
+					</div>
+          <div class="form-outline mb-4">
+						<label class="form-label" for="valor_m_base">Valor base:</label>
+						<input type="number" name="valor_m_base" class="form-control " value="1,00" >
+					</div>
+          <div class="form-outline mb-4">
+          	<label class="form-label" for="operador_cambio">Operador (* o /):</label>
+						<input type="text" name="operador_cambio" class="form-control"  value="*" >
+					</div>
+					<div class="form-outline mb-4">
+            <label class="form-label" for="moneda_alterna">Moneda alterna:</label>
+            <input type="text" id="moneda_alterna" name="moneda_alterna" value="Bs." class="form-control" />
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="valor_m_alterna">Valor alterno:</label>
+            <input type="float" id="valor_m_alterna" name="valor_m_alterna" placeholder="0,00" class="form-control" />
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="fecha_tasa">Fecha BCV:</label>
+            <input type="date" id="fecha_tasa" name="fecha_tasa"  class="form-control" />
+          </div>
+				';
 				break;
 			default:
 				// code...

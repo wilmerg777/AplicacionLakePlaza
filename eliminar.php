@@ -38,6 +38,24 @@
     $_SESSION['message_type'] = $tipo_mensaje;
 		header("Location: registro_datos_maestros.php?maestro=producto");
 
+	}elseif (isset($_GET['id_oper'])) {
+		$id = $_GET['id_oper'];
+		$query = "Delete from operativos where id_oper = $id";
+		$resultado = $conn->prepare($query);
+
+		try {
+			$cuantos=$resultado->execute();
+			$mensaje='Registro eliminado correctamente!';
+			$tipo_mensaje="success";		
+		} catch (Exception $e) {
+			$mensaje='Problemas al Eliminar :<br>'.$e;
+			$tipo_mensaje="danger";
+		}
+
+		$_SESSION['message'] = $mensaje;
+    $_SESSION['message_type'] = $tipo_mensaje;
+		header("Location: registro_datos_maestros.php?maestro=operativo");
+
 	}elseif (isset($_GET['id_prog'])) {
 		$id = $_GET['id_prog'];
 		$query = "Delete from prog_ventas where id_prog = $id";

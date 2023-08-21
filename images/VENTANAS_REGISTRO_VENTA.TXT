@@ -1,0 +1,177 @@
+
+╔═════ Financiamiento ═══════╗
+│  ────── RETROCEDER ──────  │
+│  Puntos Adquiridos         │
+│► Mantenimiento primer año ◄│
+│  Gastos Administrativos    │
+│  Miscelaneos               │
+│  ────── CONTINUAR ───────  │
+╚════════════════════════════╝
+
+╔═════════ Financiamiento ═══════════╗3
+│ Puntos Adquiridos:       2627.00│─
+│Monto x Distribuir:       2627.00│
+│   Inicial en Mesa:          0.00│
+│  Inicial Diferida:          0.00│u
+│  Capital Especial:          0.00│L
+│    Capital Normal:          0.00│
+╚════════════════════════════════════╝
+
+
+╔════════════ Cuotas de Inicial Diferida ══════════════
+│  Número de Cuotas:1x Distribuir:        393.60
+│  Capital de   /  :        393.60
+│ Tipo de Documento:GI
+│ Fecha Vencimiento:  /  /      0
+│───────────────── Datos del Responsable ──────────────
+│Cédula Responsable:000013485297
+│Nombre Responsable:ILDEMAR DANIEL COLMENAREZ PERA
+│───── Datos del Documento (Tarjeta / Cheque / Cta.) ──
+│     Tipo de Cobro:     
+│  Número Documento:          
+│  Tarjeta o Cuenta:                    
+│          Vence el:   /  /              Alfa:     
+╚══════════════════════════════════════════════════════
+
+
+╔════════════ Cuotas de Inicial Diferida ══════════════╗
+│  Número de Cuotas:2x Distribuir:               193.60│
+│  Capital de 2 / 2:                             193.60│
+│ Tipo de Documento:GIGiro de Inicial                  │
+│ Fecha Vencimiento:20/09/2023 31                      │
+│───────────────── Datos del Responsable ──────────────│
+│Cédula Responsable:000013485297                       │
+│Nombre Responsable:ILDEMAR DANIEL COLMENAREZ PERA     │
+│───── Datos del Documento (Tarjeta / Cheque / Cta.) ──│
+│     Tipo de Cobro:                                   │
+│  Número Documento:                                   │
+│  Tarjeta o Cuenta:                                   │
+│          Vence el:   /  /              Alfa:     │
+╚══════════════════════════════════════════════════════╝
+
+╔═════════ Financiamiento ═══════════╗
+│  Puntos Adquiridos:        2627.00 │
+│ Monto x Distribuir:        1838.90 │
+│    Inicial en Mesa:         394.50 │
+│   Inicial Diferida:         393.60 │
+│   Capital Especial:        1838.90 │
+│     Capital Normal:           0.00 │
+╚════════════════════════════════════╝
+
+╔══════════════ Financiamiento Especial ═══════════════╗
+│   Número de Cuotas: 1  x Distribuir:         1000.00 │
+│    Tipo de Interés:   0.00 %                         │
+│   Capital de   /  :        1000.00                   │
+│  Tipo de Documento: GE                               │
+│  Fecha Vencimiento: 20/08/2024  366                  │
+│───────────────── Datos del Responsable ──────────────│
+│ Cédula Responsable: 000013485297                     │
+│ Nombre Responsable: ILDEMAR DANIEL COLMENAREZ PERA   │
+│───────────── Datos de la Tarjeta o Cuenta ───────────│
+│      Tipo de Cobro:                                  │
+│   Tarjeta o Cuenta:                                  │
+│           Vence el:   /  /              Alfa:        │
+╚══════════════════════════════════════════════════════╝
+
+╔══════════════════════ Financiamiento Normal ════════════════════════╗
+│    Tipo Interés:   0.00            Primer Vencimiento: 20/09/2023   │
+│   Días de Plazo:  30  No. de Cuotas: 18   Monto Cuota:         0.00 │
+│────────────────────── Distribución de la Cuota ─────────────────────│
+│    Giro:         0.00  Tarj. 1:         0.00  Tarj. 2:         0.00 │
+│ Tarj. 3:         0.00  Tarj. 4:         0.00   Cuenta:         0.00 │
+│────────────────────── Responsable de los Giros ─────────────────────│
+│                Desde cuota No.:  1    Hasta cuota No.: 18           │
+│  Cédula: 000013485297   Nombre: ILDEMAR DANIEL COLMENAREZ PERA      │
+│─────────────── Responsable de las Tarjetas de Crédito ──────────────│
+│  Cédula: 000013485297   Nombre: ILDEMAR DANIEL COLMENAREZ PERA      │
+│ Tarjeta:                        Vence el:   /  /      Alfa:         │
+│    Tipo:                                                            │
+╚═════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════ Financiamiento Normal ════════════════════════╗
+│    Tipo Interés:   0.00            Primer Vencimiento: 20/09/2023   │
+│   Días de Plazo:  30  No. de Cuotas: 18   Monto Cuota:         46.61│ 18 VIENE DE LAS CONDICIONES DE VENTA
+│────────────────────── Distribución de la Cuota ─────────────────────│
+│    Giro:         46.61 Tarj. 1:         0.00  Tarj. 2:         0.00 │
+│ Tarj. 3:         0.00  Tarj. 4:         0.00   Cuenta:         0.00 │
+│────────────────────── Responsable de los Giros ─────────────────────│
+│                Desde cuota No.:  1    Hasta cuota No.: 18           │
+│  Cédula: 000013485297   Nombre: ILDEMAR DANIEL COLMENAREZ PERA      │
+│─────────────── Responsable de las Tarjetas de Crédito ──────────────│
+│  Cédula: 000013485297   Nombre: ILDEMAR DANIEL COLMENAREZ PERA      │
+│ Tarjeta:                        Vence el:   /  /      Alfa:         │
+│    Tipo:                                                            │
+╚═════════════════════════════════════════════════════════════════════╝
+
+
+╔═════ Financiamiento ═══════╗
+│  ────── RETROCEDER ──────  │
+│  Puntos Adquiridos         │
+│► Mantenimiento primer año ◄│ <-- Si no se coloco mantenimniento salta esta menu
+│  Gastos Administrativos    │ <-- 
+│  Miscelaneos               │
+│  ────── CONTINUAR ───────  │
+╚════════════════════════════╝
+
+
+
+
+╔══════════════ Financiamiento Gastos Administrativos ════════════════╗
+│    Tipo Interés:   0.00               1er Vencimiento: 20/09/2023   │
+│   Días de Plazo:  30  No. de Cuotas:  6   Monto Cuota:         15.83│
+│────────────────────── Distribución de la Cuota ─────────────────────│
+│    Giro:         15.83 Tarj. 1:         0.00  Tarj. 2:         0.00 │
+│ Tarj. 3:         0.00  Tarj. 4:         0.00   Cuenta:         0.00 │
+│────────────────────── Responsable de los Giros ─────────────────────│
+│                Desde cuota No.:  1    Hasta cuota No.:  6           │
+│  Cédula: 000013485297   Nombre: ILDEMAR DANIEL COLMENAREZ PERA      │
+│────────────────── Responsable de las T. de Crédito ─────────────────│
+│  Cédula: 000013485297   Nombre: ILDEMAR DANIEL COLMENAREZ PERA      │
+│ Tarjeta:                        Vence el:   /  /      Alfa:         │
+│    Tipo:                                                            │
+╚═════════════════════════════════════════════════════════════════════╝
+
+
+╔═══════════════════ Registro de Contratos: Venta procesable ══════════════════╗
+║ Contrato: G072234           20/08/2023   Moneda: US$ DOLARES U          1.00 ║
+║──────────────────────────────────────────────────────────────────────────────║
+║ Producto: G06   GLOBAL 06 AñOS         SUCURSAL: 00003 MERIDA                ║
+║ Programa: IH001 IN HOUSE              OPERATIVO: G0604 GLOBAL 06 AñOS CRED 1 ║
+║────────────────────────────────── Titulares ───────────────────────── [ N ] ─║
+║ Titular 1: 000013485297 ILDEMAR DANIEL COLMENAREZ PERAZA                     ║
+║ Titular 2: *                                                                 ║
+║────────────────────────────── Esquema de Venta ──────────────────────────────║
+║   Total Puntos   Valor x Punto  Pto. Comis.     % Descuento     Descuento    ║
+║             710           3.70           3.70           0.00           0.00  ║
+║  Valor Contrato  Mtto 1er Año   Gastos Admin    Miscelaneos    Valor Total   ║
+║         2627.00           0.00          95.00           0.00        2722.00  ║
+║─────────── Distribución de Financiamiento de los Puntos Adquiridos ──────────║
+║  Inicial  Mesa   Inicial Dif.  Cap. Especial    Cap. Normal  Valor Contrato  ║
+║          394.50         393.60        1000.00         838.90        2627.00  ║
+║       15.02 %        14.98 %        38.07 %        31.93 %       100.00 %    ║
+║──────────────────────────────── Observaciones ───────────────────────────────║
+║                                                                              ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+Luego de pasar el campo observaciones viene:
+
+╔════════════════ Recepción de Cobros ═════════════════╗
+│  Tipo de Pago:                                       │
+│         Monto:         394.50                        │
+│ No. Documento:                                       │
+│   Responsable: ILDEMAR DANIEL COLMENAREZ PERA        │
+│   No. Tarjeta:                                       │
+│        Cédula: 000013485297                          │
+│   Vencimiento:   /  /      Alfa:                     │
+│  Autorización:                                       │
+│  No. Operador:                                       │
+│──────────────── Conceptos a ser Pagados ─────────────│
+│  Inicial Mesa:        394.50  Miscelá:          0.00 │
+│ Gtos. Admini.:          0.00     Mtto:          0.00 │
+│ Fondo Turismo:          0.00                         │
+│──────────────────────────────────────────────────────│
+│   Monto Total:        394.50    Saldo:        394.50 │
+╚══════════════════════════════════════════════════════╝
