@@ -7,21 +7,20 @@ if (isset($_SESSION['usuario'])) {
 }
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
-
-  function getTasaBCV(){
-    $conn = new PDO("mysql:host=localhost; dbname=lakeplaza", "root", "wilmer");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Activando el atributo que se encarga de gestionar los errores de conexion y/o respuesta de la BD
-    
-    $query = "select * from tasas where fecha_tasa = '".date('Y-m-d') ."'" ;
-    $resultado = $conn->prepare($query);
-    $resultado->execute();
-    $row = $resultado->fetchColumn(5); // fetchColum(numero de columna)
-    if ($row) {
-      return $row;
-    } else {          
-    return "tasa del día no registrada";
-    }
+function getTasaBCV(){
+  $conn = new PDO("mysql:host=localhost; dbname=lakeplaza", "root", "wilmer");
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Activando el atributo que se encarga de gestionar los errores de conexion y/o respuesta de la BD
+  
+  $query = "select * from tasas where fecha_tasa = '".date('Y-m-d') ."'" ;
+  $resultado = $conn->prepare($query);
+  $resultado->execute();
+  $row = $resultado->fetchColumn(5); // fetchColum(numero de columna)
+  if (is_numeric($row)) {
+    return $row;
+  } else {          
+  return false;
   }
+}
 
 ?>
 
@@ -77,6 +76,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
             <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=condiciones_ventas">Condiciones de Ventas</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=usuarios " >Usuarios</a></li>
+            <li><a class="dropdown-item" href="registro_datos_maestros.php?maestro=tasa " >Tasa BCV</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -97,4 +97,15 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
     </div>
   </div>
 	</nav>
-  <div class="bg-primary text-white" align="center">Fecha: <?php echo date('d - m - Y') ;echo " (Tasa BCV: ". getTasaBCV()." <a class='actualiza_tasa' href='registro_datos_maestros.php?maestro=tasa'>Ir</a>)"; ?> </div>
+  <div class="bg-primary text-white" align="center">Fecha: 
+    <?php 
+      echo date('d - m - Y') ;
+      $tasaDelDia = getTasaBCV() ;
+      if ($tasaDelDia) {
+      echo " (Tasa BCV: **<b> ". $tasaDelDia." Bs.</b> **) </div>";
+      }else{
+      echo " (Tasa BCV: No asignada! <a class='actualiza_tasa' href='registro_datos_maestros.php?maestro=tasa'>ir</a> </div>";
+
+      }
+
+    ?>

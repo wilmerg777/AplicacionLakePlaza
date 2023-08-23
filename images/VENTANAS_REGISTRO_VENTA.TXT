@@ -8,13 +8,13 @@
 │  ────── CONTINUAR ───────  │
 ╚════════════════════════════╝
 
-╔═════════ Financiamiento ═══════════╗3
-│ Puntos Adquiridos:       2627.00│─
-│Monto x Distribuir:       2627.00│
-│   Inicial en Mesa:          0.00│
-│  Inicial Diferida:          0.00│u
-│  Capital Especial:          0.00│L
-│    Capital Normal:          0.00│
+╔═════════ Financiamiento ═══════════╗
+│ Puntos Adquiridos:       2627.00   │
+│Monto x Distribuir:       2627.00   │
+│   Inicial en Mesa:          0.00   │
+│  Inicial Diferida:          0.00   │
+│  Capital Especial:          0.00   │
+│    Capital Normal:          0.00   │
 ╚════════════════════════════════════╝
 
 

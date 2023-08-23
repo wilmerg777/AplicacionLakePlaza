@@ -318,7 +318,7 @@
 			$row = $resultado->fetch(PDO::FETCH_ASSOC);
 			$monedaBase = $row['moneda_base'];
 			$valorMBase = $row['valor_m_base'];
-			$operador = $row['operador'];
+			$operador = $row['operador_cambio'];
 			$monedaAlterna = $row['moneda_alterna'];
 			$valorMAlterna = $row['valor_m_alterna'];
 			$fechaTasa = $row['fecha_tasa'];
@@ -685,9 +685,21 @@
 								<label for="operador" class="form-label">Operador de cambio:</label>
 								<input type="text" name="operador" value="<?php echo $operador ;?>" class="form-control" >
 							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="moneda_alterna" class="form-label">Moneda alterna:</label>
+								<input type="text" name="moneda_alterna" value="<?php echo $monedaAlterna ;?>" class="form-control" >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="valor_m_alterna" class="form-label">Valor moneda alterna:</label>
+								<input type="text" name="valor_m_alterna" value="<?php echo $valorMAlterna ;?>" class="form-control" >
+							</div>
+							<div class="form-outline mb-3 col-10">
+								<label for="fecha_tasa" class="form-label">Fecha Tasa BCV:</label>
+								<input type="text" name="fecha_tasa" value="<?php echo $fechaTasa ;?>" class="form-control" >
+							</div>
 						
 				  		<div class="card-footer bg-transparent border-success text-center">
-								<button type="submit" class="btn btn-success" name="update_prod"><i class="fa-solid fa-save"></i> Actualizar</button>
+								<button type="submit" class="btn btn-success" name="update_tasa"><i class="fa-solid fa-save"></i> Actualizar</button>
 				  		</div>
 		  			</form>
 		  		</div>
