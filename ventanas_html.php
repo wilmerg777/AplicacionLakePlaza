@@ -378,7 +378,7 @@ if (isset($_SESSION['message'])) { ?>
 </div> <!-- cierra div tasa -->
 
 <!-- Div contratos -->
-<div class="container BG_contratos rounded <?php if ($Tip_form_maestro<>'contrato' ) { echo $ocultar ; } ?>" name="form_contrato">
+<div class="container shadow-lg p-3 mb-5 bg-body rounded" <?php if ($Tip_form_maestro<>'contrato' ) { echo $ocultar ; } ?>" name="form_contrato">
 	<div class="row align-content-center mt-1 rounded">
 		<div class="col-11" id="titulo_contratos_pendientes">
 			<h2 class="text-center"><B>REGISTRO DE CONTRATO</B></h2>
@@ -395,7 +395,7 @@ if (isset($_SESSION['message'])) { ?>
 		<div class="input-group">
 			<div class="col p-1 campo-tabla" >
 				<label class="input-group-text " for="contrato"><i class="fas fa-file-edit"></i>  Contrato:</label>
-				<input autofocus  type="text" class="form-control text-uppercase fs-6 " name="contrato" id="contrato"  >
+				<input autofocus  type="text text-capitalize" class="form-control text-uppercase fs-6 " name="contrato" id="contrato"  >
 			</div>
 			<div class="col p-1 campo-tabla" >
 					<label class="input-group-text "><i class="fas fa-calendar-check"></i> Emisión:</label>
