@@ -378,7 +378,7 @@ if (isset($_SESSION['message'])) { ?>
 </div> <!-- cierra div tasa -->
 
 <!-- Div contratos -->
-<div class="container shadow-lg p-3 mb-5 bg-body rounded" <?php if ($Tip_form_maestro<>'contrato' ) { echo $ocultar ; } ?>" name="form_contrato">
+<div class="container shadow-lg p-3 mb-5 bg-body rounded <?php if ($Tip_form_maestro<>'contrato' ) { echo $ocultar ; } ?>" name="form_contrato">
 	<div class="row align-content-center mt-1 rounded">
 		<div class="col-11" id="titulo_contratos_pendientes">
 			<h2 class="text-center"><B>REGISTRO DE CONTRATO</B></h2>
